@@ -1,0 +1,32 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace AppWinProyectoo
+{
+    public partial class RecepcionEquiposIngreso : Form
+    {
+        //RecepcionEquipos equipo;
+        public RecepcionEquiposIngreso()
+        {
+            InitializeComponent();
+            //this.equipo = equipo;
+        }
+
+        private void mo(object sender, MouseEventArgs e)
+        {
+
+        }
+
+        private void IngresoEquipos_Load(object sender, EventArgs e)
+        {
+
+        }
+    }
+}
