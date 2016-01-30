@@ -292,5 +292,30 @@ namespace AppWinProyectoo
         {
 
         }
+
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+            DataGridViewRow row = (DataGridViewRow)dgvFactura.Rows[dgvFactura.CurrentCell.RowIndex];
+            int codigo = Convert.ToInt32(row.Cells[0].Value);
+            eliminarDetalle(codigo);
+        }
+
+        public void eliminarDetalle(int codigo)
+        {
+            DetalleProducto detalleQuitar;
+            foreach(DetalleProducto d in listadetalles)
+            {
+                if (d.Cod_producto == codigo)
+                    detalleQuitar = d;
+            }
+
+            Producto productoQuitar;
+            foreach(Producto p in lista_productos)
+            {
+                productoQuitar = p;
+            }
+            //listadetalles.Remove(detalleQuitar);
+            actualizarFactura();
+        }
     }
 }
