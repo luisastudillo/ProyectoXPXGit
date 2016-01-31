@@ -33,6 +33,18 @@ namespace Entidades
             this.apellido = apellido;
         }
 
+        public Usuario(string cedula, string nombre, string domicilio, string telefono, string contrasenia, string tipo, string apellido, bool baja)
+        {
+            this.cedula = cedula;
+            this.nombre = nombre;
+            this.domicilio = domicilio;
+            this.telefono = telefono;
+            this.contrasenia = contrasenia;
+            this.tipo = tipo;
+            this.apellido = apellido;
+            this.baja = baja;
+        }
+
         public string Cedula
         {
             get
@@ -121,6 +133,19 @@ namespace Entidades
             set
             {
                 apellido = value;
+            }
+        }
+
+        public bool Baja
+        {
+            get
+            {
+                return baja;
+            }
+
+            set
+            {
+                baja = value;
             }
         }
     }

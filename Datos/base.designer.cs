@@ -23,7 +23,7 @@ namespace Datos
 	
 	
 	[global::System.Data.Linq.Mapping.DatabaseAttribute(Name="XPX")]
-	public partial class DataClasses1DataContext : System.Data.Linq.DataContext
+	public partial class baseDataContext : System.Data.Linq.DataContext
 	{
 		
 		private static System.Data.Linq.Mapping.MappingSource mappingSource = new AttributeMappingSource();
@@ -59,31 +59,31 @@ namespace Datos
     partial void DeleteUsuario(Usuario instance);
     #endregion
 		
-		public DataClasses1DataContext() : 
+		public baseDataContext() : 
 				base(global::Datos.Properties.Settings.Default.XPXConnectionString, mappingSource)
 		{
 			OnCreated();
 		}
 		
-		public DataClasses1DataContext(string connection) : 
+		public baseDataContext(string connection) : 
 				base(connection, mappingSource)
 		{
 			OnCreated();
 		}
 		
-		public DataClasses1DataContext(System.Data.IDbConnection connection) : 
+		public baseDataContext(System.Data.IDbConnection connection) : 
 				base(connection, mappingSource)
 		{
 			OnCreated();
 		}
 		
-		public DataClasses1DataContext(string connection, System.Data.Linq.Mapping.MappingSource mappingSource) : 
+		public baseDataContext(string connection, System.Data.Linq.Mapping.MappingSource mappingSource) : 
 				base(connection, mappingSource)
 		{
 			OnCreated();
 		}
 		
-		public DataClasses1DataContext(System.Data.IDbConnection connection, System.Data.Linq.Mapping.MappingSource mappingSource) : 
+		public baseDataContext(System.Data.IDbConnection connection, System.Data.Linq.Mapping.MappingSource mappingSource) : 
 				base(connection, mappingSource)
 		{
 			OnCreated();
@@ -428,9 +428,9 @@ namespace Datos
 	public partial class Detalle_producto
 	{
 		
-		private string _nfactura;
+		private System.Nullable<int> _nfactura;
 		
-		private string _pro_codigo;
+		private System.Nullable<int> _pro_codigo;
 		
 		private System.Nullable<int> _cantidad;
 		
@@ -440,8 +440,8 @@ namespace Datos
 		{
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_nfactura", DbType="NChar(4)")]
-		public string nfactura
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_nfactura", DbType="Int")]
+		public System.Nullable<int> nfactura
 		{
 			get
 			{
@@ -456,8 +456,8 @@ namespace Datos
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_pro_codigo", DbType="NChar(4)")]
-		public string pro_codigo
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_pro_codigo", DbType="Int")]
+		public System.Nullable<int> pro_codigo
 		{
 			get
 			{
@@ -519,7 +519,7 @@ namespace Datos
 		
 		private System.Nullable<short> _equ__n_ingresos;
 		
-		private string _equ_n_factura;
+		private System.Nullable<int> _equ_n_factura;
 		
 		private EntitySet<Ingreso> _Ingreso;
 		
@@ -537,7 +537,7 @@ namespace Datos
     partial void Onequ_tipoChanged();
     partial void Onequ__n_ingresosChanging(System.Nullable<short> value);
     partial void Onequ__n_ingresosChanged();
-    partial void Onequ_n_facturaChanging(string value);
+    partial void Onequ_n_facturaChanging(System.Nullable<int> value);
     partial void Onequ_n_facturaChanged();
     #endregion
 		
@@ -628,8 +628,8 @@ namespace Datos
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_equ_n_factura", DbType="NChar(4)")]
-		public string equ_n_factura
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_equ_n_factura", DbType="Int")]
+		public System.Nullable<int> equ_n_factura
 		{
 			get
 			{
@@ -692,7 +692,7 @@ namespace Datos
 					}
 					else
 					{
-						this._equ_n_factura = default(string);
+						this._equ_n_factura = default(Nullable<int>);
 					}
 					this.SendPropertyChanged("Factura_compra");
 				}
@@ -738,7 +738,7 @@ namespace Datos
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
-		private string _fac_n_factura;
+		private int _fac_n_factura;
 		
 		private System.Nullable<System.DateTime> _fac_fecha;
 		
@@ -752,6 +752,8 @@ namespace Datos
 		
 		private System.Nullable<decimal> _fac_total;
 		
+		private System.Nullable<bool> _fac_anulada;
+		
 		private EntitySet<Ingreso> _Ingreso;
 		
 		private EntityRef<Cliente> _Cliente;
@@ -762,7 +764,7 @@ namespace Datos
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
     partial void OnCreated();
-    partial void Onfac_n_facturaChanging(string value);
+    partial void Onfac_n_facturaChanging(int value);
     partial void Onfac_n_facturaChanged();
     partial void Onfac_fechaChanging(System.Nullable<System.DateTime> value);
     partial void Onfac_fechaChanged();
@@ -776,6 +778,8 @@ namespace Datos
     partial void Onfac_ivaChanged();
     partial void Onfac_totalChanging(System.Nullable<decimal> value);
     partial void Onfac_totalChanged();
+    partial void Onfac_anuladaChanging(System.Nullable<bool> value);
+    partial void Onfac_anuladaChanged();
     #endregion
 		
 		public Factura()
@@ -786,8 +790,8 @@ namespace Datos
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_fac_n_factura", DbType="NChar(4) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
-		public string fac_n_factura
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_fac_n_factura", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		public int fac_n_factura
 		{
 			get
 			{
@@ -934,6 +938,26 @@ namespace Datos
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_fac_anulada", DbType="Bit")]
+		public System.Nullable<bool> fac_anulada
+		{
+			get
+			{
+				return this._fac_anulada;
+			}
+			set
+			{
+				if ((this._fac_anulada != value))
+				{
+					this.Onfac_anuladaChanging(value);
+					this.SendPropertyChanging();
+					this._fac_anulada = value;
+					this.SendPropertyChanged("fac_anulada");
+					this.Onfac_anuladaChanged();
+				}
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Factura_Ingreso", Storage="_Ingreso", ThisKey="fac_n_factura", OtherKey="ing_n_factura")]
 		public EntitySet<Ingreso> Ingreso
 		{
@@ -1054,7 +1078,7 @@ namespace Datos
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
-		private string _fc_numero;
+		private int _fc_numero;
 		
 		private System.Nullable<System.DateTime> _fc_fecha;
 		
@@ -1066,7 +1090,7 @@ namespace Datos
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
     partial void OnCreated();
-    partial void Onfc_numeroChanging(string value);
+    partial void Onfc_numeroChanging(int value);
     partial void Onfc_numeroChanged();
     partial void Onfc_fechaChanging(System.Nullable<System.DateTime> value);
     partial void Onfc_fechaChanged();
@@ -1080,8 +1104,8 @@ namespace Datos
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_fc_numero", DbType="NChar(4) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
-		public string fc_numero
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_fc_numero", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		public int fc_numero
 		{
 			get
 			{
@@ -1192,7 +1216,7 @@ namespace Datos
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
-		private string _ing_codigo;
+		private int _ing_codigo;
 		
 		private System.Nullable<System.DateTime> _ing_fecha;
 		
@@ -1214,7 +1238,7 @@ namespace Datos
 		
 		private string _ing_ced_tecnico;
 		
-		private string _ing_n_factura;
+		private System.Nullable<int> _ing_n_factura;
 		
 		private EntityRef<Cliente> _Cliente;
 		
@@ -1230,7 +1254,7 @@ namespace Datos
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
     partial void OnCreated();
-    partial void Oning_codigoChanging(string value);
+    partial void Oning_codigoChanging(int value);
     partial void Oning_codigoChanged();
     partial void Oning_fechaChanging(System.Nullable<System.DateTime> value);
     partial void Oning_fechaChanged();
@@ -1252,7 +1276,7 @@ namespace Datos
     partial void Oning_ced_recepcionistaChanged();
     partial void Oning_ced_tecnicoChanging(string value);
     partial void Oning_ced_tecnicoChanged();
-    partial void Oning_n_facturaChanging(string value);
+    partial void Oning_n_facturaChanging(System.Nullable<int> value);
     partial void Oning_n_facturaChanged();
     #endregion
 		
@@ -1266,8 +1290,8 @@ namespace Datos
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ing_codigo", DbType="NChar(4) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
-		public string ing_codigo
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ing_codigo", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		public int ing_codigo
 		{
 			get
 			{
@@ -1502,8 +1526,8 @@ namespace Datos
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ing_n_factura", DbType="NChar(4)")]
-		public string ing_n_factura
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ing_n_factura", DbType="Int")]
+		public System.Nullable<int> ing_n_factura
 		{
 			get
 			{
@@ -1621,7 +1645,7 @@ namespace Datos
 					}
 					else
 					{
-						this._ing_n_factura = default(string);
+						this._ing_n_factura = default(Nullable<int>);
 					}
 					this.SendPropertyChanged("Factura");
 				}
@@ -1723,7 +1747,7 @@ namespace Datos
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
-		private string _pie_codigo;
+		private int _pie_codigo;
 		
 		private string _pie_modelo;
 		
@@ -1733,11 +1757,13 @@ namespace Datos
 		
 		private System.Nullable<int> _pie_cantidad;
 		
+		private System.Nullable<bool> _pie_baja;
+		
     #region Definiciones de métodos de extensibilidad
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
     partial void OnCreated();
-    partial void Onpie_codigoChanging(string value);
+    partial void Onpie_codigoChanging(int value);
     partial void Onpie_codigoChanged();
     partial void Onpie_modeloChanging(string value);
     partial void Onpie_modeloChanged();
@@ -1747,6 +1773,8 @@ namespace Datos
     partial void Onpie_costoChanged();
     partial void Onpie_cantidadChanging(System.Nullable<int> value);
     partial void Onpie_cantidadChanged();
+    partial void Onpie_bajaChanging(System.Nullable<bool> value);
+    partial void Onpie_bajaChanged();
     #endregion
 		
 		public Pieza()
@@ -1754,8 +1782,8 @@ namespace Datos
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_pie_codigo", DbType="NChar(3) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
-		public string pie_codigo
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_pie_codigo", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		public int pie_codigo
 		{
 			get
 			{
@@ -1854,6 +1882,26 @@ namespace Datos
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_pie_baja", DbType="Bit")]
+		public System.Nullable<bool> pie_baja
+		{
+			get
+			{
+				return this._pie_baja;
+			}
+			set
+			{
+				if ((this._pie_baja != value))
+				{
+					this.Onpie_bajaChanging(value);
+					this.SendPropertyChanging();
+					this._pie_baja = value;
+					this.SendPropertyChanged("pie_baja");
+					this.Onpie_bajaChanged();
+				}
+			}
+		}
+		
 		public event PropertyChangingEventHandler PropertyChanging;
 		
 		public event PropertyChangedEventHandler PropertyChanged;
@@ -1879,9 +1927,9 @@ namespace Datos
 	public partial class Pieza_usada
 	{
 		
-		private string _codigo_pieza;
+		private System.Nullable<int> _codigo_pieza;
 		
-		private string _codigo_ingreso;
+		private System.Nullable<int> _codigo_ingreso;
 		
 		private string _serie;
 		
@@ -1889,8 +1937,8 @@ namespace Datos
 		{
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_codigo_pieza", DbType="NChar(3)")]
-		public string codigo_pieza
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_codigo_pieza", DbType="Int")]
+		public System.Nullable<int> codigo_pieza
 		{
 			get
 			{
@@ -1905,8 +1953,8 @@ namespace Datos
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_codigo_ingreso", DbType="NChar(4)")]
-		public string codigo_ingreso
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_codigo_ingreso", DbType="Int")]
+		public System.Nullable<int> codigo_ingreso
 		{
 			get
 			{
@@ -1944,7 +1992,7 @@ namespace Datos
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
-		private string _pro_codigo;
+		private int _pro_codigo;
 		
 		private string _pro_tipo;
 		
@@ -1954,11 +2002,13 @@ namespace Datos
 		
 		private System.Nullable<int> _pro_cantidad;
 		
+		private System.Nullable<bool> _pro_baja;
+		
     #region Definiciones de métodos de extensibilidad
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
     partial void OnCreated();
-    partial void Onpro_codigoChanging(string value);
+    partial void Onpro_codigoChanging(int value);
     partial void Onpro_codigoChanged();
     partial void Onpro_tipoChanging(string value);
     partial void Onpro_tipoChanged();
@@ -1968,6 +2018,8 @@ namespace Datos
     partial void Onpro_costoChanged();
     partial void Onpro_cantidadChanging(System.Nullable<int> value);
     partial void Onpro_cantidadChanged();
+    partial void Onpro_bajaChanging(System.Nullable<bool> value);
+    partial void Onpro_bajaChanged();
     #endregion
 		
 		public Producto()
@@ -1975,8 +2027,8 @@ namespace Datos
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_pro_codigo", DbType="NChar(4) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
-		public string pro_codigo
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_pro_codigo", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		public int pro_codigo
 		{
 			get
 			{
@@ -2075,6 +2127,26 @@ namespace Datos
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_pro_baja", DbType="Bit")]
+		public System.Nullable<bool> pro_baja
+		{
+			get
+			{
+				return this._pro_baja;
+			}
+			set
+			{
+				if ((this._pro_baja != value))
+				{
+					this.Onpro_bajaChanging(value);
+					this.SendPropertyChanging();
+					this._pro_baja = value;
+					this.SendPropertyChanged("pro_baja");
+					this.Onpro_bajaChanged();
+				}
+			}
+		}
+		
 		public event PropertyChangingEventHandler PropertyChanging;
 		
 		public event PropertyChangedEventHandler PropertyChanged;
@@ -2102,7 +2174,7 @@ namespace Datos
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
-		private string _tra_codigo;
+		private int _tra_codigo;
 		
 		private string _tra_descripcion;
 		
@@ -2112,7 +2184,7 @@ namespace Datos
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
     partial void OnCreated();
-    partial void Ontra_codigoChanging(string value);
+    partial void Ontra_codigoChanging(int value);
     partial void Ontra_codigoChanged();
     partial void Ontra_descripcionChanging(string value);
     partial void Ontra_descripcionChanged();
@@ -2125,8 +2197,8 @@ namespace Datos
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_tra_codigo", DbType="NChar(3) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
-		public string tra_codigo
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_tra_codigo", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		public int tra_codigo
 		{
 			get
 			{
@@ -2210,16 +2282,16 @@ namespace Datos
 	public partial class Trabajo_realizado
 	{
 		
-		private string _codigo_trabajo;
+		private System.Nullable<int> _codigo_trabajo;
 		
-		private string _codigo_ingreso;
+		private System.Nullable<int> _codigo_ingreso;
 		
 		public Trabajo_realizado()
 		{
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_codigo_trabajo", DbType="NChar(3)")]
-		public string codigo_trabajo
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_codigo_trabajo", DbType="Int")]
+		public System.Nullable<int> codigo_trabajo
 		{
 			get
 			{
@@ -2234,8 +2306,8 @@ namespace Datos
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_codigo_ingreso", DbType="NChar(4)")]
-		public string codigo_ingreso
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_codigo_ingreso", DbType="Int")]
+		public System.Nullable<int> codigo_ingreso
 		{
 			get
 			{
@@ -2271,6 +2343,8 @@ namespace Datos
 		
 		private string _usu_apellido;
 		
+		private System.Nullable<bool> _usu_baja;
+		
 		private EntitySet<Factura> _Factura;
 		
 		private EntitySet<Ingreso> _Ingreso;
@@ -2295,6 +2369,8 @@ namespace Datos
     partial void Onusu_tipoChanged();
     partial void Onusu_apellidoChanging(string value);
     partial void Onusu_apellidoChanged();
+    partial void Onusu_bajaChanging(System.Nullable<bool> value);
+    partial void Onusu_bajaChanged();
     #endregion
 		
 		public Usuario()
@@ -2441,6 +2517,26 @@ namespace Datos
 					this._usu_apellido = value;
 					this.SendPropertyChanged("usu_apellido");
 					this.Onusu_apellidoChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_usu_baja", DbType="Bit")]
+		public System.Nullable<bool> usu_baja
+		{
+			get
+			{
+				return this._usu_baja;
+			}
+			set
+			{
+				if ((this._usu_baja != value))
+				{
+					this.Onusu_bajaChanging(value);
+					this.SendPropertyChanging();
+					this._usu_baja = value;
+					this.SendPropertyChanged("usu_baja");
+					this.Onusu_bajaChanged();
 				}
 			}
 		}

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Entidades
 {
-    class Cliente
+    public class Cliente
     {
         string cedula;
         string nombre;

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Entidades
 {
-    class Equipo
+    public class Equipo
     {
         string serie;
         string modelo;

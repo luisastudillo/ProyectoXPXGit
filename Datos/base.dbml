@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?><Database Name="XPX" Class="DataClasses1DataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="XPX" Class="baseDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
   <Connection Mode="AppSettings" ConnectionString="Data Source=USER;Initial Catalog=XPX;Integrated Security=True" SettingsObjectName="Datos.Properties.Settings" SettingsPropertyName="XPXConnectionString" Provider="System.Data.SqlClient" />
   <Table Name="dbo.Cliente" Member="Cliente">
     <Type Name="Cliente">
@@ -14,8 +14,8 @@
   </Table>
   <Table Name="dbo.Detalle_producto" Member="Detalle_producto">
     <Type Name="Detalle_producto">
-      <Column Name="nfactura" Type="System.String" DbType="NChar(4)" CanBeNull="true" />
-      <Column Name="pro_codigo" Type="System.String" DbType="NChar(4)" CanBeNull="true" />
+      <Column Name="nfactura" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="pro_codigo" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="cantidad" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="subtotal" Type="System.Decimal" DbType="Decimal(7,2)" CanBeNull="true" />
       <Association Name="Factura_Detalle_producto" Member="Factura" ThisKey="nfactura" OtherKey="fac_n_factura" Type="Factura" IsForeignKey="true" />
@@ -28,20 +28,21 @@
       <Column Name="equ_modelo" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
       <Column Name="equ_tipo" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
       <Column Name="equ__n_ingresos" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
-      <Column Name="equ_n_factura" Type="System.String" DbType="NChar(4)" CanBeNull="true" />
+      <Column Name="equ_n_factura" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Association Name="Equipo_Ingreso" Member="Ingreso" ThisKey="equ_serie" OtherKey="ing_serie_equipo" Type="Ingreso" />
       <Association Name="Factura_compra_Equipo" Member="Factura_compra" ThisKey="equ_n_factura" OtherKey="fc_numero" Type="Factura_compra" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.Factura" Member="Factura">
     <Type Name="Factura">
-      <Column Name="fac_n_factura" Type="System.String" DbType="NChar(4) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="fac_n_factura" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
       <Column Name="fac_fecha" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="fac_ced_recep" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
       <Column Name="fac_ced_cliente" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
       <Column Name="fac_subtotal" Type="System.Decimal" DbType="Decimal(7,2)" CanBeNull="true" />
       <Column Name="fac_iva" Type="System.Decimal" DbType="Decimal(7,2)" CanBeNull="true" />
       <Column Name="fac_total" Type="System.Decimal" DbType="Decimal(7,2)" CanBeNull="true" />
+      <Column Name="fac_anulada" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
       <Association Name="Factura_Detalle_producto" Member="Detalle_producto" ThisKey="fac_n_factura" OtherKey="nfactura" Type="Detalle_producto" />
       <Association Name="Factura_Ingreso" Member="Ingreso" ThisKey="fac_n_factura" OtherKey="ing_n_factura" Type="Ingreso" />
       <Association Name="Cliente_Factura" Member="Cliente" ThisKey="fac_ced_cliente" OtherKey="cli_cedula" Type="Cliente" IsForeignKey="true" />
@@ -50,7 +51,7 @@
   </Table>
   <Table Name="dbo.Factura_compra" Member="Factura_compra">
     <Type Name="Factura_compra">
-      <Column Name="fc_numero" Type="System.String" DbType="NChar(4) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="fc_numero" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
       <Column Name="fc_fecha" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="fc_cedula" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
       <Association Name="Factura_compra_Equipo" Member="Equipo" ThisKey="fc_numero" OtherKey="equ_n_factura" Type="Equipo" />
@@ -58,7 +59,7 @@
   </Table>
   <Table Name="dbo.Ingreso" Member="Ingreso">
     <Type Name="Ingreso">
-      <Column Name="ing_codigo" Type="System.String" DbType="NChar(4) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="ing_codigo" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
       <Column Name="ing_fecha" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="ing_problema" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="ing_observaciones" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
@@ -69,7 +70,7 @@
       <Column Name="ing_estado" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
       <Column Name="ing_ced_recepcionista" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
       <Column Name="ing_ced_tecnico" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
-      <Column Name="ing_n_factura" Type="System.String" DbType="NChar(4)" CanBeNull="true" />
+      <Column Name="ing_n_factura" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Association Name="Ingreso_Pieza_usada" Member="Pieza_usada" ThisKey="ing_codigo" OtherKey="codigo_ingreso" Type="Pieza_usada" />
       <Association Name="Ingreso_Trabajo_realizado" Member="Trabajo_realizado" ThisKey="ing_codigo" OtherKey="codigo_ingreso" Type="Trabajo_realizado" />
       <Association Name="Cliente_Ingreso" Member="Cliente" ThisKey="ing_ced_cliente" OtherKey="cli_cedula" Type="Cliente" IsForeignKey="true" />
@@ -81,18 +82,19 @@
   </Table>
   <Table Name="dbo.Pieza" Member="Pieza">
     <Type Name="Pieza">
-      <Column Name="pie_codigo" Type="System.String" DbType="NChar(3) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="pie_codigo" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
       <Column Name="pie_modelo" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
       <Column Name="pie_tipo" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
       <Column Name="pie_costo" Type="System.Decimal" DbType="Decimal(7,2)" CanBeNull="true" />
       <Column Name="pie_cantidad" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="pie_baja" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
       <Association Name="Pieza_Pieza_usada" Member="Pieza_usada" ThisKey="pie_codigo" OtherKey="codigo_pieza" Type="Pieza_usada" />
     </Type>
   </Table>
   <Table Name="dbo.Pieza_usada" Member="Pieza_usada">
     <Type Name="Pieza_usada">
-      <Column Name="codigo_pieza" Type="System.String" DbType="NChar(3)" CanBeNull="true" />
-      <Column Name="codigo_ingreso" Type="System.String" DbType="NChar(4)" CanBeNull="true" />
+      <Column Name="codigo_pieza" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="codigo_ingreso" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="serie" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
       <Association Name="Ingreso_Pieza_usada" Member="Ingreso" ThisKey="codigo_ingreso" OtherKey="ing_codigo" Type="Ingreso" IsForeignKey="true" />
       <Association Name="Pieza_Pieza_usada" Member="Pieza" ThisKey="codigo_pieza" OtherKey="pie_codigo" Type="Pieza" IsForeignKey="true" />
@@ -100,17 +102,18 @@
   </Table>
   <Table Name="dbo.Producto" Member="Producto">
     <Type Name="Producto">
-      <Column Name="pro_codigo" Type="System.String" DbType="NChar(4) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="pro_codigo" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
       <Column Name="pro_tipo" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
       <Column Name="pro_modelo" Type="System.String" DbType="VarChar(15)" CanBeNull="true" />
       <Column Name="pro_costo" Type="System.Decimal" DbType="Decimal(7,2)" CanBeNull="true" />
       <Column Name="pro_cantidad" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="pro_baja" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
       <Association Name="Producto_Detalle_producto" Member="Detalle_producto" ThisKey="pro_codigo" OtherKey="pro_codigo" Type="Detalle_producto" />
     </Type>
   </Table>
   <Table Name="dbo.Trabajo" Member="Trabajo">
     <Type Name="Trabajo">
-      <Column Name="tra_codigo" Type="System.String" DbType="NChar(3) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="tra_codigo" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
       <Column Name="tra_descripcion" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="tra_costo" Type="System.Decimal" DbType="Decimal(7,2)" CanBeNull="true" />
       <Association Name="Trabajo_Trabajo_realizado" Member="Trabajo_realizado" ThisKey="tra_codigo" OtherKey="codigo_trabajo" Type="Trabajo_realizado" />
@@ -118,8 +121,8 @@
   </Table>
   <Table Name="dbo.Trabajo_realizado" Member="Trabajo_realizado">
     <Type Name="Trabajo_realizado">
-      <Column Name="codigo_trabajo" Type="System.String" DbType="NChar(3)" CanBeNull="true" />
-      <Column Name="codigo_ingreso" Type="System.String" DbType="NChar(4)" CanBeNull="true" />
+      <Column Name="codigo_trabajo" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="codigo_ingreso" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Association Name="Ingreso_Trabajo_realizado" Member="Ingreso" ThisKey="codigo_ingreso" OtherKey="ing_codigo" Type="Ingreso" IsForeignKey="true" />
       <Association Name="Trabajo_Trabajo_realizado" Member="Trabajo" ThisKey="codigo_trabajo" OtherKey="tra_codigo" Type="Trabajo" IsForeignKey="true" />
     </Type>
@@ -133,6 +136,7 @@
       <Column Name="usu_contrasenia" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
       <Column Name="usu_tipo" Type="System.String" DbType="NChar(15)" CanBeNull="true" />
       <Column Name="usu_apellido" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="usu_baja" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
       <Association Name="Usuario_Factura" Member="Factura" ThisKey="usu_cedula" OtherKey="fac_ced_recep" Type="Factura" />
       <Association Name="Usuario_Ingreso" Member="Ingreso" ThisKey="usu_cedula" OtherKey="ing_ced_recepcionista" Type="Ingreso" />
       <Association Name="Usuario_Ingreso1" Member="Ingreso1" ThisKey="usu_cedula" OtherKey="ing_ced_tecnico" Type="Ingreso" />

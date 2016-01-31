@@ -54,59 +54,60 @@ namespace AppWinProyectoo
         {
             Entidades.Usuario usuario = new Entidades.Usuario();
 
+            string cedula, contrasenia;
 
 
 
 
 
-            Conexion();
-            String cedula, contraseña;
-            bool encontrado = false;
-            cedula = txtcedula.Text;
-            contraseña = txtContrasenia.Text;
+            //Conexion();
+            //String cedula, contraseña;
+            //bool encontrado = false;
+            //cedula = txtcedula.Text;
+            //contraseña = txtContrasenia.Text;
 
-            cmd = new SqlCommand("SELECT * FROM Usuario where usu_cedula =" + cedula+ "", cn);
+            //cmd = new SqlCommand("SELECT * FROM Usuario where usu_cedula =" + cedula+ "", cn);
 
-            da = new SqlDataAdapter(cmd);
-            dt = new DataTable();
-            da.Fill(dt);
-            for(int i =0; i< dt.Rows.Count; i++)
-            {
-                DataRow dr = dt.Rows[i];
-                cedula = dr["usu_cedula"].ToString();
-                contraseña = dr["usu_contrasenia"].ToString();
-                if (txtcedula.Text.Equals(cedula) && txtContrasenia.Text.Equals(contraseña))
-                {
-                    Form  menu  = new Form();
-                    switch (dr["usu_tipo"].ToString())
-                    {
-                        case "recepcionista":
-                            MessageBox.Show("Bienvenido al menu de recepcion");
-                            menu = new RecepcionMenu();
-                            break;
-                        case "tecnico":
-                            MessageBox.Show("Aun no soportado");
-                            break;
-                        case "administrador":
-                            MessageBox.Show("Bienvenido al menu de administracion");
-                            menu = new AdministradorMenu();
-                            break;
-                    }
+            //da = new SqlDataAdapter(cmd);
+            //dt = new DataTable();
+            //da.Fill(dt);
+            //for(int i =0; i< dt.Rows.Count; i++)
+            //{
+            //    DataRow dr = dt.Rows[i];
+            //    cedula = dr["usu_cedula"].ToString();
+            //    contraseña = dr["usu_contrasenia"].ToString();
+            //    if (txtcedula.Text.Equals(cedula) && txtContrasenia.Text.Equals(contraseña))
+            //    {
+            //        Form  menu  = new Form();
+            //        switch (dr["usu_tipo"].ToString())
+            //        {
+            //            case "recepcionista":
+            //                MessageBox.Show("Bienvenido al menu de recepcion");
+            //                menu = new RecepcionMenu();
+            //                break;
+            //            case "tecnico":
+            //                MessageBox.Show("Aun no soportado");
+            //                break;
+            //            case "administrador":
+            //                MessageBox.Show("Bienvenido al menu de administracion");
+            //                menu = new AdministradorMenu();
+            //                break;
+            //        }
 
-                    menu.Visible = true;
-                    this.Visible = false;
+            //        menu.Visible = true;
+            //        this.Visible = false;
 
-                    encontrado = true;
-                }
+            //        encontrado = true;
+            //    }
                
-            }
+            //}
 
-            if (!encontrado)
-                MessageBox.Show("Cedula o contraseña incorrectos");
+            //if (!encontrado)
+            //    MessageBox.Show("Cedula o contraseña incorrectos");
            
 
 
-            cn.Close();
+            //cn.Close();
 
         }
         

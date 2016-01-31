@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Entidades
 {
-    class FacturaCompra
+    public class FacturaCompra
     {
         int numero;
         DateTime fecha;
