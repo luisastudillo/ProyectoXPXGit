@@ -14,6 +14,22 @@ namespace AppWinProyectoo
         string descripcion;
         double subtotal;
 
+
+        public DetalleProducto()
+        {
+
+        }
+
+
+        public DetalleProducto(int num_factura, int cod_producto, int cantidad, string descripcion, double subtotal)
+        {
+            this.num_factura = num_factura;
+            this.cod_producto = cod_producto;
+            this.cantidad = cantidad;
+            this.descripcion = descripcion;
+            this.subtotal = subtotal;
+        }
+
         public int Num_factura
         {
             get

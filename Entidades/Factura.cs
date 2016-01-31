@@ -15,6 +15,26 @@ namespace AppWinProyectoo
         double subtotal;
         double iva;
         double total;
+        bool anulada;
+
+
+        public Factura()
+        {
+
+        }
+
+
+        public Factura(int numero, DateTime fecha, string ced_recep, string ced_cliente, double subtotal, double iva, double total, bool anulada)
+        {
+            this.numero = numero;
+            this.fecha = fecha;
+            this.ced_recep = ced_recep;
+            this.ced_cliente = ced_cliente;
+            this.subtotal = subtotal;
+            this.iva = iva;
+            this.total = total;
+            this.anulada = anulada;
+        }
 
         public int Numero
         {
@@ -104,6 +124,19 @@ namespace AppWinProyectoo
             set
             {
                 total = value;
+            }
+        }
+
+        public bool Anulada
+        {
+            get
+            {
+                return anulada;
+            }
+
+            set
+            {
+                anulada = value;
             }
         }
     }

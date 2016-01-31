@@ -52,6 +52,13 @@ namespace AppWinProyectoo
 
         private void button1_Click(object sender, EventArgs e)
         {
+            Entidades.Usuario usuario = new Entidades.Usuario();
+
+
+
+
+
+
             Conexion();
             String cedula, contraseña;
             bool encontrado = false;

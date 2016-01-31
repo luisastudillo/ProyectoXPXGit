@@ -13,6 +13,23 @@ namespace AppWinProyectoo
         String modelo;
         double costo;
         int cantidad;
+        bool baja;
+
+
+        public Producto()
+        {
+
+        }
+
+        public Producto(int codigo, string tipo, string modelo, double costo, int cantidad, bool baja)
+        {
+            this.codigo = codigo;
+            this.tipo = tipo;
+            this.modelo = modelo;
+            this.costo = costo;
+            this.cantidad = cantidad;
+            this.baja = baja;
+        }
 
         public int Codigo
         {
@@ -76,6 +93,19 @@ namespace AppWinProyectoo
             set
             {
                 cantidad = value;
+            }
+        }
+
+        public bool Baja
+        {
+            get
+            {
+                return baja;
+            }
+
+            set
+            {
+                baja = value;
             }
         }
     }
