@@ -13,7 +13,7 @@ namespace AppWinProyectoo
     public partial class RecepcionEquipos : Form
     {
         RecepcionMenu menu;
-        public RecepcionEquipos()
+        public RecepcionEquipos(RecepcionMenu menu)
         {
             InitializeComponent();
             this.menu = menu;

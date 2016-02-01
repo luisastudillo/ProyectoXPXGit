@@ -68,7 +68,7 @@ namespace Datos
 
         }
 
-        public static bool eliminar(Entidades.Usuario usuario)
+        public static bool eliminar(string cedula)
         {
             bool retorno = false;
 
@@ -76,7 +76,7 @@ namespace Datos
             {
                 var sql =
                     from c in db.Usuario
-                    where c.usu_cedula == usuario.Cedula
+                    where c.usu_cedula == cedula
                     select c;
                 foreach (var c in sql)
                 {
@@ -93,7 +93,7 @@ namespace Datos
 
         }
 
-        public static Entidades.Usuario buscar(Entidades.Usuario usuario)
+        public static Entidades.Usuario buscar(string cedula)
         {
             Entidades.Usuario retorno = null;
             Usuario encontrado = null;
@@ -102,7 +102,7 @@ namespace Datos
             {
                 var sql =
                     from c in db.Usuario
-                    where c.usu_cedula == usuario.Cedula
+                    where c.usu_cedula == cedula
                     select c;
                 foreach (var c in sql)
                 {

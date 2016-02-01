@@ -13,11 +13,10 @@ namespace AppWinProyectoo
     public partial class RecepcionMenu : Form
     {
         Login login;
-        public RecepcionMenu()
+        public RecepcionMenu(Login login)
         {
             InitializeComponent();
             this.login = login;
-
         }
 
         private void btnEquipos_Click(object sender, EventArgs e)
