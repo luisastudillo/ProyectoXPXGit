@@ -46,7 +46,10 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>base.dbml</DependentUpon>
     </Compile>
+    <Compile Include="CRUDCliente.cs" />
+    <Compile Include="CRUDEquipo.cs" />
     <Compile Include="CRUDFactura.cs" />
+    <Compile Include="CRUDFacturaCompra.cs" />
     <Compile Include="CRUDIngreso.cs" />
     <Compile Include="CRUDUsuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

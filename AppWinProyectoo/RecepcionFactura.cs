@@ -53,7 +53,7 @@ namespace AppWinProyectoo
         {
             try
             {
-                cn = new SqlConnection("Data Source=USER;Initial Catalog=BaseXPX;Integrated Security=True");
+                cn = new SqlConnection("Data Source=USER;Initial Catalog=XPX;Integrated Security=True");
                 cn.Open();
 
             }
@@ -209,7 +209,7 @@ namespace AppWinProyectoo
                 if (p.Codigo == codigo)
                     producto = p;
             }
-            MessageBox.Show("Producto encontrado: " + producto.Modelo);
+            //MessageBox.Show("Producto encontrado: " + producto.Modelo);
             return producto;
         }
 
@@ -233,15 +233,15 @@ namespace AppWinProyectoo
 
         private void guardarDetalle(DetalleProducto detalle)
         {
-            //Conexion();
-            // try
-            //{
+            Conexion();
+            try
+            {
 
-            cmd = new SqlCommand();
+                cmd = new SqlCommand();
             cmd.Connection = cn;
             cn.Open();
 
-            cmd.CommandText = "Insert into Detalle_producto(fac_n_factura,pro_codigo,cantidad,subtotal) values(" +
+            cmd.CommandText = "Insert into Detalle_producto(nfactura,pro_codigo,cantidad,subtotal) values(" +
                  "@nfactura,@pro_codigo,@cantidad,@subtotal)";
             cmd.Parameters.AddWithValue("nfactura", detalle.Num_factura);
             cmd.Parameters.AddWithValue("pro_codigo", detalle.Cod_producto);
@@ -249,11 +249,11 @@ namespace AppWinProyectoo
             cmd.Parameters.AddWithValue("subtotal", detalle.Subtotal);
 
             cmd.ExecuteNonQuery();
-            //}
-            //catch (Exception ex)
-            //{
-            //    MessageBox.Show("Error en conexion en guardar detalle");
-            //}
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error en conexion en guardar detalle");
+            }
             cn.Close();
         }
 

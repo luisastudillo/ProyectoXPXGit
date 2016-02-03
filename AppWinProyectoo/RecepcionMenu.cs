@@ -21,7 +21,7 @@ namespace AppWinProyectoo
 
         private void btnEquipos_Click(object sender, EventArgs e)
         {
-            RecepcionEquipos nuevo = new RecepcionEquipos();
+            RecepcionEquipos nuevo = new RecepcionEquipos(this);
             nuevo.Visible = true;
             this.Close();
         }

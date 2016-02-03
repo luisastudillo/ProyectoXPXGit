@@ -59,7 +59,7 @@ namespace AppWinProyectoo
                 {
                     case "recepcionista  ":
                         MessageBox.Show("Bienvenido al menu de recepcion");
-                        menu = new RecepcionMenu();
+                        menu = new RecepcionMenu(this);
                         break;
                     case "tecnico":
                         MessageBox.Show("Aun no soportado");
