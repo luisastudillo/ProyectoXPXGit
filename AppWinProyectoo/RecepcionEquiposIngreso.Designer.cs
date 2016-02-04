@@ -40,6 +40,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.txtCodigo = new System.Windows.Forms.TextBox();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.btnCancelarFactura = new System.Windows.Forms.Button();
             this.btnAgregarFactura = new System.Windows.Forms.Button();
             this.txtCedFactura = new System.Windows.Forms.TextBox();
             this.dtpFechaFactura = new System.Windows.Forms.DateTimePicker();
@@ -49,8 +50,9 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.btnCancelarCliente = new System.Windows.Forms.Button();
             this.btAgregarCliente = new System.Windows.Forms.Button();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.txtNomCliente = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.txtCedCliente = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
@@ -60,10 +62,11 @@
             this.txtNVeces = new System.Windows.Forms.TextBox();
             this.dtpFecha = new System.Windows.Forms.DateTimePicker();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.btnCancelarEquipo = new System.Windows.Forms.Button();
             this.btnAgregarEquipo = new System.Windows.Forms.Button();
-            this.textBox9 = new System.Windows.Forms.TextBox();
+            this.txtModelo = new System.Windows.Forms.TextBox();
             this.txtSerie = new System.Windows.Forms.TextBox();
-            this.textBox7 = new System.Windows.Forms.TextBox();
+            this.txtEquipo = new System.Windows.Forms.TextBox();
             this.label15 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
@@ -77,7 +80,6 @@
             this.label17 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.chbGarantia = new System.Windows.Forms.CheckBox();
-            this.btnCancelarFactura = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -220,6 +222,7 @@
             // 
             // panel2
             // 
+            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel2.Controls.Add(this.btnCancelarFactura);
             this.panel2.Controls.Add(this.btnAgregarFactura);
             this.panel2.Controls.Add(this.txtCedFactura);
@@ -233,6 +236,17 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(266, 147);
             this.panel2.TabIndex = 16;
+            // 
+            // btnCancelarFactura
+            // 
+            this.btnCancelarFactura.Font = new System.Drawing.Font("Cambria", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancelarFactura.Location = new System.Drawing.Point(30, 115);
+            this.btnCancelarFactura.Name = "btnCancelarFactura";
+            this.btnCancelarFactura.Size = new System.Drawing.Size(84, 28);
+            this.btnCancelarFactura.TabIndex = 28;
+            this.btnCancelarFactura.Text = "Cancelar";
+            this.btnCancelarFactura.UseVisualStyleBackColor = true;
+            this.btnCancelarFactura.Click += new System.EventHandler(this.btnCancelarFactura_Click);
             // 
             // btnAgregarFactura
             // 
@@ -308,8 +322,10 @@
             // 
             // panel3
             // 
+            this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel3.Controls.Add(this.btnCancelarCliente);
             this.panel3.Controls.Add(this.btAgregarCliente);
-            this.panel3.Controls.Add(this.textBox4);
+            this.panel3.Controls.Add(this.txtNomCliente);
             this.panel3.Controls.Add(this.label10);
             this.panel3.Controls.Add(this.txtCedCliente);
             this.panel3.Controls.Add(this.label8);
@@ -318,6 +334,16 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(266, 147);
             this.panel3.TabIndex = 17;
+            // 
+            // btnCancelarCliente
+            // 
+            this.btnCancelarCliente.Font = new System.Drawing.Font("Cambria", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancelarCliente.Location = new System.Drawing.Point(40, 115);
+            this.btnCancelarCliente.Name = "btnCancelarCliente";
+            this.btnCancelarCliente.Size = new System.Drawing.Size(84, 28);
+            this.btnCancelarCliente.TabIndex = 28;
+            this.btnCancelarCliente.Text = "Cancelar";
+            this.btnCancelarCliente.UseVisualStyleBackColor = true;
             // 
             // btAgregarCliente
             // 
@@ -328,13 +354,14 @@
             this.btAgregarCliente.TabIndex = 26;
             this.btAgregarCliente.Text = "Agregar";
             this.btAgregarCliente.UseVisualStyleBackColor = true;
+            this.btAgregarCliente.Click += new System.EventHandler(this.btAgregarCliente_Click);
             // 
-            // textBox4
+            // txtNomCliente
             // 
-            this.textBox4.Location = new System.Drawing.Point(73, 74);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(168, 20);
-            this.textBox4.TabIndex = 25;
+            this.txtNomCliente.Location = new System.Drawing.Point(73, 74);
+            this.txtNomCliente.Name = "txtNomCliente";
+            this.txtNomCliente.Size = new System.Drawing.Size(168, 20);
+            this.txtNomCliente.TabIndex = 25;
             // 
             // label10
             // 
@@ -409,10 +436,12 @@
             // 
             // panel4
             // 
+            this.panel4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel4.Controls.Add(this.btnCancelarEquipo);
             this.panel4.Controls.Add(this.btnAgregarEquipo);
-            this.panel4.Controls.Add(this.textBox9);
+            this.panel4.Controls.Add(this.txtModelo);
             this.panel4.Controls.Add(this.txtSerie);
-            this.panel4.Controls.Add(this.textBox7);
+            this.panel4.Controls.Add(this.txtEquipo);
             this.panel4.Controls.Add(this.label15);
             this.panel4.Controls.Add(this.label14);
             this.panel4.Controls.Add(this.label13);
@@ -422,22 +451,34 @@
             this.panel4.Size = new System.Drawing.Size(538, 88);
             this.panel4.TabIndex = 22;
             // 
+            // btnCancelarEquipo
+            // 
+            this.btnCancelarEquipo.Font = new System.Drawing.Font("Cambria", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancelarEquipo.Location = new System.Drawing.Point(138, 54);
+            this.btnCancelarEquipo.Name = "btnCancelarEquipo";
+            this.btnCancelarEquipo.Size = new System.Drawing.Size(84, 28);
+            this.btnCancelarEquipo.TabIndex = 28;
+            this.btnCancelarEquipo.Text = "Cancelar";
+            this.btnCancelarEquipo.UseVisualStyleBackColor = true;
+            this.btnCancelarEquipo.Click += new System.EventHandler(this.btnCancelarEquipo_Click);
+            // 
             // btnAgregarEquipo
             // 
             this.btnAgregarEquipo.Font = new System.Drawing.Font("Cambria", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAgregarEquipo.Location = new System.Drawing.Point(439, 54);
+            this.btnAgregarEquipo.Location = new System.Drawing.Point(312, 54);
             this.btnAgregarEquipo.Name = "btnAgregarEquipo";
             this.btnAgregarEquipo.Size = new System.Drawing.Size(84, 28);
             this.btnAgregarEquipo.TabIndex = 27;
             this.btnAgregarEquipo.Text = "Agregar";
             this.btnAgregarEquipo.UseVisualStyleBackColor = true;
+            this.btnAgregarEquipo.Click += new System.EventHandler(this.btnAgregarEquipo_Click);
             // 
-            // textBox9
+            // txtModelo
             // 
-            this.textBox9.Location = new System.Drawing.Point(423, 28);
-            this.textBox9.Name = "textBox9";
-            this.textBox9.Size = new System.Drawing.Size(100, 20);
-            this.textBox9.TabIndex = 18;
+            this.txtModelo.Location = new System.Drawing.Point(423, 28);
+            this.txtModelo.Name = "txtModelo";
+            this.txtModelo.Size = new System.Drawing.Size(100, 20);
+            this.txtModelo.TabIndex = 18;
             // 
             // txtSerie
             // 
@@ -446,12 +487,12 @@
             this.txtSerie.Size = new System.Drawing.Size(100, 20);
             this.txtSerie.TabIndex = 17;
             // 
-            // textBox7
+            // txtEquipo
             // 
-            this.textBox7.Location = new System.Drawing.Point(66, 28);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(100, 20);
-            this.textBox7.TabIndex = 16;
+            this.txtEquipo.Location = new System.Drawing.Point(66, 28);
+            this.txtEquipo.Name = "txtEquipo";
+            this.txtEquipo.Size = new System.Drawing.Size(100, 20);
+            this.txtEquipo.TabIndex = 16;
             // 
             // label15
             // 
@@ -495,6 +536,7 @@
             // 
             // panel5
             // 
+            this.panel5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel5.Controls.Add(this.txtAccesorios);
             this.panel5.Controls.Add(this.label19);
             this.panel5.Controls.Add(this.txtObservacion);
@@ -580,17 +622,6 @@
             this.chbGarantia.TabIndex = 24;
             this.chbGarantia.UseVisualStyleBackColor = true;
             // 
-            // btnCancelarFactura
-            // 
-            this.btnCancelarFactura.Font = new System.Drawing.Font("Cambria", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancelarFactura.Location = new System.Drawing.Point(30, 115);
-            this.btnCancelarFactura.Name = "btnCancelarFactura";
-            this.btnCancelarFactura.Size = new System.Drawing.Size(84, 28);
-            this.btnCancelarFactura.TabIndex = 28;
-            this.btnCancelarFactura.Text = "Cancelar";
-            this.btnCancelarFactura.UseVisualStyleBackColor = true;
-            this.btnCancelarFactura.Click += new System.EventHandler(this.btnCancelarFactura_Click);
-            // 
             // RecepcionEquiposIngreso
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -653,15 +684,15 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Button btAgregarCliente;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox txtNomCliente;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.TextBox txtNVeces;
         private System.Windows.Forms.DateTimePicker dtpFecha;
         private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.TextBox textBox9;
+        private System.Windows.Forms.TextBox txtModelo;
         private System.Windows.Forms.TextBox txtSerie;
-        private System.Windows.Forms.TextBox textBox7;
+        private System.Windows.Forms.TextBox txtEquipo;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label13;
@@ -679,5 +710,7 @@
         private System.Windows.Forms.CheckBox chbGarantia;
         private System.Windows.Forms.Button btnImprimir;
         private System.Windows.Forms.Button btnCancelarFactura;
+        private System.Windows.Forms.Button btnCancelarCliente;
+        private System.Windows.Forms.Button btnCancelarEquipo;
     }
 }

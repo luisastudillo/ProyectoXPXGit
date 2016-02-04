@@ -65,6 +65,7 @@ namespace Datos
                     ingreso.Problema = ingreso.Problema;
                     ingreso.Serie_equipo = ingreso.Serie_equipo;
 
+                    db.SubmitChanges();
                     retorno = true;
                 }
             }
@@ -121,6 +122,7 @@ namespace Datos
                 {
                     retorno = new Entidades.Ingreso();
 
+                    retorno.Codigo = encontrado.ing_codigo;
                     retorno.Accesorios = encontrado.ing_accesorios;
                     retorno.Ced_cliente = encontrado.ing_ced_cliente;
                     retorno.Ced_recepcionista = encontrado.ing_ced_recepcionista;
@@ -133,6 +135,27 @@ namespace Datos
                     retorno.Problema = encontrado.ing_problema;
                     retorno.Serie_equipo = encontrado.ing_serie_equipo;
                 }
+            }
+            catch (Exception e)
+            {
+
+            }
+            return retorno;
+        }
+
+        public static int siguienteIngreso()
+        {
+            int retorno = 0;
+            try
+            {
+                var sql =
+                    from c in db.Ingreso
+                    
+                    select c;
+                foreach (var c in sql)
+                {
+                    retorno = c.ing_codigo + 1;
+                }               
             }
             catch (Exception e)
             {

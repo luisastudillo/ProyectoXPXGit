@@ -11,7 +11,7 @@ namespace Entidades
         string serie;
         string modelo;
         string tipo;
-        int n_ingresos;
+        short n_ingresos;
         int n_factura;
 
 
@@ -20,7 +20,7 @@ namespace Entidades
 
         }
 
-        public Equipo(string serie, string modelo, string tipo, int n_ingresos, int n_factura)
+        public Equipo(string serie, string modelo, string tipo, short n_ingresos, int n_factura)
         {
             this.serie = serie;
             this.modelo = modelo;
@@ -68,7 +68,7 @@ namespace Entidades
             }
         }
 
-        public int N_ingresos
+        public short N_ingresos
         {
             get
             {

@@ -17,6 +17,7 @@ namespace LogicaNegocios
             return Datos.CRUDIngreso.nuevo(ingreso);
         }
 
+
         public static bool editar(int codigo, DateTime fecha, string problema, string observaciones, string accesorios, string ced_cliente,
             string ced_tecnico, string ced_recepcionista, string serie_equipo, bool garantia, string estado, int n_factura)
         {
@@ -26,6 +27,7 @@ namespace LogicaNegocios
             return Datos.CRUDIngreso.editar(ingreso);
 
         }
+
 
         public static Entidades.Ingreso buscar(int codigo)
         {
@@ -38,10 +40,35 @@ namespace LogicaNegocios
             return Datos.CRUDFacturaCompra.buscar(numero);
         }
 
+
         public static bool nuevaFactura(int numero, DateTime fecha, string cedula)
         {
             Entidades.FacturaCompra factura = new Entidades.FacturaCompra(numero, fecha, cedula);
             return Datos.CRUDFacturaCompra.nuevo(factura);
         }
+
+
+        public static Entidades.Equipo buscarEquipo(string serie)
+        {
+            return Datos.CRUDEquipo.buscar(serie);
+        }
+
+
+        public static bool nuevoEquipo(string serie, string modelo, string tipo, short n_ingresos, int n_factura)
+        {
+            Entidades.Equipo equipo = new Entidades.Equipo(serie, modelo, tipo, n_ingresos, n_factura);
+            return Datos.CRUDEquipo.nuevo(equipo);
+        }
+
+        public static int siguienteIngreso()
+        {
+            return Datos.CRUDIngreso.siguienteIngreso();
+        }
+
+        public static Entidades.Cliente buscarCliente(string cedula)
+        {
+            return Datos.CRUDCliente.buscar(cedula);
+        }
+
     }
 }

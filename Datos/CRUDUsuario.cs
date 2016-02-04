@@ -56,12 +56,13 @@ namespace Datos
                     s.usu_nombre = usuario.Nombre;
                     s.usu_telefono = usuario.Telefono;
                     s.usu_tipo = usuario.Tipo;
+                    db.SubmitChanges();
                     retorno = true;
                 }
             }
             catch (Exception e)
             {
-
+                
             }
 
             return retorno;
@@ -113,6 +114,7 @@ namespace Datos
                 {
                     retorno = new Entidades.Usuario();
 
+                    retorno.Cedula = encontrado.usu_cedula;
                     retorno.Apellido = encontrado.usu_apellido;
                     retorno.Baja = (bool)encontrado.usu_baja;
                     retorno.Contrasenia = encontrado.usu_contrasenia;

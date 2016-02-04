@@ -317,5 +317,10 @@ namespace AppWinProyectoo
             //listadetalles.Remove(detalleQuitar);
             actualizarFactura();
         }
+
+        private void btnNuevo_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
