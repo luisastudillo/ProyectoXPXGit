@@ -65,10 +65,5 @@ namespace LogicaNegocios
             return Datos.CRUDIngreso.siguienteIngreso();
         }
 
-        public static Entidades.Cliente buscarCliente(string cedula)
-        {
-            return Datos.CRUDCliente.buscar(cedula);
-        }
-
     }
 }

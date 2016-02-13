@@ -32,5 +32,15 @@ namespace Datos.Properties {
                 return ((string)(this["XPXConnectionString"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=USER-PC;Initial Catalog=XPX;Integrated Security=True")]
+        public string XPXConnectionString1 {
+            get {
+                return ((string)(this["XPXConnectionString1"]));
+            }
+        }
     }
 }

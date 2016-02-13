@@ -21,6 +21,8 @@ namespace Entidades
         bool garantia;
         string estado;
         int n_factura;
+        double costo;
+        string diagnostico;
 
 
         public Ingreso()
@@ -43,6 +45,41 @@ namespace Entidades
             this.garantia = garantia;
             this.estado = estado;
             this.n_factura = n_factura;
+        }
+
+        public Ingreso(int codigo, DateTime fecha, string problema, string observaciones, string accesorios, string ced_cliente, string ced_tecnico, string ced_recepcionista, string serie_equipo, bool garantia, string estado, int n_factura, double costo)
+        {
+            this.codigo = codigo;
+            this.fecha = fecha;
+            this.problema = problema;
+            this.observaciones = observaciones;
+            this.accesorios = accesorios;
+            this.ced_cliente = ced_cliente;
+            this.ced_tecnico = ced_tecnico;
+            this.ced_recepcionista = ced_recepcionista;
+            this.serie_equipo = serie_equipo;
+            this.garantia = garantia;
+            this.estado = estado;
+            this.n_factura = n_factura;
+            this.costo = costo;
+        }
+
+        public Ingreso(int codigo, DateTime fecha, string problema, string observaciones, string accesorios, string ced_cliente, string ced_tecnico, string ced_recepcionista, string serie_equipo, bool garantia, string estado, int n_factura, double costo, string diagnostico)
+        {
+            this.codigo = codigo;
+            this.fecha = fecha;
+            this.problema = problema;
+            this.observaciones = observaciones;
+            this.accesorios = accesorios;
+            this.ced_cliente = ced_cliente;
+            this.ced_tecnico = ced_tecnico;
+            this.ced_recepcionista = ced_recepcionista;
+            this.serie_equipo = serie_equipo;
+            this.garantia = garantia;
+            this.estado = estado;
+            this.n_factura = n_factura;
+            this.costo = costo;
+            this.diagnostico = diagnostico;
         }
 
         public int Codigo
@@ -198,6 +235,32 @@ namespace Entidades
             set
             {
                 n_factura = value;
+            }
+        }
+
+        public double Costo
+        {
+            get
+            {
+                return costo;
+            }
+
+            set
+            {
+                costo = value;
+            }
+        }
+
+        public string Diagnostico
+        {
+            get
+            {
+                return diagnostico;
+            }
+
+            set
+            {
+                diagnostico = value;
             }
         }
     }

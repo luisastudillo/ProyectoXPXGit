@@ -16,8 +16,8 @@ namespace AppWinProyectoo
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            //Application.Run(new Login());
-            Application.Run(new RecepcionEquiposIngreso());
+            Application.Run(new Login());
+            //Application.Run(new RecepcionMenu(new Login()));
             //Application.Run(new RecepcionFactura());
         }
     }

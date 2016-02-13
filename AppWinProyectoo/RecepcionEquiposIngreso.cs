@@ -295,7 +295,7 @@ namespace AppWinProyectoo
         private void btAgregarCliente_Click(object sender, EventArgs e)
         {
             string cedula = txtCedCliente.Text;
-            Entidades.Cliente cliente = LogicaNegocios.LogicaRecepcionEquiposIngreso.buscarCliente(cedula);
+            Entidades.Cliente cliente = LogicaNegocios.LogicaCliente.buscarCliente(cedula);
             if(cliente != null)
             {
                 txtNomCliente.Text = cliente.Nombre + "" + cliente.Apellido;

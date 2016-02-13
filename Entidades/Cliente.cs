@@ -30,6 +30,11 @@ namespace Entidades
             this.celular = celular;
         }
 
+        public string nombreCompleto()
+        {
+            return nombre + " " + apellido;
+        }
+
         public string Cedula
         {
             get

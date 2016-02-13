@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="XPX" Class="baseDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="AppSettings" ConnectionString="Data Source=USER;Initial Catalog=XPX;Integrated Security=True" SettingsObjectName="Datos.Properties.Settings" SettingsPropertyName="XPXConnectionString" Provider="System.Data.SqlClient" />
+  <Connection Mode="AppSettings" ConnectionString="Data Source=USER-PC;Initial Catalog=XPX;Integrated Security=True" SettingsObjectName="Datos.Properties.Settings" SettingsPropertyName="XPXConnectionString1" Provider="System.Data.SqlClient" />
   <Table Name="dbo.Cliente" Member="Cliente">
     <Type Name="Cliente">
       <Column Name="cli_cedula" Type="System.String" DbType="NChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
@@ -57,29 +57,6 @@
       <Association Name="Factura_compra_Equipo" Member="Equipo" ThisKey="fc_numero" OtherKey="equ_n_factura" Type="Equipo" />
     </Type>
   </Table>
-  <Table Name="dbo.Ingreso" Member="Ingreso">
-    <Type Name="Ingreso">
-      <Column Name="ing_codigo" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="ing_fecha" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="ing_problema" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="ing_observaciones" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="ing_accesorios" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
-      <Column Name="ing_ced_cliente" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
-      <Column Name="ing_serie_equipo" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
-      <Column Name="ing_garantía" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
-      <Column Name="ing_estado" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
-      <Column Name="ing_ced_recepcionista" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
-      <Column Name="ing_ced_tecnico" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
-      <Column Name="ing_n_factura" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Association Name="Ingreso_Pieza_usada" Member="Pieza_usada" ThisKey="ing_codigo" OtherKey="codigo_ingreso" Type="Pieza_usada" />
-      <Association Name="Ingreso_Trabajo_realizado" Member="Trabajo_realizado" ThisKey="ing_codigo" OtherKey="codigo_ingreso" Type="Trabajo_realizado" />
-      <Association Name="Cliente_Ingreso" Member="Cliente" ThisKey="ing_ced_cliente" OtherKey="cli_cedula" Type="Cliente" IsForeignKey="true" />
-      <Association Name="Equipo_Ingreso" Member="Equipo" ThisKey="ing_serie_equipo" OtherKey="equ_serie" Type="Equipo" IsForeignKey="true" />
-      <Association Name="Factura_Ingreso" Member="Factura" ThisKey="ing_n_factura" OtherKey="fac_n_factura" Type="Factura" IsForeignKey="true" />
-      <Association Name="Usuario_Ingreso" Member="Usuario" ThisKey="ing_ced_recepcionista" OtherKey="usu_cedula" Type="Usuario" IsForeignKey="true" />
-      <Association Name="Usuario_Ingreso1" Member="Usuario1" ThisKey="ing_ced_tecnico" OtherKey="usu_cedula" Type="Usuario" IsForeignKey="true" />
-    </Type>
-  </Table>
   <Table Name="dbo.Pieza" Member="Pieza">
     <Type Name="Pieza">
       <Column Name="pie_codigo" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
@@ -96,8 +73,8 @@
       <Column Name="codigo_pieza" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="codigo_ingreso" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="serie" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
-      <Association Name="Ingreso_Pieza_usada" Member="Ingreso" ThisKey="codigo_ingreso" OtherKey="ing_codigo" Type="Ingreso" IsForeignKey="true" />
       <Association Name="Pieza_Pieza_usada" Member="Pieza" ThisKey="codigo_pieza" OtherKey="pie_codigo" Type="Pieza" IsForeignKey="true" />
+      <Association Name="Ingreso_Pieza_usada" Member="Ingreso" ThisKey="codigo_ingreso" OtherKey="ing_codigo" Type="Ingreso" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.Producto" Member="Producto">
@@ -123,8 +100,8 @@
     <Type Name="Trabajo_realizado">
       <Column Name="codigo_trabajo" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="codigo_ingreso" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Association Name="Ingreso_Trabajo_realizado" Member="Ingreso" ThisKey="codigo_ingreso" OtherKey="ing_codigo" Type="Ingreso" IsForeignKey="true" />
       <Association Name="Trabajo_Trabajo_realizado" Member="Trabajo" ThisKey="codigo_trabajo" OtherKey="tra_codigo" Type="Trabajo" IsForeignKey="true" />
+      <Association Name="Ingreso_Trabajo_realizado" Member="Ingreso" ThisKey="codigo_ingreso" OtherKey="ing_codigo" Type="Ingreso" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.Usuario" Member="Usuario">
@@ -140,6 +117,31 @@
       <Association Name="Usuario_Factura" Member="Factura" ThisKey="usu_cedula" OtherKey="fac_ced_recep" Type="Factura" />
       <Association Name="Usuario_Ingreso" Member="Ingreso" ThisKey="usu_cedula" OtherKey="ing_ced_recepcionista" Type="Ingreso" />
       <Association Name="Usuario_Ingreso1" Member="Ingreso1" ThisKey="usu_cedula" OtherKey="ing_ced_tecnico" Type="Ingreso" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Ingreso" Member="Ingreso">
+    <Type Name="Ingreso">
+      <Column Name="ing_codigo" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="ing_fecha" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ing_problema" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="ing_observaciones" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="ing_accesorios" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="ing_ced_cliente" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="ing_serie_equipo" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="ing_garantía" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="ing_estado" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="ing_ced_recepcionista" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="ing_ced_tecnico" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="ing_n_factura" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ing_costo" Type="System.Decimal" DbType="Decimal(7,2)" CanBeNull="true" />
+      <Column Name="ing_diagnostico" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Association Name="Ingreso_Pieza_usada" Member="Pieza_usada" ThisKey="ing_codigo" OtherKey="codigo_ingreso" Type="Pieza_usada" />
+      <Association Name="Ingreso_Trabajo_realizado" Member="Trabajo_realizado" ThisKey="ing_codigo" OtherKey="codigo_ingreso" Type="Trabajo_realizado" />
+      <Association Name="Cliente_Ingreso" Member="Cliente" ThisKey="ing_ced_cliente" OtherKey="cli_cedula" Type="Cliente" IsForeignKey="true" />
+      <Association Name="Equipo_Ingreso" Member="Equipo" ThisKey="ing_serie_equipo" OtherKey="equ_serie" Type="Equipo" IsForeignKey="true" />
+      <Association Name="Factura_Ingreso" Member="Factura" ThisKey="ing_n_factura" OtherKey="fac_n_factura" Type="Factura" IsForeignKey="true" />
+      <Association Name="Usuario_Ingreso" Member="Usuario" ThisKey="ing_ced_recepcionista" OtherKey="usu_cedula" Type="Usuario" IsForeignKey="true" />
+      <Association Name="Usuario_Ingreso1" Member="Usuario1" ThisKey="ing_ced_tecnico" OtherKey="usu_cedula" Type="Usuario" IsForeignKey="true" />
     </Type>
   </Table>
 </Database>
