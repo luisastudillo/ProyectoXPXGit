@@ -84,6 +84,18 @@
     <Compile Include="DetalleProducto.cs" />
     <Compile Include="Factura.cs" />
     <Compile Include="Producto.cs" />
+    <Compile Include="RecepcionAgregarCliente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RecepcionAgregarCliente.Designer.cs">
+      <DependentUpon>RecepcionAgregarCliente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RecepcionAgregarIngreso.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RecepcionAgregarIngreso.Designer.cs">
+      <DependentUpon>RecepcionAgregarIngreso.cs</DependentUpon>
+    </Compile>
     <Compile Include="RecepcionAgregarProducto.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -166,6 +178,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AdministradorTrabajo.resx">
       <DependentUpon>AdministradorTrabajo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RecepcionAgregarCliente.resx">
+      <DependentUpon>RecepcionAgregarCliente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RecepcionAgregarIngreso.resx">
+      <DependentUpon>RecepcionAgregarIngreso.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="RecepcionAgregarProducto.resx">
       <DependentUpon>RecepcionAgregarProducto.cs</DependentUpon>

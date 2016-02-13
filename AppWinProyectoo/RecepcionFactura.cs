@@ -20,6 +20,7 @@ namespace AppWinProyectoo
         SqlCommand cmd;
         List<DetalleProducto> listadetalles = new List<DetalleProducto>();
         List<Producto> lista_productos = new List<Producto>();
+        List<Entidades.Ingreso> lista_ingresos = new List<Entidades.Ingreso>();
 
         public RecepcionFactura()
         {
@@ -53,7 +54,7 @@ namespace AppWinProyectoo
         {
             try
             {
-                cn = new SqlConnection("Data Source=USER;Initial Catalog=XPX;Integrated Security=True");
+                cn = new SqlConnection("Data Source=USER-PC;Initial Catalog=XPX;Integrated Security=True");
                 cn.Open();
 
             }
@@ -103,6 +104,18 @@ namespace AppWinProyectoo
                 row.Cells[4].Value = d.Subtotal;
                 dgvFactura.Rows.Add(row);
             }
+
+            foreach(Entidades.Ingreso i in lista_ingresos)
+            {
+                row = (DataGridViewRow)dgvFactura.Rows[0].Clone();
+                row.Cells[0].Value = i.Codigo;
+                row.Cells[1].Value = "Reparación " + (LogicaNegocios.LogicaIngreso.equipo(i.Codigo)).Modelo;
+                row.Cells[2].Value = "1";
+                row.Cells[3].Value = i.Costo;
+                row.Cells[4].Value = i.Costo;
+                dgvFactura.Rows.Add(row);
+            }
+
             dgvFactura.AllowUserToAddRows = false;
 
             actualizarTotales();
@@ -167,12 +180,33 @@ namespace AppWinProyectoo
 
         private void btnCliente_Click(object sender, EventArgs e)
         {
+            string cedula = txtCedCliente.Text;
+            Entidades.Cliente cliente = LogicaNegocios.LogicaCliente.buscarCliente(cedula);
+            if (cliente != null)
+            {
+                txtNomCliente.Text = cliente.Nombre + "" + cliente.Apellido;
+                txtDireccion.Text = cliente.Domicilio;
+                txtTelefono.Text = cliente.Telefono;
+            }
+            else
+            {
+                RecepcionAgregarCliente ventana = new RecepcionAgregarCliente(this, cedula);
+                ventana.Visible = true;
+                this.Visible = false;
+            }
+        }
 
+        public void agregarCliente(Entidades.Cliente cliente)
+        {
+            txtCedCliente.Text = cliente.Cedula;
+            txtNomCliente.Text = cliente.nombreCompleto();
+            txtDireccion.Text = cliente.Domicilio;
+            txtTelefono.Text = cliente.Telefono;
         }
 
         private void RecepcionFactura_Load(object sender, EventArgs e)
         {
-
+            
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -188,6 +222,16 @@ namespace AppWinProyectoo
             guardarFactura(f);
             MessageBox.Show("Se guardó factura");
             guardarDetalles();
+            
+        }
+
+        public void guardarIngresos()
+        {
+            foreach(Entidades.Ingreso i in lista_ingresos)
+            {
+                i.Estado = "pagado";
+                LogicaNegocios.LogicaIngreso.editar(i);
+            }
         }
 
         public void guardarDetalles()
@@ -228,9 +272,7 @@ namespace AppWinProyectoo
            
             cn.Close();
         }
-
-       
-
+               
         private void guardarDetalle(DetalleProducto detalle)
         {
             Conexion();
@@ -239,7 +281,6 @@ namespace AppWinProyectoo
 
                 cmd = new SqlCommand();
             cmd.Connection = cn;
-            cn.Open();
 
             cmd.CommandText = "Insert into Detalle_producto(nfactura,pro_codigo,cantidad,subtotal) values(" +
                  "@nfactura,@pro_codigo,@cantidad,@subtotal)";
@@ -252,19 +293,19 @@ namespace AppWinProyectoo
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error en conexion en guardar detalle");
+                MessageBox.Show("Error en conexion en guardar detalle + \n" + ex.Message);
             }
             cn.Close();
         }
 
         private void guardarFactura(Factura f)
         {
-            //Conexion();
-            //try
-            //{
+            Conexion();
+            try
+            {
 
 
-            cmd = new SqlCommand();
+                cmd = new SqlCommand();
 
             cmd.Connection = cn;
             cn.Open();
@@ -280,11 +321,11 @@ namespace AppWinProyectoo
 
 
             cmd.ExecuteNonQuery();
-            //}
-            //catch (Exception ex)
-            //{
-            //    MessageBox.Show("Error en conexion guardando factura");
-            //}
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error en conexion guardando factura + \n" + ex.Message);
+            }
             cn.Close();
         }
 
@@ -322,5 +363,29 @@ namespace AppWinProyectoo
         {
 
         }
+
+        private void label6_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dtpFecha_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button10_Click(object sender, EventArgs e)
+        {
+            RecepcionAgregarIngreso ventana = new RecepcionAgregarIngreso(this);
+            ventana.Visible = true;
+            this.Visible = false;
+        }
+
+        public void agregarIngreso(Entidades.Ingreso ingreso)
+        {
+            lista_ingresos.Add(ingreso);
+            actualizarFactura();
+        }
+
     }
 }

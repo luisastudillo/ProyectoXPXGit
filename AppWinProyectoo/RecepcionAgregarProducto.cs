@@ -56,7 +56,7 @@ namespace AppWinProyectoo
         {
             try
             {
-                cn = new SqlConnection("Data Source=USER;Initial Catalog=XPX;Integrated Security=True");
+                cn = new SqlConnection("Data Source=USER-PC;Initial Catalog=XPX;Integrated Security=True");
                 cn.Open();
 
             }

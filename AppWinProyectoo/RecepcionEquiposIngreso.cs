@@ -300,6 +300,18 @@ namespace AppWinProyectoo
             {
                 txtNomCliente.Text = cliente.Nombre + "" + cliente.Apellido;
             }
+            else
+            {
+                RecepcionAgregarCliente ventana = new RecepcionAgregarCliente(this, cedula);
+                ventana.Visible = true;
+                this.Visible = false;
+            }
+        }
+
+        public void agregarCliente(Entidades.Cliente cliente)
+        {
+            txtCedCliente.Text = cliente.Cedula;
+            txtNomCliente.Text = cliente.nombreCompleto();
         }
 
 
