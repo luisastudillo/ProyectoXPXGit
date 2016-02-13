@@ -110,5 +110,11 @@ namespace LogicaNegocios
         {
             return Datos.CRUDIngreso.editar(ingreso);
         }
+
+        public static List<Entidades.Ingreso> listaIngresos()
+        {
+            return Datos.CRUDIngreso.listaIngresos();
+        }
+
     }
 }

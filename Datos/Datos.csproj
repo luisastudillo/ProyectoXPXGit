@@ -47,12 +47,14 @@
       <DependentUpon>base.dbml</DependentUpon>
     </Compile>
     <Compile Include="CRUDCliente.cs" />
+    <Compile Include="CRUDDetalleProducto.cs" />
     <Compile Include="CRUDEquipo.cs" />
     <Compile Include="CRUDFactura.cs" />
     <Compile Include="CRUDFacturaCompra.cs" />
     <Compile Include="CRUDIngreso.cs" />
     <Compile Include="CRUDPieza.cs" />
     <Compile Include="CRUDPiezaUsada.cs" />
+    <Compile Include="CRUDProducto.cs" />
     <Compile Include="CRUDTrabajo.cs" />
     <Compile Include="CRUDTrabajoRealizado.cs" />
     <Compile Include="CRUDUsuario.cs" />

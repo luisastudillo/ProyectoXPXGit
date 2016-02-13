@@ -43,5 +43,11 @@ namespace AppWinProyectoo
             nuevo.Visible = true;
             this.Visible = false;
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            login.Visible = true;
+            this.Dispose();
+        }
     }
 }

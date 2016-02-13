@@ -149,7 +149,6 @@ namespace Datos
             nuevo.cli_nombre = cliente.Nombre;
             nuevo.cli_telefono = cliente.Telefono;
             return nuevo;
-        }
-        
+        }        
     }
 }

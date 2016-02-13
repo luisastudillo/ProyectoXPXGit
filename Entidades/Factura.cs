@@ -15,7 +15,7 @@ namespace Entidades
         double subtotal;
         double iva;
         double total;
-        bool anulada;
+        bool anulada = false;
 
 
         public Factura()

@@ -12,16 +12,6 @@
       <Association Name="Cliente_Ingreso" Member="Ingreso" ThisKey="cli_cedula" OtherKey="ing_ced_cliente" Type="Ingreso" />
     </Type>
   </Table>
-  <Table Name="dbo.Detalle_producto" Member="Detalle_producto">
-    <Type Name="Detalle_producto">
-      <Column Name="nfactura" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="pro_codigo" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="cantidad" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="subtotal" Type="System.Decimal" DbType="Decimal(7,2)" CanBeNull="true" />
-      <Association Name="Factura_Detalle_producto" Member="Factura" ThisKey="nfactura" OtherKey="fac_n_factura" Type="Factura" IsForeignKey="true" />
-      <Association Name="Producto_Detalle_producto" Member="Producto" ThisKey="pro_codigo" OtherKey="pro_codigo" Type="Producto" IsForeignKey="true" />
-    </Type>
-  </Table>
   <Table Name="dbo.Equipo" Member="Equipo">
     <Type Name="Equipo">
       <Column Name="equ_serie" Type="System.String" DbType="VarChar(20) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
@@ -43,8 +33,8 @@
       <Column Name="fac_iva" Type="System.Decimal" DbType="Decimal(7,2)" CanBeNull="true" />
       <Column Name="fac_total" Type="System.Decimal" DbType="Decimal(7,2)" CanBeNull="true" />
       <Column Name="fac_anulada" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
-      <Association Name="Factura_Detalle_producto" Member="Detalle_producto" ThisKey="fac_n_factura" OtherKey="nfactura" Type="Detalle_producto" />
       <Association Name="Factura_Ingreso" Member="Ingreso" ThisKey="fac_n_factura" OtherKey="ing_n_factura" Type="Ingreso" />
+      <Association Name="Factura_Detalle_producto" Member="Detalle_producto" ThisKey="fac_n_factura" OtherKey="nfactura" Type="Detalle_producto" />
       <Association Name="Cliente_Factura" Member="Cliente" ThisKey="fac_ced_cliente" OtherKey="cli_cedula" Type="Cliente" IsForeignKey="true" />
       <Association Name="Usuario_Factura" Member="Usuario" ThisKey="fac_ced_recep" OtherKey="usu_cedula" Type="Usuario" IsForeignKey="true" />
     </Type>
@@ -142,6 +132,17 @@
       <Association Name="Factura_Ingreso" Member="Factura" ThisKey="ing_n_factura" OtherKey="fac_n_factura" Type="Factura" IsForeignKey="true" />
       <Association Name="Usuario_Ingreso" Member="Usuario" ThisKey="ing_ced_recepcionista" OtherKey="usu_cedula" Type="Usuario" IsForeignKey="true" />
       <Association Name="Usuario_Ingreso1" Member="Usuario1" ThisKey="ing_ced_tecnico" OtherKey="usu_cedula" Type="Usuario" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Detalle_producto" Member="Detalle_producto">
+    <Type Name="Detalle_producto">
+      <Column Name="nfactura" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="pro_codigo" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="cantidad" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="subtotal" Type="System.Decimal" DbType="Decimal(7,2)" CanBeNull="true" />
+      <Column Name="descripcion" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Association Name="Factura_Detalle_producto" Member="Factura" ThisKey="nfactura" OtherKey="fac_n_factura" Type="Factura" IsForeignKey="true" />
+      <Association Name="Producto_Detalle_producto" Member="Producto" ThisKey="pro_codigo" OtherKey="pro_codigo" Type="Producto" IsForeignKey="true" />
     </Type>
   </Table>
 </Database>

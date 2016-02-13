@@ -16,11 +16,17 @@ namespace AppWinProyectoo
         bool facturaIngresada = false;
         bool clienteIngresado = false;
         bool equipoIngresado = false;
-
+        RecepcionEquipos anterior;
 
         public RecepcionEquiposIngreso()
         {
             InitializeComponent();
+        }
+
+        public RecepcionEquiposIngreso(RecepcionEquipos anterior)
+        {
+            InitializeComponent();
+            this.anterior = anterior;
         }
 
         private void mo(object sender, MouseEventArgs e)
@@ -165,7 +171,6 @@ namespace AppWinProyectoo
             btnGuardar.Enabled = false;
             btnCancelar.Enabled = false;
             btnBuscar.Enabled = false;
-            btnCerrar.Enabled = false;
             btnImprimir.Enabled = false;
         }
 
@@ -176,7 +181,6 @@ namespace AppWinProyectoo
             btnGuardar.Enabled = false;
             btnCancelar.Enabled = false;
             btnBuscar.Enabled = true;
-            btnCerrar.Enabled = false;
             btnImprimir.Enabled = false;
         }
 
@@ -410,6 +414,12 @@ namespace AppWinProyectoo
         {
             activarEquipo();
             borrarEquipo();
+        }
+
+        private void btnCerrar_Click(object sender, EventArgs e)
+        {
+            anterior.Visible = true;
+            this.Close();
         }
     }
 }

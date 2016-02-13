@@ -52,5 +52,11 @@ namespace AppWinProyectoo
             anterior.Visible = true;
             this.Dispose();
         }
+
+        private void btnRegresar_Click(object sender, EventArgs e)
+        {
+            anterior.Visible = true;
+            this.Dispose();
+        }
     }
 }

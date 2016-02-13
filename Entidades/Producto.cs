@@ -13,7 +13,7 @@ namespace Entidades
         String modelo;
         double costo;
         int cantidad;
-        bool baja;
+        bool baja = false;
 
 
         public Producto()

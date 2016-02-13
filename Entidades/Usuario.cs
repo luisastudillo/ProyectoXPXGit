@@ -15,7 +15,7 @@ namespace Entidades
         string contrasenia;
         string tipo;
         string apellido;
-        bool baja;
+        bool baja = false;
 
         public Usuario()
         {

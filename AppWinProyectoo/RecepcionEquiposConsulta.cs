@@ -13,7 +13,7 @@ namespace AppWinProyectoo
     public partial class RecepcionEquiposConsulta : Form
     {
         RecepcionEquipos equipo;
-        public RecepcionEquiposConsulta()
+        public RecepcionEquiposConsulta(RecepcionEquipos equipo)
         {
             InitializeComponent();
             this.equipo = equipo;
@@ -30,6 +30,12 @@ namespace AppWinProyectoo
             Entidades.Ingreso ingreso = LogicaNegocios.LogicaIngreso.buscar(codigo);
             txtEstado.Text = ingreso.Estado;
             txtValor.Text = ingreso.Costo.ToString();
+        }
+
+        private void btnRegresar_Click(object sender, EventArgs e)
+        {
+            equipo.Visible = true;
+            this.Dispose();
         }
     }
 }

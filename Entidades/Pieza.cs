@@ -13,7 +13,7 @@ namespace Entidades
         string tipo;
         double costo;
         int cantidad;
-        bool baja;
+        bool baja = false;
 
 
         public Pieza()

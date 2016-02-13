@@ -68,7 +68,7 @@ namespace AppWinProyectoo
 
         private void btnAceptar_Click(object sender, EventArgs e)
         {
-            Producto p = new Producto();
+            Entidades.Producto p = new Entidades.Producto();
             DataGridViewRow row = (DataGridViewRow)dgvProductos.Rows[dgvProductos.CurrentCell.RowIndex];
             p.Codigo = Convert.ToInt32(row.Cells[0].Value);
             p.Tipo = row.Cells[1].Value.ToString();

@@ -57,6 +57,9 @@ namespace Datos
     partial void InsertIngreso(Ingreso instance);
     partial void UpdateIngreso(Ingreso instance);
     partial void DeleteIngreso(Ingreso instance);
+    partial void InsertDetalle_producto(Detalle_producto instance);
+    partial void UpdateDetalle_producto(Detalle_producto instance);
+    partial void DeleteDetalle_producto(Detalle_producto instance);
     #endregion
 		
 		public baseDataContext() : 
@@ -94,14 +97,6 @@ namespace Datos
 			get
 			{
 				return this.GetTable<Cliente>();
-			}
-		}
-		
-		public System.Data.Linq.Table<Detalle_producto> Detalle_producto
-		{
-			get
-			{
-				return this.GetTable<Detalle_producto>();
 			}
 		}
 		
@@ -182,6 +177,14 @@ namespace Datos
 			get
 			{
 				return this.GetTable<Ingreso>();
+			}
+		}
+		
+		public System.Data.Linq.Table<Detalle_producto> Detalle_producto
+		{
+			get
+			{
+				return this.GetTable<Detalle_producto>();
 			}
 		}
 	}
@@ -421,87 +424,6 @@ namespace Datos
 		{
 			this.SendPropertyChanging();
 			entity.Cliente = null;
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Detalle_producto")]
-	public partial class Detalle_producto
-	{
-		
-		private System.Nullable<int> _nfactura;
-		
-		private System.Nullable<int> _pro_codigo;
-		
-		private System.Nullable<int> _cantidad;
-		
-		private System.Nullable<decimal> _subtotal;
-		
-		public Detalle_producto()
-		{
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_nfactura", DbType="Int")]
-		public System.Nullable<int> nfactura
-		{
-			get
-			{
-				return this._nfactura;
-			}
-			set
-			{
-				if ((this._nfactura != value))
-				{
-					this._nfactura = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_pro_codigo", DbType="Int")]
-		public System.Nullable<int> pro_codigo
-		{
-			get
-			{
-				return this._pro_codigo;
-			}
-			set
-			{
-				if ((this._pro_codigo != value))
-				{
-					this._pro_codigo = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_cantidad", DbType="Int")]
-		public System.Nullable<int> cantidad
-		{
-			get
-			{
-				return this._cantidad;
-			}
-			set
-			{
-				if ((this._cantidad != value))
-				{
-					this._cantidad = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_subtotal", DbType="Decimal(7,2)")]
-		public System.Nullable<decimal> subtotal
-		{
-			get
-			{
-				return this._subtotal;
-			}
-			set
-			{
-				if ((this._subtotal != value))
-				{
-					this._subtotal = value;
-				}
-			}
 		}
 	}
 	
@@ -756,6 +678,8 @@ namespace Datos
 		
 		private EntitySet<Ingreso> _Ingreso;
 		
+		private EntitySet<Detalle_producto> _Detalle_producto;
+		
 		private EntityRef<Cliente> _Cliente;
 		
 		private EntityRef<Usuario> _Usuario;
@@ -785,6 +709,7 @@ namespace Datos
 		public Factura()
 		{
 			this._Ingreso = new EntitySet<Ingreso>(new Action<Ingreso>(this.attach_Ingreso), new Action<Ingreso>(this.detach_Ingreso));
+			this._Detalle_producto = new EntitySet<Detalle_producto>(new Action<Detalle_producto>(this.attach_Detalle_producto), new Action<Detalle_producto>(this.detach_Detalle_producto));
 			this._Cliente = default(EntityRef<Cliente>);
 			this._Usuario = default(EntityRef<Usuario>);
 			OnCreated();
@@ -971,6 +896,19 @@ namespace Datos
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Factura_Detalle_producto", Storage="_Detalle_producto", ThisKey="fac_n_factura", OtherKey="nfactura")]
+		public EntitySet<Detalle_producto> Detalle_producto
+		{
+			get
+			{
+				return this._Detalle_producto;
+			}
+			set
+			{
+				this._Detalle_producto.Assign(value);
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Cliente_Factura", Storage="_Cliente", ThisKey="fac_ced_cliente", OtherKey="cli_cedula", IsForeignKey=true)]
 		public Cliente Cliente
 		{
@@ -1066,6 +1004,18 @@ namespace Datos
 		}
 		
 		private void detach_Ingreso(Ingreso entity)
+		{
+			this.SendPropertyChanging();
+			entity.Factura = null;
+		}
+		
+		private void attach_Detalle_producto(Detalle_producto entity)
+		{
+			this.SendPropertyChanging();
+			entity.Factura = this;
+		}
+		
+		private void detach_Detalle_producto(Detalle_producto entity)
 		{
 			this.SendPropertyChanging();
 			entity.Factura = null;
@@ -1473,6 +1423,8 @@ namespace Datos
 		
 		private System.Nullable<bool> _pro_baja;
 		
+		private EntitySet<Detalle_producto> _Detalle_producto;
+		
     #region Definiciones de métodos de extensibilidad
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -1493,6 +1445,7 @@ namespace Datos
 		
 		public Producto()
 		{
+			this._Detalle_producto = new EntitySet<Detalle_producto>(new Action<Detalle_producto>(this.attach_Detalle_producto), new Action<Detalle_producto>(this.detach_Detalle_producto));
 			OnCreated();
 		}
 		
@@ -1616,6 +1569,19 @@ namespace Datos
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Producto_Detalle_producto", Storage="_Detalle_producto", ThisKey="pro_codigo", OtherKey="pro_codigo")]
+		public EntitySet<Detalle_producto> Detalle_producto
+		{
+			get
+			{
+				return this._Detalle_producto;
+			}
+			set
+			{
+				this._Detalle_producto.Assign(value);
+			}
+		}
+		
 		public event PropertyChangingEventHandler PropertyChanging;
 		
 		public event PropertyChangedEventHandler PropertyChanged;
@@ -1634,6 +1600,18 @@ namespace Datos
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
+		}
+		
+		private void attach_Detalle_producto(Detalle_producto entity)
+		{
+			this.SendPropertyChanging();
+			entity.Producto = this;
+		}
+		
+		private void detach_Detalle_producto(Detalle_producto entity)
+		{
+			this.SendPropertyChanging();
+			entity.Producto = null;
 		}
 	}
 	
@@ -2660,6 +2638,246 @@ namespace Datos
 						this._ing_ced_tecnico = default(string);
 					}
 					this.SendPropertyChanged("Usuario1");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Detalle_producto")]
+	public partial class Detalle_producto : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _nfactura;
+		
+		private int _pro_codigo;
+		
+		private System.Nullable<int> _cantidad;
+		
+		private System.Nullable<decimal> _subtotal;
+		
+		private string _descripcion;
+		
+		private EntityRef<Factura> _Factura;
+		
+		private EntityRef<Producto> _Producto;
+		
+    #region Definiciones de métodos de extensibilidad
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnnfacturaChanging(int value);
+    partial void OnnfacturaChanged();
+    partial void Onpro_codigoChanging(int value);
+    partial void Onpro_codigoChanged();
+    partial void OncantidadChanging(System.Nullable<int> value);
+    partial void OncantidadChanged();
+    partial void OnsubtotalChanging(System.Nullable<decimal> value);
+    partial void OnsubtotalChanged();
+    partial void OndescripcionChanging(string value);
+    partial void OndescripcionChanged();
+    #endregion
+		
+		public Detalle_producto()
+		{
+			this._Factura = default(EntityRef<Factura>);
+			this._Producto = default(EntityRef<Producto>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_nfactura", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		public int nfactura
+		{
+			get
+			{
+				return this._nfactura;
+			}
+			set
+			{
+				if ((this._nfactura != value))
+				{
+					if (this._Factura.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnnfacturaChanging(value);
+					this.SendPropertyChanging();
+					this._nfactura = value;
+					this.SendPropertyChanged("nfactura");
+					this.OnnfacturaChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_pro_codigo", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		public int pro_codigo
+		{
+			get
+			{
+				return this._pro_codigo;
+			}
+			set
+			{
+				if ((this._pro_codigo != value))
+				{
+					if (this._Producto.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.Onpro_codigoChanging(value);
+					this.SendPropertyChanging();
+					this._pro_codigo = value;
+					this.SendPropertyChanged("pro_codigo");
+					this.Onpro_codigoChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_cantidad", DbType="Int")]
+		public System.Nullable<int> cantidad
+		{
+			get
+			{
+				return this._cantidad;
+			}
+			set
+			{
+				if ((this._cantidad != value))
+				{
+					this.OncantidadChanging(value);
+					this.SendPropertyChanging();
+					this._cantidad = value;
+					this.SendPropertyChanged("cantidad");
+					this.OncantidadChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_subtotal", DbType="Decimal(7,2)")]
+		public System.Nullable<decimal> subtotal
+		{
+			get
+			{
+				return this._subtotal;
+			}
+			set
+			{
+				if ((this._subtotal != value))
+				{
+					this.OnsubtotalChanging(value);
+					this.SendPropertyChanging();
+					this._subtotal = value;
+					this.SendPropertyChanged("subtotal");
+					this.OnsubtotalChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_descripcion", DbType="VarChar(50)")]
+		public string descripcion
+		{
+			get
+			{
+				return this._descripcion;
+			}
+			set
+			{
+				if ((this._descripcion != value))
+				{
+					this.OndescripcionChanging(value);
+					this.SendPropertyChanging();
+					this._descripcion = value;
+					this.SendPropertyChanged("descripcion");
+					this.OndescripcionChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Factura_Detalle_producto", Storage="_Factura", ThisKey="nfactura", OtherKey="fac_n_factura", IsForeignKey=true)]
+		public Factura Factura
+		{
+			get
+			{
+				return this._Factura.Entity;
+			}
+			set
+			{
+				Factura previousValue = this._Factura.Entity;
+				if (((previousValue != value) 
+							|| (this._Factura.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Factura.Entity = null;
+						previousValue.Detalle_producto.Remove(this);
+					}
+					this._Factura.Entity = value;
+					if ((value != null))
+					{
+						value.Detalle_producto.Add(this);
+						this._nfactura = value.fac_n_factura;
+					}
+					else
+					{
+						this._nfactura = default(int);
+					}
+					this.SendPropertyChanged("Factura");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Producto_Detalle_producto", Storage="_Producto", ThisKey="pro_codigo", OtherKey="pro_codigo", IsForeignKey=true)]
+		public Producto Producto
+		{
+			get
+			{
+				return this._Producto.Entity;
+			}
+			set
+			{
+				Producto previousValue = this._Producto.Entity;
+				if (((previousValue != value) 
+							|| (this._Producto.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Producto.Entity = null;
+						previousValue.Detalle_producto.Remove(this);
+					}
+					this._Producto.Entity = value;
+					if ((value != null))
+					{
+						value.Detalle_producto.Add(this);
+						this._pro_codigo = value.pro_codigo;
+					}
+					else
+					{
+						this._pro_codigo = default(int);
+					}
+					this.SendPropertyChanged("Producto");
 				}
 			}
 		}

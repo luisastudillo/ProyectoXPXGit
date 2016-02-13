@@ -18,8 +18,8 @@ namespace AppWinProyectoo
         private SqlDataAdapter da;
         SqlConnection cn;
         SqlCommand cmd;
-        List<DetalleProducto> listadetalles = new List<DetalleProducto>();
-        List<Producto> lista_productos = new List<Producto>();
+        List<Entidades.DetalleProducto> listadetalles = new List<Entidades.DetalleProducto>();
+        List<Entidades.Producto> lista_productos = new List<Entidades.Producto>();
         List<Entidades.Ingreso> lista_ingresos = new List<Entidades.Ingreso>();
 
         public RecepcionFactura()
@@ -71,9 +71,9 @@ namespace AppWinProyectoo
             nuevo.Focus();
         }
 
-        public void agregarProducto(Producto p, int cantidad)
+        public void agregarProducto(Entidades.Producto p, int cantidad)
         {
-            DetalleProducto d = new DetalleProducto();
+            Entidades.DetalleProducto d = new Entidades.DetalleProducto();
             d.Cod_producto = p.Codigo;
             d.Num_factura = Convert.ToInt32(txtNfactura.Text);
             d.Cantidad = cantidad;
@@ -94,7 +94,7 @@ namespace AppWinProyectoo
             
             dgvFactura.Rows.Clear();
             dgvFactura.AllowUserToAddRows = true;
-            foreach (DetalleProducto d in listadetalles)
+            foreach (Entidades.DetalleProducto d in listadetalles)
             {
                 row = (DataGridViewRow)dgvFactura.Rows[0].Clone();
                 row.Cells[0].Value = d.Cod_producto;
@@ -126,7 +126,7 @@ namespace AppWinProyectoo
         {
             double subtotal = 0, iva = 0, total = 0;
 
-            foreach(DetalleProducto d in listadetalles)
+            foreach(Entidades.DetalleProducto d in listadetalles)
             {
                 subtotal += d.Subtotal;
             }
@@ -144,7 +144,7 @@ namespace AppWinProyectoo
         public bool productoEsta(int comparar)
         {
 
-            foreach(Producto p in lista_productos)
+            foreach(Entidades.Producto p in lista_productos)
             {
                 if (p.Codigo == comparar)
                     return true;
@@ -184,9 +184,7 @@ namespace AppWinProyectoo
             Entidades.Cliente cliente = LogicaNegocios.LogicaCliente.buscarCliente(cedula);
             if (cliente != null)
             {
-                txtNomCliente.Text = cliente.Nombre + "" + cliente.Apellido;
-                txtDireccion.Text = cliente.Domicilio;
-                txtTelefono.Text = cliente.Telefono;
+                agregarCliente(cliente);
             }
             else
             {
@@ -211,7 +209,7 @@ namespace AppWinProyectoo
 
         private void button2_Click(object sender, EventArgs e)
         {
-            Factura f = new Factura();
+            Entidades.Factura f = new Entidades.Factura();
             f.Numero = Convert.ToInt32( txtNfactura.Text);
             f.Fecha = dtpFecha.Value;
             f.Ced_recep = "0702019415";
@@ -222,6 +220,7 @@ namespace AppWinProyectoo
             guardarFactura(f);
             MessageBox.Show("Se guardó factura");
             guardarDetalles();
+            guardarIngresos();
             
         }
 
@@ -230,6 +229,7 @@ namespace AppWinProyectoo
             foreach(Entidades.Ingreso i in lista_ingresos)
             {
                 i.Estado = "pagado";
+                i.N_factura = Convert.ToInt32( txtNfactura.Text);
                 LogicaNegocios.LogicaIngreso.editar(i);
             }
         }
@@ -237,7 +237,7 @@ namespace AppWinProyectoo
         public void guardarDetalles()
         {
           
-            foreach (DetalleProducto d in listadetalles)
+            foreach (Entidades.DetalleProducto d in listadetalles)
             {
                 guardarDetalle(d);
                 actualizarCantidad(buscarProducto(d.Cod_producto));
@@ -245,10 +245,10 @@ namespace AppWinProyectoo
            
         }
 
-        public Producto buscarProducto(int codigo)
+        public Entidades.Producto buscarProducto(int codigo)
         {
-            Producto producto = new Producto();
-            foreach(Producto p in lista_productos)
+            Entidades.Producto producto = new Entidades.Producto();
+            foreach(Entidades.Producto p in lista_productos)
             {
                 if (p.Codigo == codigo)
                     producto = p;
@@ -257,76 +257,51 @@ namespace AppWinProyectoo
             return producto;
         }
 
-        public void actualizarCantidad(Producto p)
+        public void actualizarCantidad(Entidades.Producto p)
         {
-            cmd = new SqlCommand();
-            cmd.Connection = cn;
-            cn.Open();
-
-            cmd.CommandText = "Update Producto Set pro_cantidad = @cantidad where pro_codigo = @codigo";
-
-            cmd.Parameters.AddWithValue("cantidad", p.Cantidad);
-            cmd.Parameters.AddWithValue("codigo", p.Codigo);
-
-            cmd.ExecuteNonQuery();
-           
-            cn.Close();
+            LogicaNegocios.LogicaProducto.editar(p);
         }
                
-        private void guardarDetalle(DetalleProducto detalle)
+        private void guardarDetalle(Entidades.DetalleProducto detalle)
         {
-            Conexion();
-            try
-            {
-
-                cmd = new SqlCommand();
-            cmd.Connection = cn;
-
-            cmd.CommandText = "Insert into Detalle_producto(nfactura,pro_codigo,cantidad,subtotal) values(" +
-                 "@nfactura,@pro_codigo,@cantidad,@subtotal)";
-            cmd.Parameters.AddWithValue("nfactura", detalle.Num_factura);
-            cmd.Parameters.AddWithValue("pro_codigo", detalle.Cod_producto);
-            cmd.Parameters.AddWithValue("cantidad", detalle.Cantidad);
-            cmd.Parameters.AddWithValue("subtotal", detalle.Subtotal);
-
-            cmd.ExecuteNonQuery();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error en conexion en guardar detalle + \n" + ex.Message);
-            }
-            cn.Close();
+            string resultado = LogicaNegocios.LogicaDetalle.nuevo(detalle);
+            if (resultado != "agregado")
+                MessageBox.Show("Error al guardar detalles \n" + resultado);            
         }
 
-        private void guardarFactura(Factura f)
+        private void guardarFactura(Entidades.Factura f)
         {
-            Conexion();
-            try
-            {
+
+            string resultado = LogicaNegocios.LogicaFactura.nuevo(f);
+            if(resultado != "agregado")
+                MessageBox.Show("Error al guardar factura \n" + resultado);
+            //Conexion();
+            //try
+            //{
 
 
-                cmd = new SqlCommand();
+            //    cmd = new SqlCommand();
 
-            cmd.Connection = cn;
-            cn.Open();
-            cmd.CommandText = "Insert into Factura(fac_n_factura, fac_fecha, fac_ced_recep, fac_ced_cliente, fac_subtotal, fac_iva, fac_total) values(" +
-                "@nfactura,@fecha,@ced_recep,@ced_cliente,@subtotal,@iva,@total)";
-            cmd.Parameters.AddWithValue("nfactura", f.Numero);
-            cmd.Parameters.AddWithValue("fecha", f.Fecha);
-            cmd.Parameters.AddWithValue("ced_recep", f.Ced_recep);
-            cmd.Parameters.AddWithValue("ced_cliente", f.Ced_cliente);
-            cmd.Parameters.AddWithValue("subtotal", f.Subtotal);
-            cmd.Parameters.AddWithValue("iva", f.Iva);
-            cmd.Parameters.AddWithValue("total", f.Total);
+            //cmd.Connection = cn;
+            //cn.Open();
+            //cmd.CommandText = "Insert into Factura(fac_n_factura, fac_fecha, fac_ced_recep, fac_ced_cliente, fac_subtotal, fac_iva, fac_total) values(" +
+            //    "@nfactura,@fecha,@ced_recep,@ced_cliente,@subtotal,@iva,@total)";
+            //cmd.Parameters.AddWithValue("nfactura", f.Numero);
+            //cmd.Parameters.AddWithValue("fecha", f.Fecha);
+            //cmd.Parameters.AddWithValue("ced_recep", f.Ced_recep);
+            //cmd.Parameters.AddWithValue("ced_cliente", f.Ced_cliente);
+            //cmd.Parameters.AddWithValue("subtotal", f.Subtotal);
+            //cmd.Parameters.AddWithValue("iva", f.Iva);
+            //cmd.Parameters.AddWithValue("total", f.Total);
 
 
-            cmd.ExecuteNonQuery();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error en conexion guardando factura + \n" + ex.Message);
-            }
-            cn.Close();
+            //cmd.ExecuteNonQuery();
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show("Error en conexion guardando factura + \n" + ex.Message);
+            //}
+            //cn.Close();
         }
 
         private void textBox8_TextChanged(object sender, EventArgs e)
@@ -343,15 +318,15 @@ namespace AppWinProyectoo
 
         public void eliminarDetalle(int codigo)
         {
-            DetalleProducto detalleQuitar;
-            foreach(DetalleProducto d in listadetalles)
+            Entidades.DetalleProducto detalleQuitar;
+            foreach(Entidades.DetalleProducto d in listadetalles)
             {
                 if (d.Cod_producto == codigo)
                     detalleQuitar = d;
             }
 
-            Producto productoQuitar;
-            foreach(Producto p in lista_productos)
+            Entidades.Producto productoQuitar;
+            foreach(Entidades.Producto p in lista_productos)
             {
                 productoQuitar = p;
             }
@@ -387,5 +362,62 @@ namespace AppWinProyectoo
             actualizarFactura();
         }
 
+        private void btnBuscar_Click(object sender, EventArgs e)
+        {
+            if(btnBuscar.Text == "Busqueda")
+            {
+                borrarFactura();
+                btnAgregarIngreso.Enabled = false;
+                btnProducto.Enabled = false;
+                btnCliente.Enabled = false;
+                txtNfactura.ReadOnly = false;
+                btnBuscar.Text = "Buscar";
+            }
+            else
+            {
+                int num = Convert.ToInt32(txtNfactura.Text);
+                Entidades.Factura encontrada = LogicaNegocios.LogicaFactura.buscar(num);
+                if(encontrada != null)
+                {
+                    agregarFactura(encontrada);
+                }
+            }
+
+        }
+
+        private void agregarFactura(Entidades.Factura f)
+        {
+            Entidades.Cliente cliente = LogicaNegocios.LogicaFactura.cliente(f.Numero);
+            
+            agregarCliente(cliente);
+        }
+
+        private void borrarFactura()
+        {
+            listadetalles = new List<Entidades.DetalleProducto>();
+            lista_ingresos = new List<Entidades.Ingreso>();
+            lista_productos = new List<Entidades.Producto>();
+            actualizarFactura();
+        }
+
+        public void borrarCasillas()
+        {
+            foreach (Control control in this.Controls)
+            {
+                if (control is TextBox)
+                    control.Text = "";
+            }
+        }
+
+        private void borrarCliente()
+        {
+            txtCedCliente.Text = "";
+            txtDireccion.Text = "";
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            LogicaNegocios.LogicaFactura.anular(Convert.ToInt32(txtNfactura.Text));
+        }
     }
 }

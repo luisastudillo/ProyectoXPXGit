@@ -12,11 +12,11 @@ namespace AppWinProyectoo
 {
     public partial class RecepcionEquiposRetiro : Form
     {
-        //RecepcionEquipos equipo;
-        public RecepcionEquiposRetiro()
+        RecepcionEquipos equipo;
+        public RecepcionEquiposRetiro(RecepcionEquipos equipo)
         {
             InitializeComponent();
-            //this.equipo = equipo;
+            this.equipo = equipo;
         }
 
         private void RetiroEquipos_Load(object sender, EventArgs e)
@@ -57,6 +57,12 @@ namespace AppWinProyectoo
         {
             int codigo = (int)cmbCodigos.SelectedItem;
             LogicaNegocios.LogicaIngreso.retirar(codigo);
+        }
+
+        private void btnRegresar_Click(object sender, EventArgs e)
+        {
+            equipo.Visible = true;
+            this.Dispose();
         }
     }
 }

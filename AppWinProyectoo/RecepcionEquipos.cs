@@ -26,26 +26,35 @@ namespace AppWinProyectoo
 
         private void button1_Click(object sender, EventArgs e)
         {
-            RecepcionEquiposIngreso nuevo = new RecepcionEquiposIngreso();
+            RecepcionEquiposIngreso nuevo = new RecepcionEquiposIngreso(this);
+            this.Visible = false;
             nuevo.Visible = true;
         }
 
         private void btnRetiro_Click(object sender, EventArgs e)
         {
-            RecepcionEquiposRetiro nuevo = new RecepcionEquiposRetiro();
+            RecepcionEquiposRetiro nuevo = new RecepcionEquiposRetiro(this);
+            this.Visible = false;
             nuevo.Visible = true;
         }
 
         private void btnConsulta_Click(object sender, EventArgs e)
         {
-            RecepcionEquiposConsulta nuevo = new RecepcionEquiposConsulta();
+            RecepcionEquiposConsulta nuevo = new RecepcionEquiposConsulta(this);
             nuevo.Visible = true;
+            this.Visible = false;
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
-            RecepcionEquiposListar ventana = new RecepcionEquiposListar();
+            RecepcionEquiposListar ventana = new RecepcionEquiposListar(this);
             ventana.Visible = true;
+            this.Visible = false;
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            menu.Visible = true;
             this.Close();
         }
     }

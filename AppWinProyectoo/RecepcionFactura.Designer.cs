@@ -75,6 +75,7 @@
             // 
             this.txtNfactura.Location = new System.Drawing.Point(453, 24);
             this.txtNfactura.Name = "txtNfactura";
+            this.txtNfactura.ReadOnly = true;
             this.txtNfactura.Size = new System.Drawing.Size(100, 20);
             this.txtNfactura.TabIndex = 49;
             this.txtNfactura.TextChanged += new System.EventHandler(this.textBox8_TextChanged);
@@ -219,6 +220,7 @@
             // 
             this.txtTelefono.Location = new System.Drawing.Point(357, 60);
             this.txtTelefono.Name = "txtTelefono";
+            this.txtTelefono.ReadOnly = true;
             this.txtTelefono.Size = new System.Drawing.Size(190, 20);
             this.txtTelefono.TabIndex = 30;
             // 
@@ -226,6 +228,7 @@
             // 
             this.txtDireccion.Location = new System.Drawing.Point(357, 24);
             this.txtDireccion.Name = "txtDireccion";
+            this.txtDireccion.ReadOnly = true;
             this.txtDireccion.Size = new System.Drawing.Size(190, 20);
             this.txtDireccion.TabIndex = 29;
             // 
@@ -264,6 +267,7 @@
             // 
             this.txtNomCliente.Location = new System.Drawing.Point(73, 60);
             this.txtNomCliente.Name = "txtNomCliente";
+            this.txtNomCliente.ReadOnly = true;
             this.txtNomCliente.Size = new System.Drawing.Size(202, 20);
             this.txtNomCliente.TabIndex = 25;
             // 
@@ -359,6 +363,7 @@
             this.button6.Text = "Anular";
             this.button6.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
             // btnBuscar
             // 
@@ -369,9 +374,10 @@
             this.btnBuscar.Name = "btnBuscar";
             this.btnBuscar.Size = new System.Drawing.Size(110, 38);
             this.btnBuscar.TabIndex = 14;
-            this.btnBuscar.Text = "Buscar";
+            this.btnBuscar.Text = "Busqueda";
             this.btnBuscar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnBuscar.UseVisualStyleBackColor = true;
+            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
             // 
             // btnEliminar
             // 

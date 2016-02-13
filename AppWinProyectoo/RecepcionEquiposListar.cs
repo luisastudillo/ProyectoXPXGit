@@ -12,14 +12,23 @@ namespace AppWinProyectoo
 {
     public partial class RecepcionEquiposListar : Form
     {
+        RecepcionEquipos anterior;
+
         public RecepcionEquiposListar()
         {
             InitializeComponent();
         }
 
+        public RecepcionEquiposListar(RecepcionEquipos anterior)
+        {
+            InitializeComponent();
+            this.anterior = anterior;
+        }
+
         private void button1_Click(object sender, EventArgs e)
         {
-
+            anterior.Visible = true;
+            this.Close();
         }
 
         private void RecepcionEquiposListar_Load(object sender, EventArgs e)
