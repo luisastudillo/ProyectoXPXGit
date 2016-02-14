@@ -66,7 +66,28 @@ namespace Datos
             }
             return retorno;
         }
-               
+
+        public static int siguienteCodigo()
+        {
+            int retorno = 0;
+            try
+            {
+                var sql =
+                    from c in db.Producto
+                    select c;
+                foreach (var c in sql)
+                {
+                    if (c.pro_codigo > retorno)
+                        retorno = c.pro_codigo;
+                }                
+            }
+            catch (Exception e)
+            {
+            }
+            return retorno +1;
+        }
+
+
         public static Entidades.Producto datoAEntidad(Producto p)
         {
             Entidades.Producto retorno = new Entidades.Producto();
@@ -90,6 +111,8 @@ namespace Datos
             nuevo.pro_tipo = p.Tipo;
             return nuevo;
         }
+
+        
 
     }
 }

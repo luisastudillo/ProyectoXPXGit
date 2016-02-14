@@ -31,6 +31,9 @@ namespace LogicaNegocios
             return Datos.CRUDProducto.editar(nuevo);
         }
 
-        
+        public static int siguienteCodigo()
+        {
+            return Datos.CRUDProducto.siguienteCodigo();
+        }
     }
 }
