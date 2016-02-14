@@ -28,6 +28,12 @@ namespace LogicaNegocios
         public static string nuevo(int codigo, string modelo, string tipo, double costo, int cantidad)
         {
             Entidades.Producto nuevo = new Entidades.Producto(codigo, tipo, modelo, costo, cantidad, false);
+            return Datos.CRUDProducto.nuevo(nuevo);
+        }
+
+        public static string editar(int codigo, string modelo, string tipo, double costo, int cantidad, bool baja)
+        {
+            Entidades.Producto nuevo = new Entidades.Producto(codigo, tipo, modelo, costo, cantidad, baja);
             return Datos.CRUDProducto.editar(nuevo);
         }
 

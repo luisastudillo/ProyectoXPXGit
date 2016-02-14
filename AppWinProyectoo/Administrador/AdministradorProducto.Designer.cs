@@ -65,6 +65,7 @@
             this.btnPequenio.Text = "-";
             this.btnPequenio.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.btnPequenio.UseVisualStyleBackColor = true;
+            this.btnPequenio.Click += new System.EventHandler(this.btnPequenio_Click);
             // 
             // btnGrande
             // 
@@ -203,6 +204,7 @@
             this.btnBaja.TabIndex = 17;
             this.btnBaja.Text = "Baja";
             this.btnBaja.UseVisualStyleBackColor = true;
+            this.btnBaja.Click += new System.EventHandler(this.btnBaja_Click);
             // 
             // btnCancelar
             // 
@@ -215,6 +217,7 @@
             this.btnCancelar.TabIndex = 16;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = true;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
             // btnEditar
             // 
@@ -227,6 +230,7 @@
             this.btnEditar.TabIndex = 15;
             this.btnEditar.Text = "Editar";
             this.btnEditar.UseVisualStyleBackColor = true;
+            this.btnEditar.Click += new System.EventHandler(this.btnEditar_Click);
             // 
             // btnBuscar
             // 
@@ -239,6 +243,7 @@
             this.btnBuscar.TabIndex = 14;
             this.btnBuscar.Text = "Busqueda";
             this.btnBuscar.UseVisualStyleBackColor = true;
+            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
             // 
             // btnAtras
             // 
@@ -251,6 +256,7 @@
             this.btnAtras.TabIndex = 13;
             this.btnAtras.Text = "Anterior";
             this.btnAtras.UseVisualStyleBackColor = true;
+            this.btnAtras.Click += new System.EventHandler(this.btnAtras_Click);
             // 
             // btnGuardar
             // 
@@ -263,6 +269,7 @@
             this.btnGuardar.TabIndex = 7;
             this.btnGuardar.Text = "Guardar";
             this.btnGuardar.UseVisualStyleBackColor = true;
+            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
             // 
             // btnNuevo
             // 
@@ -320,6 +327,7 @@
             this.Controls.Add(this.label1);
             this.Name = "AdministradorProducto";
             this.Text = "AdministradorProducto";
+            this.Load += new System.EventHandler(this.AdministradorProducto_Load);
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);

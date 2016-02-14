@@ -127,6 +127,7 @@ namespace AppWinProyectoo
         private void btnBaja_Click(object sender, EventArgs e)
         {
             LogicaNegocios.LogicaProducto.bajar(Convert.ToInt32(txtCodigo.Text));
+            MessageBox.Show("Pieza dada de baja");
             inicial();
         }
 
@@ -210,8 +211,7 @@ namespace AppWinProyectoo
         }
 
         private void btnBuscar_Click(object sender, EventArgs e)
-        {
-            
+        {            
             if (btnBuscar.Text == "Buscar")
             {
                 if (txtCodigo.Text == "")
