@@ -32,7 +32,9 @@ namespace AppWinProyectoo
 
         private void button3_Click(object sender, EventArgs e)
         {
-
+            AdministradorPiezas ventana = new AdministradorPiezas(this);
+            this.Visible = false;
+            ventana.Visible = true;
         }
     }
 }
