@@ -38,6 +38,51 @@ namespace Datos
             return retorno;
         }
 
+        public static string nuevo(Entidades.Pieza pieza)
+        {
+            string retorno = "agregado";
+            Pieza nuevo = entidadADato(pieza);
+            try
+            {
+                db.Pieza.InsertOnSubmit(nuevo);
+                db.SubmitChanges();
+            }
+            catch (Exception e)
+            {
+                retorno = e.Message;
+            }
+            return retorno;
+        }
+
+        public static string editar(Entidades.Pieza pieza)
+        {
+            string retorno = "";
+            try
+            {
+                var sql =
+                    from c in db.Pieza
+                    where c.pie_codigo == pieza.Codigo
+                    select c;
+
+                foreach (var s in sql)
+                {
+                    s.pie_baja = pieza.Baja;
+                    s.pie_cantidad = pieza.Cantidad;
+                    s.pie_codigo = pieza.Codigo;
+                    s.pie_costo = Convert.ToDecimal(pieza.Costo);
+                    s.pie_modelo = pieza.Modelo;
+                    s.pie_tipo = pieza.Tipo;
+                    db.SubmitChanges();
+                    retorno = "exito";
+                }
+            }
+            catch (Exception e)
+            {
+                retorno = e.Message;
+            }
+            return retorno;
+        }
+
         public static Entidades.Pieza datoAEntidad(Pieza p)
         {
             Entidades.Pieza retorno = new Entidades.Pieza();
@@ -61,6 +106,7 @@ namespace Datos
             retorno.pie_tipo = p.Tipo;
             return retorno;
         }
+
 
     }
 }

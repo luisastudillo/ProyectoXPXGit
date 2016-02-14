@@ -12,7 +12,7 @@ namespace Datos
 
         public static bool nuevo(Entidades.Usuario usuario)
         {
-            bool retorno = true;
+            bool retorno = false;
             Usuario nuevo = new Usuario();
             nuevo.usu_nombre = usuario.Nombre;
             nuevo.usu_apellido = usuario.Apellido;
@@ -21,15 +21,15 @@ namespace Datos
             nuevo.usu_domicilio = usuario.Contrasenia;
             nuevo.usu_telefono = usuario.Telefono;
             nuevo.usu_tipo = usuario.Tipo;
-
+            nuevo.usu_baja = usuario.Baja;
             try
             {
                 db.Usuario.InsertOnSubmit(nuevo);
                 db.SubmitChanges();
+                retorno = true;
             }
             catch(Exception e)
             {
-                retorno =  false;
             }
 
             return retorno;
@@ -131,5 +131,100 @@ namespace Datos
             }
             return retorno;
         }
+
+        public static List<Entidades.Usuario> listaUsuario()
+        {
+            List<Entidades.Usuario> lista = new List<Entidades.Usuario>();
+            try
+            {
+                var sql =
+                    from c in db.Usuario
+                    select c;
+                foreach (var c in sql)
+                {
+                    if(!c.usu_cedula.StartsWith("0         "))
+                        lista.Add(datoAEntidad(c));
+                }
+            }
+            catch (Exception e)
+            {
+            }
+            return lista;
+        }
+
+        public static List<Entidades.Usuario> listaUsuarioPorCedula(string cedula)
+        {
+            List<Entidades.Usuario> lista = new List<Entidades.Usuario>();
+            try
+            {
+                var sql =
+                    from c in db.Usuario
+                    select c;
+                foreach (var c in sql)
+                {
+                    if (c.usu_cedula.ToLower().Contains(cedula.ToLower()))
+                        lista.Add(datoAEntidad(c));
+                }
+            }
+            catch (Exception e)
+            {
+            }
+            return lista;
+        }
+
+        public static List<Entidades.Usuario> listaUsuarioPorNombre(string nombre)
+        {
+            List<Entidades.Usuario> lista = new List<Entidades.Usuario>();
+            try
+            {
+                var sql =
+                    from c in db.Usuario
+                    select c;
+                foreach (var c in sql)
+                {
+                    if (c.usu_nombre.ToLower().Contains(nombre.ToLower()))
+                        lista.Add(datoAEntidad(c));
+                }
+            }
+            catch (Exception e)
+            {
+            }
+            return lista;
+        }
+
+        public static List<Entidades.Usuario> listaUsuarioPorApellido(string apellido)
+        {
+            List<Entidades.Usuario> lista = new List<Entidades.Usuario>();
+            try
+            {
+                var sql =
+                    from c in db.Usuario
+                    select c;
+                foreach (var c in sql)
+                {
+                    if (c.usu_apellido.ToLower().Contains(apellido.ToLower()))
+                        lista.Add(datoAEntidad(c));
+                }
+            }
+            catch (Exception e)
+            {
+            }
+            return lista;
+        }
+                
+        public static Entidades.Usuario datoAEntidad(Usuario u)
+        {
+            Entidades.Usuario retorno = new Entidades.Usuario();
+            retorno.Apellido = u.usu_apellido;
+            retorno.Baja = (bool)u.usu_baja;
+            retorno.Telefono = u.usu_telefono;
+            retorno.Cedula = u.usu_cedula;
+            retorno.Contrasenia = u.usu_contrasenia;
+            retorno.Domicilio = u.usu_domicilio;
+            retorno.Nombre = u.usu_nombre;
+            retorno.Tipo = u.usu_tipo;            
+            return retorno;
+        }
+
     }
 }

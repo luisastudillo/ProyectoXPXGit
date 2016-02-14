@@ -63,6 +63,12 @@
     <Compile Include="AdministradorPiezas.Designer.cs">
       <DependentUpon>AdministradorPiezas.cs</DependentUpon>
     </Compile>
+    <Compile Include="AdministradorPiezasListar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdministradorPiezasListar.Designer.cs">
+      <DependentUpon>AdministradorPiezasListar.cs</DependentUpon>
+    </Compile>
     <Compile Include="AdministradorRecepcion.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -80,6 +86,12 @@
     </Compile>
     <Compile Include="AdministradorTrabajo.Designer.cs">
       <DependentUpon>AdministradorTrabajo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AdministradorUsuarioListar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdministradorUsuarioListar.Designer.cs">
+      <DependentUpon>AdministradorUsuarioListar.cs</DependentUpon>
     </Compile>
     <Compile Include="DetalleProducto.cs" />
     <Compile Include="Factura.cs" />
@@ -170,6 +182,9 @@
     <EmbeddedResource Include="AdministradorPiezas.resx">
       <DependentUpon>AdministradorPiezas.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="AdministradorPiezasListar.resx">
+      <DependentUpon>AdministradorPiezasListar.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AdministradorRecepcion.resx">
       <DependentUpon>AdministradorRecepcion.cs</DependentUpon>
     </EmbeddedResource>
@@ -178,6 +193,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AdministradorTrabajo.resx">
       <DependentUpon>AdministradorTrabajo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdministradorUsuarioListar.resx">
+      <DependentUpon>AdministradorUsuarioListar.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="RecepcionAgregarCliente.resx">
       <DependentUpon>RecepcionAgregarCliente.cs</DependentUpon>

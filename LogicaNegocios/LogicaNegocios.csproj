@@ -46,8 +46,10 @@
     <Compile Include="LogicaFactura.cs" />
     <Compile Include="LogicaIngreso.cs" />
     <Compile Include="LogicaLogin.cs" />
+    <Compile Include="LogicaPieza.cs" />
     <Compile Include="LogicaProducto.cs" />
     <Compile Include="LogicaRecepcionEquiposIngreso.cs" />
+    <Compile Include="LogicaUsuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

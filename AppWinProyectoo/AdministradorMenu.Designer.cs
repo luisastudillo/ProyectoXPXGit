@@ -31,7 +31,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
-            this.btnClientes = new System.Windows.Forms.Button();
             this.btnEquipos = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
@@ -62,24 +61,13 @@
             this.button3.Font = new System.Drawing.Font("Cambria", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button3.Image = global::AppWinProyectoo.Properties.Resources.pieza;
             this.button3.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button3.Location = new System.Drawing.Point(91, 197);
+            this.button3.Location = new System.Drawing.Point(91, 157);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(234, 48);
             this.button3.TabIndex = 11;
             this.button3.Text = "Piezas";
             this.button3.UseVisualStyleBackColor = true;
-            // 
-            // btnClientes
-            // 
-            this.btnClientes.Font = new System.Drawing.Font("Cambria", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnClientes.Image = global::AppWinProyectoo.Properties.Resources.tecnico;
-            this.btnClientes.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnClientes.Location = new System.Drawing.Point(91, 129);
-            this.btnClientes.Name = "btnClientes";
-            this.btnClientes.Size = new System.Drawing.Size(234, 47);
-            this.btnClientes.TabIndex = 10;
-            this.btnClientes.Text = "Técnicos";
-            this.btnClientes.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // btnEquipos
             // 
@@ -90,8 +78,9 @@
             this.btnEquipos.Name = "btnEquipos";
             this.btnEquipos.Size = new System.Drawing.Size(234, 42);
             this.btnEquipos.TabIndex = 9;
-            this.btnEquipos.Text = "Recepción";
+            this.btnEquipos.Text = "Usuarios";
             this.btnEquipos.UseVisualStyleBackColor = true;
+            this.btnEquipos.Click += new System.EventHandler(this.btnEquipos_Click);
             // 
             // AdministradorMenu
             // 
@@ -101,7 +90,6 @@
             this.ClientSize = new System.Drawing.Size(418, 333);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.button3);
-            this.Controls.Add(this.btnClientes);
             this.Controls.Add(this.btnEquipos);
             this.Controls.Add(this.label1);
             this.Name = "AdministradorMenu";
@@ -115,7 +103,6 @@
         #endregion
 
         private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button btnClientes;
         private System.Windows.Forms.Button btnEquipos;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button button1;

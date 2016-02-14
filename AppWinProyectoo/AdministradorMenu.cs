@@ -22,5 +22,17 @@ namespace AppWinProyectoo
 
             
         }
+
+        private void btnEquipos_Click(object sender, EventArgs e)
+        {
+            AdministradorRecepcion ventana = new AdministradorRecepcion(this);
+            this.Visible = false;
+            ventana.Visible = true;
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

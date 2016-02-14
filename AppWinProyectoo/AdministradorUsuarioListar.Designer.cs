@@ -1,6 +1,6 @@
 ﻿namespace AppWinProyectoo
 {
-    partial class RecepcionClienteListar
+    partial class AdministradorUsuarioListar
     {
         /// <summary>
         /// Required designer variable.
@@ -40,16 +40,16 @@
             this.btnCerrar = new System.Windows.Forms.Button();
             this.btnListar = new System.Windows.Forms.Button();
             this.btnRegresar = new System.Windows.Forms.Button();
-            this.dgvClientes = new System.Windows.Forms.DataGridView();
+            this.dgvUsuarios = new System.Windows.Forms.DataGridView();
             this.Cedula = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Nombres = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Apellidos = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Domicilio = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Telefono = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Celular = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Tipo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvClientes)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvUsuarios)).BeginInit();
             this.SuspendLayout();
             // 
             // panel2
@@ -60,10 +60,10 @@
             this.panel2.Controls.Add(this.label1);
             this.panel2.Controls.Add(this.rbtNombre);
             this.panel2.Controls.Add(this.rbtCedula);
-            this.panel2.Location = new System.Drawing.Point(360, 345);
+            this.panel2.Location = new System.Drawing.Point(373, 342);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(310, 122);
-            this.panel2.TabIndex = 19;
+            this.panel2.TabIndex = 22;
             // 
             // btnBuscar
             // 
@@ -82,7 +82,6 @@
             this.txtBuscar.Name = "txtBuscar";
             this.txtBuscar.Size = new System.Drawing.Size(219, 20);
             this.txtBuscar.TabIndex = 7;
-            this.txtBuscar.TextChanged += new System.EventHandler(this.txtBuscar_TextChanged);
             // 
             // rbtApellido
             // 
@@ -121,6 +120,7 @@
             // rbtCedula
             // 
             this.rbtCedula.AutoSize = true;
+            this.rbtCedula.Checked = true;
             this.rbtCedula.Font = new System.Drawing.Font("Cambria", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rbtCedula.Location = new System.Drawing.Point(9, 33);
             this.rbtCedula.Name = "rbtCedula";
@@ -137,10 +137,10 @@
             this.panel1.Controls.Add(this.btnCerrar);
             this.panel1.Controls.Add(this.btnListar);
             this.panel1.Controls.Add(this.btnRegresar);
-            this.panel1.Location = new System.Drawing.Point(32, 345);
+            this.panel1.Location = new System.Drawing.Point(45, 342);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(290, 122);
-            this.panel1.TabIndex = 18;
+            this.panel1.TabIndex = 21;
             // 
             // btnImprimir
             // 
@@ -177,7 +177,7 @@
             this.btnListar.TabIndex = 12;
             this.btnListar.Text = "Listar";
             this.btnListar.UseVisualStyleBackColor = true;
-            this.btnListar.Click += new System.EventHandler(this.button2_Click);
+            this.btnListar.Click += new System.EventHandler(this.btnListar_Click);
             // 
             // btnRegresar
             // 
@@ -190,22 +190,22 @@
             this.btnRegresar.TabIndex = 11;
             this.btnRegresar.Text = "Regresar";
             this.btnRegresar.UseVisualStyleBackColor = true;
+            this.btnRegresar.Click += new System.EventHandler(this.btnRegresar_Click);
             // 
-            // dgvClientes
+            // dgvUsuarios
             // 
-            this.dgvClientes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvClientes.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgvUsuarios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvUsuarios.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Cedula,
             this.Nombres,
             this.Apellidos,
             this.Domicilio,
             this.Telefono,
-            this.Celular});
-            this.dgvClientes.Location = new System.Drawing.Point(10, 8);
-            this.dgvClientes.Name = "dgvClientes";
-            this.dgvClientes.Size = new System.Drawing.Size(676, 314);
-            this.dgvClientes.TabIndex = 17;
-            this.dgvClientes.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            this.Tipo});
+            this.dgvUsuarios.Location = new System.Drawing.Point(23, 5);
+            this.dgvUsuarios.Name = "dgvUsuarios";
+            this.dgvUsuarios.Size = new System.Drawing.Size(676, 314);
+            this.dgvUsuarios.TabIndex = 20;
             // 
             // Cedula
             // 
@@ -252,29 +252,29 @@
             this.Telefono.Name = "Telefono";
             this.Telefono.ReadOnly = true;
             // 
-            // Celular
+            // Tipo
             // 
-            this.Celular.Frozen = true;
-            this.Celular.HeaderText = "Celular";
-            this.Celular.Name = "Celular";
-            this.Celular.ReadOnly = true;
+            this.Tipo.Frozen = true;
+            this.Tipo.HeaderText = "Tipo";
+            this.Tipo.Name = "Tipo";
+            this.Tipo.ReadOnly = true;
             // 
-            // RecepcionClienteListar
+            // AdministradorUsuarioListar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightSkyBlue;
-            this.ClientSize = new System.Drawing.Size(698, 479);
+            this.ClientSize = new System.Drawing.Size(722, 468);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.dgvClientes);
-            this.Name = "RecepcionClienteListar";
-            this.Text = "Lista de Clientes";
-            this.Load += new System.EventHandler(this.RecepcionClienteListar_Load);
+            this.Controls.Add(this.dgvUsuarios);
+            this.Name = "AdministradorUsuarioListar";
+            this.Text = "Lista de Usuarios";
+            this.Load += new System.EventHandler(this.AdministradorUsuarioListar_Load);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvClientes)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvUsuarios)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -282,23 +282,23 @@
         #endregion
 
         private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Button btnBuscar;
+        private System.Windows.Forms.TextBox txtBuscar;
+        private System.Windows.Forms.RadioButton rbtApellido;
+        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.RadioButton rbtNombre;
         private System.Windows.Forms.RadioButton rbtCedula;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button btnImprimir;
         private System.Windows.Forms.Button btnCerrar;
-        private System.Windows.Forms.Button btnRegresar;
-        private System.Windows.Forms.DataGridView dgvClientes;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnListar;
-        private System.Windows.Forms.Button btnBuscar;
-        private System.Windows.Forms.TextBox txtBuscar;
-        private System.Windows.Forms.RadioButton rbtApellido;
+        private System.Windows.Forms.Button btnRegresar;
+        private System.Windows.Forms.DataGridView dgvUsuarios;
         private System.Windows.Forms.DataGridViewTextBoxColumn Cedula;
         private System.Windows.Forms.DataGridViewTextBoxColumn Nombres;
         private System.Windows.Forms.DataGridViewTextBoxColumn Apellidos;
         private System.Windows.Forms.DataGridViewTextBoxColumn Domicilio;
         private System.Windows.Forms.DataGridViewTextBoxColumn Telefono;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Celular;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Tipo;
     }
 }

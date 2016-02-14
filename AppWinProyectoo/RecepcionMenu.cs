@@ -23,7 +23,7 @@ namespace AppWinProyectoo
         {
             RecepcionEquipos nuevo = new RecepcionEquipos(this);
             nuevo.Visible = true;
-            this.Close();
+            this.Visible = false;
         }
 
         private void MenuRecepcion_Load(object sender, EventArgs e)

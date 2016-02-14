@@ -52,7 +52,6 @@ namespace AppWinProyectoo
                 dgvClientes.Rows.Add(row);
             }
             dgvClientes.AllowUserToAddRows = false;
-
         }
 
         private void txtBuscar_TextChanged(object sender, EventArgs e)
