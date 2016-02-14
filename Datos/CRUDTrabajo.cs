@@ -10,6 +10,48 @@ namespace Datos
     {
         static baseDataContext db = new baseDataContext();
 
+        public static string nuevo(Entidades.Trabajo trabajo)
+        {
+            string retorno = "exito";
+            Trabajo nuevo = entidadADato(trabajo);
+            try
+            {
+                db.Trabajo.InsertOnSubmit(nuevo);
+                db.SubmitChanges();
+            }
+            catch (Exception e)
+            {
+                retorno = e.Message;
+            }
+            return retorno;
+        }
+
+        public static string editar(Entidades.Trabajo trabajo)
+        {
+            string retorno = "";
+            try
+            {
+                var sql =
+                    from c in db.Trabajo
+                    where c.tra_codigo == trabajo.Codigo
+                    select c;
+
+                foreach (var s in sql)
+                {
+                    s.tra_codigo = trabajo.Codigo;
+                    s.tra_costo = trabajo.Costo;
+                    s.tra_descripcion = trabajo.Descripcion;
+                    db.SubmitChanges();
+                    retorno = "exito";
+                }
+            }
+            catch (Exception e)
+            {
+                retorno = e.Message;
+            }
+            return retorno;
+        }
+
         public static Entidades.Trabajo buscar(int codigo)
         {
             Entidades.Trabajo retorno = null;
@@ -36,12 +78,31 @@ namespace Datos
             }
             return retorno;
         }
-                
+
+        public static List<Entidades.Trabajo> lista()
+        {
+            List<Entidades.Trabajo> lista = new List<Entidades.Trabajo>();
+            try
+            {
+                var sql =
+                    from c in db.Trabajo
+                    select c;
+                foreach (var c in sql)
+                {
+                    lista.Add(datoAEntidad(c));
+                }
+            }
+            catch (Exception e)
+            {
+            }
+            return lista;
+        }
+        
         public static Entidades.Trabajo datoAEntidad(Trabajo t)
         {
             Entidades.Trabajo retorno = new Entidades.Trabajo();
             retorno.Codigo = t.tra_codigo;
-            retorno.Costo = (double)t.tra_costo;
+            retorno.Costo = (decimal)t.tra_costo;
             retorno.Descripcion = t.tra_descripcion;
             return retorno;
         }
@@ -54,5 +115,7 @@ namespace Datos
             retorno.tra_descripcion = t.Descripcion;
             return retorno;
         }
+
+
     }
 }

@@ -51,103 +51,103 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AdministradorMenu.cs">
+    <Compile Include="Administrador\AdministradorMenu.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AdministradorMenu.Designer.cs">
+    <Compile Include="Administrador\AdministradorMenu.Designer.cs">
       <DependentUpon>AdministradorMenu.cs</DependentUpon>
     </Compile>
-    <Compile Include="AdministradorPiezas.cs">
+    <Compile Include="Administrador\AdministradorPiezas.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AdministradorPiezas.Designer.cs">
+    <Compile Include="Administrador\AdministradorPiezas.Designer.cs">
       <DependentUpon>AdministradorPiezas.cs</DependentUpon>
     </Compile>
-    <Compile Include="AdministradorPiezasListar.cs">
+    <Compile Include="Administrador\AdministradorPiezasListar.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AdministradorPiezasListar.Designer.cs">
+    <Compile Include="Administrador\AdministradorPiezasListar.Designer.cs">
       <DependentUpon>AdministradorPiezasListar.cs</DependentUpon>
     </Compile>
-    <Compile Include="AdministradorRecepcion.cs">
+    <Compile Include="Administrador\AdministradorRecepcion.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AdministradorRecepcion.Designer.cs">
+    <Compile Include="Administrador\AdministradorRecepcion.Designer.cs">
       <DependentUpon>AdministradorRecepcion.cs</DependentUpon>
     </Compile>
-    <Compile Include="AdministradorTecnicos.cs">
+    <Compile Include="Administrador\AdministradorTecnicos.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AdministradorTecnicos.Designer.cs">
+    <Compile Include="Administrador\AdministradorTecnicos.Designer.cs">
       <DependentUpon>AdministradorTecnicos.cs</DependentUpon>
     </Compile>
-    <Compile Include="AdministradorTrabajo.cs">
+    <Compile Include="Administrador\AdministradorTrabajo.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AdministradorTrabajo.Designer.cs">
+    <Compile Include="Administrador\AdministradorTrabajo.Designer.cs">
       <DependentUpon>AdministradorTrabajo.cs</DependentUpon>
     </Compile>
-    <Compile Include="AdministradorUsuarioListar.cs">
+    <Compile Include="Administrador\AdministradorUsuarioListar.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AdministradorUsuarioListar.Designer.cs">
+    <Compile Include="Administrador\AdministradorUsuarioListar.Designer.cs">
       <DependentUpon>AdministradorUsuarioListar.cs</DependentUpon>
     </Compile>
     <Compile Include="DetalleProducto.cs" />
     <Compile Include="Factura.cs" />
     <Compile Include="Producto.cs" />
-    <Compile Include="RecepcionAgregarCliente.cs">
+    <Compile Include="Recepcion\RecepcionAgregarCliente.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="RecepcionAgregarCliente.Designer.cs">
+    <Compile Include="Recepcion\RecepcionAgregarCliente.Designer.cs">
       <DependentUpon>RecepcionAgregarCliente.cs</DependentUpon>
     </Compile>
-    <Compile Include="RecepcionAgregarIngreso.cs">
+    <Compile Include="Recepcion\RecepcionAgregarIngreso.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="RecepcionAgregarIngreso.Designer.cs">
+    <Compile Include="Recepcion\RecepcionAgregarIngreso.Designer.cs">
       <DependentUpon>RecepcionAgregarIngreso.cs</DependentUpon>
     </Compile>
-    <Compile Include="RecepcionAgregarProducto.cs">
+    <Compile Include="Recepcion\RecepcionAgregarProducto.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="RecepcionAgregarProducto.Designer.cs">
+    <Compile Include="Recepcion\RecepcionAgregarProducto.Designer.cs">
       <DependentUpon>RecepcionAgregarProducto.cs</DependentUpon>
     </Compile>
-    <Compile Include="RecepcionClienteListar.cs">
+    <Compile Include="Recepcion\RecepcionClienteListar.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="RecepcionClienteListar.Designer.cs">
+    <Compile Include="Recepcion\RecepcionClienteListar.Designer.cs">
       <DependentUpon>RecepcionClienteListar.cs</DependentUpon>
     </Compile>
-    <Compile Include="RecepcionEquiposConsulta.cs">
+    <Compile Include="Recepcion\RecepcionEquiposConsulta.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="RecepcionEquiposConsulta.Designer.cs">
+    <Compile Include="Recepcion\RecepcionEquiposConsulta.Designer.cs">
       <DependentUpon>RecepcionEquiposConsulta.cs</DependentUpon>
     </Compile>
-    <Compile Include="RecepcionEquipos.cs">
+    <Compile Include="Recepcion\RecepcionEquipos.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="RecepcionEquipos.Designer.cs">
+    <Compile Include="Recepcion\RecepcionEquipos.Designer.cs">
       <DependentUpon>RecepcionEquipos.cs</DependentUpon>
     </Compile>
-    <Compile Include="RecepcionCliente.cs">
+    <Compile Include="Recepcion\RecepcionCliente.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="RecepcionCliente.Designer.cs">
+    <Compile Include="Recepcion\RecepcionCliente.Designer.cs">
       <DependentUpon>RecepcionCliente.cs</DependentUpon>
     </Compile>
-    <Compile Include="RecepcionEquiposIngreso.cs">
+    <Compile Include="Recepcion\RecepcionEquiposIngreso.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="RecepcionEquiposIngreso.Designer.cs">
+    <Compile Include="Recepcion\RecepcionEquiposIngreso.Designer.cs">
       <DependentUpon>RecepcionEquiposIngreso.cs</DependentUpon>
     </Compile>
-    <Compile Include="RecepcionEquiposListar.cs">
+    <Compile Include="Recepcion\RecepcionEquiposListar.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="RecepcionEquiposListar.Designer.cs">
+    <Compile Include="Recepcion\RecepcionEquiposListar.Designer.cs">
       <DependentUpon>RecepcionEquiposListar.cs</DependentUpon>
     </Compile>
     <Compile Include="Login.cs">
@@ -156,81 +156,81 @@
     <Compile Include="Login.Designer.cs">
       <DependentUpon>Login.cs</DependentUpon>
     </Compile>
-    <Compile Include="RecepcionFactura.cs">
+    <Compile Include="Recepcion\RecepcionFactura.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="RecepcionFactura.Designer.cs">
+    <Compile Include="Recepcion\RecepcionFactura.Designer.cs">
       <DependentUpon>RecepcionFactura.cs</DependentUpon>
     </Compile>
-    <Compile Include="RecepcionMenu.cs">
+    <Compile Include="Recepcion\RecepcionMenu.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="RecepcionMenu.Designer.cs">
+    <Compile Include="Recepcion\RecepcionMenu.Designer.cs">
       <DependentUpon>RecepcionMenu.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RecepcionEquiposRetiro.cs">
+    <Compile Include="Recepcion\RecepcionEquiposRetiro.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="RecepcionEquiposRetiro.Designer.cs">
+    <Compile Include="Recepcion\RecepcionEquiposRetiro.Designer.cs">
       <DependentUpon>RecepcionEquiposRetiro.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="AdministradorMenu.resx">
+    <EmbeddedResource Include="Administrador\AdministradorMenu.resx">
       <DependentUpon>AdministradorMenu.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="AdministradorPiezas.resx">
+    <EmbeddedResource Include="Administrador\AdministradorPiezas.resx">
       <DependentUpon>AdministradorPiezas.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="AdministradorPiezasListar.resx">
+    <EmbeddedResource Include="Administrador\AdministradorPiezasListar.resx">
       <DependentUpon>AdministradorPiezasListar.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="AdministradorRecepcion.resx">
+    <EmbeddedResource Include="Administrador\AdministradorRecepcion.resx">
       <DependentUpon>AdministradorRecepcion.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="AdministradorTecnicos.resx">
+    <EmbeddedResource Include="Administrador\AdministradorTecnicos.resx">
       <DependentUpon>AdministradorTecnicos.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="AdministradorTrabajo.resx">
+    <EmbeddedResource Include="Administrador\AdministradorTrabajo.resx">
       <DependentUpon>AdministradorTrabajo.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="AdministradorUsuarioListar.resx">
+    <EmbeddedResource Include="Administrador\AdministradorUsuarioListar.resx">
       <DependentUpon>AdministradorUsuarioListar.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="RecepcionAgregarCliente.resx">
+    <EmbeddedResource Include="Recepcion\RecepcionAgregarCliente.resx">
       <DependentUpon>RecepcionAgregarCliente.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="RecepcionAgregarIngreso.resx">
+    <EmbeddedResource Include="Recepcion\RecepcionAgregarIngreso.resx">
       <DependentUpon>RecepcionAgregarIngreso.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="RecepcionAgregarProducto.resx">
+    <EmbeddedResource Include="Recepcion\RecepcionAgregarProducto.resx">
       <DependentUpon>RecepcionAgregarProducto.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="RecepcionClienteListar.resx">
+    <EmbeddedResource Include="Recepcion\RecepcionClienteListar.resx">
       <DependentUpon>RecepcionClienteListar.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="RecepcionEquiposConsulta.resx">
+    <EmbeddedResource Include="Recepcion\RecepcionEquiposConsulta.resx">
       <DependentUpon>RecepcionEquiposConsulta.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="RecepcionEquipos.resx">
+    <EmbeddedResource Include="Recepcion\RecepcionEquipos.resx">
       <DependentUpon>RecepcionEquipos.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="RecepcionCliente.resx">
+    <EmbeddedResource Include="Recepcion\RecepcionCliente.resx">
       <DependentUpon>RecepcionCliente.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="RecepcionEquiposIngreso.resx">
+    <EmbeddedResource Include="Recepcion\RecepcionEquiposIngreso.resx">
       <DependentUpon>RecepcionEquiposIngreso.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="RecepcionEquiposListar.resx">
+    <EmbeddedResource Include="Recepcion\RecepcionEquiposListar.resx">
       <DependentUpon>RecepcionEquiposListar.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="RecepcionFactura.resx">
+    <EmbeddedResource Include="Recepcion\RecepcionFactura.resx">
       <DependentUpon>RecepcionFactura.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="RecepcionMenu.resx">
+    <EmbeddedResource Include="Recepcion\RecepcionMenu.resx">
       <DependentUpon>RecepcionMenu.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -243,7 +243,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="RecepcionEquiposRetiro.resx">
+    <EmbeddedResource Include="Recepcion\RecepcionEquiposRetiro.resx">
       <DependentUpon>RecepcionEquiposRetiro.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">

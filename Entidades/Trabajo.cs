@@ -10,7 +10,7 @@ namespace Entidades
     {
         int codigo;
         string descripcion;
-        double costo;
+        decimal costo;
 
 
         public Trabajo()
@@ -18,7 +18,7 @@ namespace Entidades
 
         }
 
-        public Trabajo(int codigo, string descripcion, double costo)
+        public Trabajo(int codigo, string descripcion, decimal costo)
         {
             this.codigo = codigo;
             this.descripcion = descripcion;
@@ -51,7 +51,7 @@ namespace Entidades
             }
         }
 
-        public double Costo
+        public decimal Costo
         {
             get
             {
