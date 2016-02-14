@@ -154,14 +154,14 @@ namespace Datos
                 foreach (var c in sql)
                 {
                     if (c.pie_codigo >= retorno)
-                        retorno = c.pie_codigo;
+                        retorno = c.pie_codigo + 1;
                 }
             }
             catch (Exception e)
             {
             }
 
-            return retorno + 1;
+            return retorno;
         }
         
         public static Entidades.Pieza datoAEntidad(Pieza p)
