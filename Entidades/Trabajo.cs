@@ -11,6 +11,7 @@ namespace Entidades
         int codigo;
         string descripcion;
         decimal costo;
+        bool baja;
 
 
         public Trabajo()
@@ -23,6 +24,15 @@ namespace Entidades
             this.codigo = codigo;
             this.descripcion = descripcion;
             this.costo = costo;
+            this.baja = false;
+        }
+
+        public Trabajo(int codigo, string descripcion, decimal costo, bool baja)
+        {
+            this.codigo = codigo;
+            this.descripcion = descripcion;
+            this.costo = costo;
+            this.baja = baja;
         }
 
         public int Codigo
@@ -61,6 +71,19 @@ namespace Entidades
             set
             {
                 costo = value;
+            }
+        }
+
+        public bool Baja
+        {
+            get
+            {
+                return baja;
+            }
+
+            set
+            {
+                baja = value;
             }
         }
     }

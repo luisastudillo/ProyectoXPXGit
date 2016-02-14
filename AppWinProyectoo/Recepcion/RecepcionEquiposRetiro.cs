@@ -33,7 +33,7 @@ namespace AppWinProyectoo
 
         private void cmbCodigos_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            llenar();
         }
 
         private void llenar()

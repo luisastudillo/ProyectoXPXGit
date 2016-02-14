@@ -41,6 +41,7 @@ namespace Datos
                     s.tra_codigo = trabajo.Codigo;
                     s.tra_costo = trabajo.Costo;
                     s.tra_descripcion = trabajo.Descripcion;
+                    s.pie_baja = trabajo.Baja;
                     db.SubmitChanges();
                     retorno = "exito";
                 }
@@ -98,12 +99,35 @@ namespace Datos
             return lista;
         }
         
+        public static int siguienteCodigo()
+        {
+            int retorno = 0;
+
+            try
+            {
+                var sql =
+                    from c in db.Trabajo
+                    select c;
+                foreach (var c in sql)
+                {
+                    if (c.tra_codigo > retorno)
+                        retorno = c.tra_codigo;
+                }               
+            }
+            catch (Exception e)
+            {
+            }
+
+            return retorno + 1;
+        }
+
         public static Entidades.Trabajo datoAEntidad(Trabajo t)
         {
             Entidades.Trabajo retorno = new Entidades.Trabajo();
             retorno.Codigo = t.tra_codigo;
             retorno.Costo = (decimal)t.tra_costo;
             retorno.Descripcion = t.tra_descripcion;
+            retorno.Baja = (bool)t.pie_baja;
             return retorno;
         }
 
@@ -113,8 +137,10 @@ namespace Datos
             retorno.tra_codigo = t.Codigo;
             retorno.tra_costo = Convert.ToDecimal(t.Costo);
             retorno.tra_descripcion = t.Descripcion;
+            retorno.pie_baja = t.Baja;
             return retorno;
         }
+
 
 
     }

@@ -65,6 +65,11 @@ namespace AppWinProyectoo
 
         private void btnBuscar_Click(object sender, EventArgs e)
         {
+            if(txtBuscar.Text == "")
+            {
+                MessageBox.Show("Ingrese texto a buscar");
+                return;
+            }
             List<Entidades.Pieza> lista;
             if (rbtModelo.Checked)
                 lista = LogicaNegocios.LogicaPieza.listaPorModelo(txtBuscar.Text);

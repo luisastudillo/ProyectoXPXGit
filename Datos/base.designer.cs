@@ -48,9 +48,6 @@ namespace Datos
     partial void InsertProducto(Producto instance);
     partial void UpdateProducto(Producto instance);
     partial void DeleteProducto(Producto instance);
-    partial void InsertTrabajo(Trabajo instance);
-    partial void UpdateTrabajo(Trabajo instance);
-    partial void DeleteTrabajo(Trabajo instance);
     partial void InsertUsuario(Usuario instance);
     partial void UpdateUsuario(Usuario instance);
     partial void DeleteUsuario(Usuario instance);
@@ -60,6 +57,9 @@ namespace Datos
     partial void InsertDetalle_producto(Detalle_producto instance);
     partial void UpdateDetalle_producto(Detalle_producto instance);
     partial void DeleteDetalle_producto(Detalle_producto instance);
+    partial void InsertTrabajo(Trabajo instance);
+    partial void UpdateTrabajo(Trabajo instance);
+    partial void DeleteTrabajo(Trabajo instance);
     #endregion
 		
 		public baseDataContext() : 
@@ -148,14 +148,6 @@ namespace Datos
 			}
 		}
 		
-		public System.Data.Linq.Table<Trabajo> Trabajo
-		{
-			get
-			{
-				return this.GetTable<Trabajo>();
-			}
-		}
-		
 		public System.Data.Linq.Table<Trabajo_realizado> Trabajo_realizado
 		{
 			get
@@ -185,6 +177,14 @@ namespace Datos
 			get
 			{
 				return this.GetTable<Detalle_producto>();
+			}
+		}
+		
+		public System.Data.Linq.Table<Trabajo> Trabajo
+		{
+			get
+			{
+				return this.GetTable<Trabajo>();
 			}
 		}
 	}
@@ -1615,116 +1615,6 @@ namespace Datos
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Trabajo")]
-	public partial class Trabajo : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _tra_codigo;
-		
-		private string _tra_descripcion;
-		
-		private System.Nullable<decimal> _tra_costo;
-		
-    #region Definiciones de métodos de extensibilidad
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void Ontra_codigoChanging(int value);
-    partial void Ontra_codigoChanged();
-    partial void Ontra_descripcionChanging(string value);
-    partial void Ontra_descripcionChanged();
-    partial void Ontra_costoChanging(System.Nullable<decimal> value);
-    partial void Ontra_costoChanged();
-    #endregion
-		
-		public Trabajo()
-		{
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_tra_codigo", DbType="Int NOT NULL", IsPrimaryKey=true)]
-		public int tra_codigo
-		{
-			get
-			{
-				return this._tra_codigo;
-			}
-			set
-			{
-				if ((this._tra_codigo != value))
-				{
-					this.Ontra_codigoChanging(value);
-					this.SendPropertyChanging();
-					this._tra_codigo = value;
-					this.SendPropertyChanged("tra_codigo");
-					this.Ontra_codigoChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_tra_descripcion", DbType="VarChar(50)")]
-		public string tra_descripcion
-		{
-			get
-			{
-				return this._tra_descripcion;
-			}
-			set
-			{
-				if ((this._tra_descripcion != value))
-				{
-					this.Ontra_descripcionChanging(value);
-					this.SendPropertyChanging();
-					this._tra_descripcion = value;
-					this.SendPropertyChanged("tra_descripcion");
-					this.Ontra_descripcionChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_tra_costo", DbType="Decimal(7,2)")]
-		public System.Nullable<decimal> tra_costo
-		{
-			get
-			{
-				return this._tra_costo;
-			}
-			set
-			{
-				if ((this._tra_costo != value))
-				{
-					this.Ontra_costoChanging(value);
-					this.SendPropertyChanging();
-					this._tra_costo = value;
-					this.SendPropertyChanged("tra_costo");
-					this.Ontra_costoChanged();
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-	}
-	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Trabajo_realizado")]
 	public partial class Trabajo_realizado
 	{
@@ -2878,6 +2768,140 @@ namespace Datos
 						this._pro_codigo = default(int);
 					}
 					this.SendPropertyChanged("Producto");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Trabajo")]
+	public partial class Trabajo : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _tra_codigo;
+		
+		private string _tra_descripcion;
+		
+		private System.Nullable<decimal> _tra_costo;
+		
+		private System.Nullable<bool> _pie_baja;
+		
+    #region Definiciones de métodos de extensibilidad
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void Ontra_codigoChanging(int value);
+    partial void Ontra_codigoChanged();
+    partial void Ontra_descripcionChanging(string value);
+    partial void Ontra_descripcionChanged();
+    partial void Ontra_costoChanging(System.Nullable<decimal> value);
+    partial void Ontra_costoChanged();
+    partial void Onpie_bajaChanging(System.Nullable<bool> value);
+    partial void Onpie_bajaChanged();
+    #endregion
+		
+		public Trabajo()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_tra_codigo", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		public int tra_codigo
+		{
+			get
+			{
+				return this._tra_codigo;
+			}
+			set
+			{
+				if ((this._tra_codigo != value))
+				{
+					this.Ontra_codigoChanging(value);
+					this.SendPropertyChanging();
+					this._tra_codigo = value;
+					this.SendPropertyChanged("tra_codigo");
+					this.Ontra_codigoChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_tra_descripcion", DbType="VarChar(50)")]
+		public string tra_descripcion
+		{
+			get
+			{
+				return this._tra_descripcion;
+			}
+			set
+			{
+				if ((this._tra_descripcion != value))
+				{
+					this.Ontra_descripcionChanging(value);
+					this.SendPropertyChanging();
+					this._tra_descripcion = value;
+					this.SendPropertyChanged("tra_descripcion");
+					this.Ontra_descripcionChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_tra_costo", DbType="Decimal(7,2)")]
+		public System.Nullable<decimal> tra_costo
+		{
+			get
+			{
+				return this._tra_costo;
+			}
+			set
+			{
+				if ((this._tra_costo != value))
+				{
+					this.Ontra_costoChanging(value);
+					this.SendPropertyChanging();
+					this._tra_costo = value;
+					this.SendPropertyChanged("tra_costo");
+					this.Ontra_costoChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_pie_baja", DbType="Bit")]
+		public System.Nullable<bool> pie_baja
+		{
+			get
+			{
+				return this._pie_baja;
+			}
+			set
+			{
+				if ((this._pie_baja != value))
+				{
+					this.Onpie_bajaChanging(value);
+					this.SendPropertyChanging();
+					this._pie_baja = value;
+					this.SendPropertyChanged("pie_baja");
+					this.Onpie_bajaChanged();
 				}
 			}
 		}

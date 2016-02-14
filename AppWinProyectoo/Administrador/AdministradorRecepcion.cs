@@ -38,6 +38,11 @@ namespace AppWinProyectoo
 
         private void button2_Click(object sender, EventArgs e)
         {
+            if (enBlanco())
+            {
+                MessageBox.Show("No se puede dejar casillas en blanco");
+                return;
+            }
             string cedula, nombres, apellidos, direccion, telefono, contrasenia, tipo;
             cedula = txtCedula.Text;
             nombres = txtNombre.Text;
@@ -126,6 +131,8 @@ namespace AppWinProyectoo
                 if (control is Button)
                     ((Button)control).Enabled = false;
             }
+            btnGrande.Enabled = true;
+            btnPequenio.Enabled = true;
         }
 
         public void activarBotones()
@@ -177,10 +184,16 @@ namespace AppWinProyectoo
         }
 
         private void btnBuscar_Click(object sender, EventArgs e)
-        {
-            string cedula = txtCedula.Text;
+        {           
+            
             if (btnBuscar.Text == "Buscar")
             {
+                if (txtCedula.Text == "")
+                {
+                    MessageBox.Show("Ingrese una cedula");
+                    return;
+                }
+                string cedula = txtCedula.Text;
                 Entidades.Usuario encontrado = LogicaNegocios.LogicaUsuario.buscar(cedula);
                 if (encontrado != null)
                 {
@@ -261,5 +274,18 @@ namespace AppWinProyectoo
                 control.Font = new Font(control.Font.Name, control.Font.Size - 1, control.Font.Style, control.Font.Unit);
             }
         }
+
+        private bool enBlanco()
+        {
+            bool retorno = false;
+            foreach (Control control in this.Controls)
+            {
+                if (control is TextBox)
+                    if (((TextBox)control).Text == "")
+                        retorno = true;
+            }
+            return retorno;
+        }
+
     }
 }

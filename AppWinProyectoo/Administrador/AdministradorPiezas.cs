@@ -214,6 +214,11 @@ namespace AppWinProyectoo
             
             if (btnBuscar.Text == "Buscar")
             {
+                if (txtCodigo.Text == "")
+                {
+                    MessageBox.Show("Ingrese un código");
+                    return;
+                }
                 int codigo = Convert.ToInt32(txtCodigo.Text);
                 Entidades.Pieza encontrado = LogicaNegocios.LogicaPieza.buscar(codigo);
                 if (encontrado != null)
@@ -266,5 +271,58 @@ namespace AppWinProyectoo
             return retorno;
         }
 
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtCodigo_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtModelo_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtTipo_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtCosto_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtCantidad_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnGrande_Click(object sender, EventArgs e)
+        {
+            foreach (Control control in this.Controls)
+            {
+                control.Font = new Font(control.Font.Name, control.Font.Size + 1, control.Font.Style, control.Font.Unit);
+            }
+            foreach (Control control in panel1.Controls)
+            {
+                control.Font = new Font(control.Font.Name, control.Font.Size + 1, control.Font.Style, control.Font.Unit);
+            }
+        }
+
+        private void btnPequenio_Click(object sender, EventArgs e)
+        {
+            foreach (Control control in this.Controls)
+            {
+                control.Font = new Font(control.Font.Name, control.Font.Size - 1, control.Font.Style, control.Font.Unit);
+            }
+            foreach (Control control in panel1.Controls)
+            {
+                control.Font = new Font(control.Font.Name, control.Font.Size - 1, control.Font.Style, control.Font.Unit);
+            }
+        }
     }
 }

@@ -31,9 +31,35 @@ namespace LogicaNegocios
             return Datos.CRUDProducto.editar(nuevo);
         }
 
+        public static List<Entidades.Producto> lista()
+        {
+            return Datos.CRUDProducto.lista();
+        }
+        
         public static int siguienteCodigo()
         {
             return Datos.CRUDProducto.siguienteCodigo();
         }
+
+        public static Entidades.Producto buscarPorModelo(string modelo)
+        {
+            return Datos.CRUDProducto.buscarPorModelo(modelo);
+        }
+
+        public static Entidades.Producto buscarPorTipo(string tipo)
+        {
+            return Datos.CRUDProducto.buscarPorTipo(tipo);
+        }
+
+        public static List<Entidades.Producto> listaPorModelo(string modelo)
+        {
+            return Datos.CRUDProducto.listaPorModelo(modelo);
+        }
+
+        public static List<Entidades.Producto> listaPorTipo(string tipo)
+        {
+            return Datos.CRUDProducto.listaPorTipo(tipo);
+        }
+
     }
 }

@@ -10,6 +10,22 @@ namespace Datos
     {
         static baseDataContext db = new baseDataContext();
 
+        public static string nuevo(Entidades.Producto Producto)
+        {
+            string retorno = "exito";
+            Producto nuevo = entidadADato(Producto);
+            try
+            {
+                db.Producto.InsertOnSubmit(nuevo);
+                db.SubmitChanges();
+            }
+            catch (Exception e)
+            {
+                retorno = e.Message;
+            }
+            return retorno;
+        }
+        
         public static Entidades.Producto buscar(int codigo)
         {
             Entidades.Producto retorno = null;
@@ -37,6 +53,60 @@ namespace Datos
             return retorno;
         }
 
+        public static Entidades.Producto buscarPorModelo(string modelo)
+        {
+            Entidades.Producto retorno = null;
+            Producto encontrado = null;
+
+            try
+            {
+                var sql =
+                    from c in db.Producto
+                    where c.pro_modelo.ToLower().Contains(modelo.ToLower())
+                    select c;
+                foreach (var c in sql)
+                {
+                    encontrado = (Producto)c;
+                }
+
+                if (encontrado != null)
+                {
+                    retorno = datoAEntidad(encontrado);
+                }
+            }
+            catch (Exception e)
+            {
+            }
+            return retorno;
+        }
+
+        public static Entidades.Producto buscarPorTipo(string tipo)
+        {
+            Entidades.Producto retorno = null;
+            Producto encontrado = null;
+
+            try
+            {
+                var sql =
+                    from c in db.Producto
+                    where c.pro_tipo.ToLower().Contains(tipo.ToLower())
+                    select c;
+                foreach (var c in sql)
+                {
+                    encontrado = (Producto)c;
+                }
+
+                if (encontrado != null)
+                {
+                    retorno = datoAEntidad(encontrado);
+                }
+            }
+            catch (Exception e)
+            {
+            }
+            return retorno;
+        }
+        
         public static string editar(Entidades.Producto p)
         {
             string retorno = "";
@@ -67,6 +137,65 @@ namespace Datos
             return retorno;
         }
 
+        public static List<Entidades.Producto> lista()
+        {
+            List<Entidades.Producto> lista = new List<Entidades.Producto>();
+            try
+            {
+                var sql =
+                    from c in db.Producto
+                    select c;
+                foreach (var c in sql)
+                {
+                    lista.Add(datoAEntidad(c));
+                }
+            }
+            catch (Exception e)
+            {
+            }
+            return lista;
+        }
+
+        public static List<Entidades.Producto> listaPorModelo(string modelo)
+        {
+            List<Entidades.Producto> lista = new List<Entidades.Producto>();
+            try
+            {
+                var sql =
+                    from c in db.Producto
+                    select c;
+                foreach (var c in sql)
+                {
+                    if(c.pro_modelo.ToLower().Contains(modelo.ToLower()))
+                        lista.Add(datoAEntidad(c));
+                }
+            }
+            catch (Exception e)
+            {
+            }
+            return lista;
+        }
+
+        public static List<Entidades.Producto> listaPorTipo(string tipo)
+        {
+            List<Entidades.Producto> lista = new List<Entidades.Producto>();
+            try
+            {
+                var sql =
+                    from c in db.Producto
+                    select c;
+                foreach (var c in sql)
+                {
+                    if (c.pro_tipo.ToLower().Contains(tipo.ToLower()))
+                        lista.Add(datoAEntidad(c));
+                }
+            }
+            catch (Exception e)
+            {
+            }
+            return lista;
+        }
+
         public static int siguienteCodigo()
         {
             int retorno = 0;
@@ -86,8 +215,7 @@ namespace Datos
             }
             return retorno +1;
         }
-
-
+        
         public static Entidades.Producto datoAEntidad(Producto p)
         {
             Entidades.Producto retorno = new Entidades.Producto();
