@@ -134,15 +134,6 @@ namespace AppWinProyectoo
             inicial();
         }
 
-        private bool enBlanco()
-        {
-            bool retorno = false;
-            if (txtCantidad.Text == "" || txtCodigo.Text == "" || txtCosto.Text == "" || txtModelo.Text == "" || txtTipo.Text == "")
-                retorno = true;
-
-            return retorno;
-        }
-
         private void inicial()
         {
             borrarCasillas();
@@ -156,11 +147,6 @@ namespace AppWinProyectoo
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            if (enBlanco())
-            {
-                MessageBox.Show("No puedes dejar casillas en blanco");
-                return;
-            }
             string modelo, tipo;
             double costo;
             int codigo, cantidad;
@@ -171,8 +157,6 @@ namespace AppWinProyectoo
             cantidad = Convert.ToInt32(txtCantidad.Text);
             costo = Convert.ToDouble(txtCosto.Text);
             baja = chbBaja.Checked;
-            
-
             if (editando)
             {
                 editar(codigo, modelo, tipo, costo, cantidad, baja);
