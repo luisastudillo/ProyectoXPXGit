@@ -40,7 +40,7 @@ namespace Datos
 
         public static string nuevo(Entidades.Pieza pieza)
         {
-            string retorno = "agregado";
+            string retorno = "exito";
             Pieza nuevo = entidadADato(pieza);
             try
             {
@@ -83,6 +83,87 @@ namespace Datos
             return retorno;
         }
 
+        public static List<Entidades.Pieza> lista()
+        {
+            List<Entidades.Pieza> lista = new List<Entidades.Pieza>();
+            try
+            {
+                var sql =
+                    from c in db.Pieza
+                    select c;
+                foreach (var c in sql)
+                {
+                    lista.Add(datoAEntidad(c));
+                }
+            }
+            catch (Exception e)
+            {
+            }
+            return lista;
+        }
+
+        public static List<Entidades.Pieza> listaPorModelo(string modelo)
+        {
+            List<Entidades.Pieza> lista = new List<Entidades.Pieza>();
+            try
+            {
+                var sql =
+                    from c in db.Pieza
+                    select c;
+                foreach (var c in sql)
+                {
+                    if (c.pie_modelo.ToLower().Contains(modelo.ToLower()))
+                        lista.Add(datoAEntidad(c));
+                }
+            }
+            catch (Exception e)
+            {
+            }
+            return lista;
+        }
+
+        public static List<Entidades.Pieza> listaPorTipo(string tipo)
+        {
+            List<Entidades.Pieza> lista = new List<Entidades.Pieza>();
+            try
+            {
+                var sql =
+                    from c in db.Pieza
+                    select c;
+                foreach (var c in sql)
+                {
+                    if (c.pie_tipo.ToLower().Contains(tipo.ToLower()))
+                        lista.Add(datoAEntidad(c));
+                }
+            }
+            catch (Exception e)
+            {
+            }
+            return lista;
+        }
+
+        public static int siguienteCodigo()
+        {
+            int retorno = 0;
+
+            try
+            {
+                var sql =
+                    from c in db.Pieza
+                    select c;
+                foreach (var c in sql)
+                {
+                    if (c.pie_codigo >= retorno)
+                        retorno = c.pie_codigo + 1;
+                }
+            }
+            catch (Exception e)
+            {
+            }
+
+            return retorno;
+        }
+        
         public static Entidades.Pieza datoAEntidad(Pieza p)
         {
             Entidades.Pieza retorno = new Entidades.Pieza();

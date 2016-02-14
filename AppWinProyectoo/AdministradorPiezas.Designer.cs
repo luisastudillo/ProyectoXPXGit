@@ -46,6 +46,9 @@
             this.btnGuardar = new System.Windows.Forms.Button();
             this.btnNuevo = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
+            this.chbBaja = new System.Windows.Forms.CheckBox();
+            this.txtCantidad = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -53,7 +56,7 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = global::AppWinProyectoo.Properties.Resources.pie;
-            this.pictureBox1.Location = new System.Drawing.Point(403, 26);
+            this.pictureBox1.Location = new System.Drawing.Point(371, 47);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(128, 128);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -65,28 +68,28 @@
             this.txtCodigo.Location = new System.Drawing.Point(84, 23);
             this.txtCodigo.Name = "txtCodigo";
             this.txtCodigo.Size = new System.Drawing.Size(193, 20);
-            this.txtCodigo.TabIndex = 60;
+            this.txtCodigo.TabIndex = 1;
             // 
             // txtModelo
             // 
             this.txtModelo.Location = new System.Drawing.Point(84, 65);
             this.txtModelo.Name = "txtModelo";
             this.txtModelo.Size = new System.Drawing.Size(193, 20);
-            this.txtModelo.TabIndex = 59;
+            this.txtModelo.TabIndex = 2;
             // 
             // txtTipo
             // 
             this.txtTipo.Location = new System.Drawing.Point(84, 110);
             this.txtTipo.Name = "txtTipo";
             this.txtTipo.Size = new System.Drawing.Size(193, 20);
-            this.txtTipo.TabIndex = 58;
+            this.txtTipo.TabIndex = 3;
             // 
             // txtCosto
             // 
             this.txtCosto.Location = new System.Drawing.Point(84, 155);
             this.txtCosto.Name = "txtCosto";
             this.txtCosto.Size = new System.Drawing.Size(193, 20);
-            this.txtCosto.TabIndex = 57;
+            this.txtCosto.TabIndex = 4;
             // 
             // label3
             // 
@@ -129,7 +132,7 @@
             this.panel1.Controls.Add(this.btnAtras);
             this.panel1.Controls.Add(this.btnGuardar);
             this.panel1.Controls.Add(this.btnNuevo);
-            this.panel1.Location = new System.Drawing.Point(8, 200);
+            this.panel1.Location = new System.Drawing.Point(8, 233);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(550, 88);
             this.panel1.TabIndex = 53;
@@ -145,6 +148,7 @@
             this.btnListar.TabIndex = 18;
             this.btnListar.Text = "Listar";
             this.btnListar.UseVisualStyleBackColor = true;
+            this.btnListar.Click += new System.EventHandler(this.btnListar_Click);
             // 
             // btnBaja
             // 
@@ -155,8 +159,9 @@
             this.btnBaja.Name = "btnBaja";
             this.btnBaja.Size = new System.Drawing.Size(130, 38);
             this.btnBaja.TabIndex = 17;
-            this.btnBaja.Text = "Eliminar";
+            this.btnBaja.Text = "Baja";
             this.btnBaja.UseVisualStyleBackColor = true;
+            this.btnBaja.Click += new System.EventHandler(this.btnBaja_Click);
             // 
             // btnCancelar
             // 
@@ -193,8 +198,9 @@
             this.btnBuscar.Name = "btnBuscar";
             this.btnBuscar.Size = new System.Drawing.Size(130, 38);
             this.btnBuscar.TabIndex = 14;
-            this.btnBuscar.Text = "Buscar";
+            this.btnBuscar.Text = "Busqueda";
             this.btnBuscar.UseVisualStyleBackColor = true;
+            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
             // 
             // btnAtras
             // 
@@ -217,9 +223,10 @@
             this.btnGuardar.Location = new System.Drawing.Point(139, 3);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(130, 38);
-            this.btnGuardar.TabIndex = 12;
+            this.btnGuardar.TabIndex = 7;
             this.btnGuardar.Text = "Guardar";
             this.btnGuardar.UseVisualStyleBackColor = true;
+            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
             // 
             // btnNuevo
             // 
@@ -244,12 +251,43 @@
             this.label1.TabIndex = 52;
             this.label1.Text = "Código:";
             // 
+            // chbBaja
+            // 
+            this.chbBaja.AutoSize = true;
+            this.chbBaja.Font = new System.Drawing.Font("Cambria", 11.25F);
+            this.chbBaja.Location = new System.Drawing.Point(405, 196);
+            this.chbBaja.Name = "chbBaja";
+            this.chbBaja.Size = new System.Drawing.Size(54, 21);
+            this.chbBaja.TabIndex = 6;
+            this.chbBaja.Text = "Baja";
+            this.chbBaja.UseVisualStyleBackColor = true;
+            // 
+            // txtCantidad
+            // 
+            this.txtCantidad.Location = new System.Drawing.Point(84, 197);
+            this.txtCantidad.Name = "txtCantidad";
+            this.txtCantidad.Size = new System.Drawing.Size(193, 20);
+            this.txtCantidad.TabIndex = 5;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Cambria", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(5, 200);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(67, 17);
+            this.label5.TabIndex = 63;
+            this.label5.Text = "Cantidad:";
+            // 
             // AdministradorPiezas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightSkyBlue;
-            this.ClientSize = new System.Drawing.Size(562, 296);
+            this.ClientSize = new System.Drawing.Size(562, 329);
+            this.Controls.Add(this.txtCantidad);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.chbBaja);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.txtCodigo);
             this.Controls.Add(this.txtModelo);
@@ -262,6 +300,7 @@
             this.Controls.Add(this.label1);
             this.Name = "AdministradorPiezas";
             this.Text = "Ingreso de Piezas";
+            this.Load += new System.EventHandler(this.AdministradorPiezas_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -289,5 +328,8 @@
         private System.Windows.Forms.Button btnGuardar;
         private System.Windows.Forms.Button btnNuevo;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.CheckBox chbBaja;
+        private System.Windows.Forms.TextBox txtCantidad;
+        private System.Windows.Forms.Label label5;
     }
 }
