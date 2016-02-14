@@ -107,6 +107,7 @@ namespace AppWinProyectoo
             btnCancelar.Enabled = false;
             btnGuardar.Enabled = false;
             btnEditar.Enabled = false;
+            btnBaja.Enabled = false;
             btnBuscar.Text = "Busqueda";
         }
 
@@ -147,6 +148,12 @@ namespace AppWinProyectoo
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
+            if (enBlanco())
+            {
+                MessageBox.Show("No se puede dejar casillas en blanco");
+                return;
+            }
+
             string modelo, tipo;
             double costo;
             int codigo, cantidad;
@@ -245,6 +252,18 @@ namespace AppWinProyectoo
             chbBaja.Enabled = true;
             chbBaja.Checked = p.Baja;
             chbBaja.Enabled = false;
+        }
+
+        private bool enBlanco()
+        {
+            bool retorno = false;
+            foreach (Control control in this.Controls)
+            {
+                if (control is TextBox)
+                    if (((TextBox)control).Text == "")
+                        retorno = true;
+            }
+            return retorno;
         }
 
     }

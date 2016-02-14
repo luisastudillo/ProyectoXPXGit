@@ -11,8 +11,11 @@ namespace Datos
 
         static baseDataContext db = new baseDataContext();
         
+
         public static Entidades.Cliente buscar(string cedula)
         {
+            
+
             Entidades.Cliente retorno = null;
             Cliente encontrado = null;
 
