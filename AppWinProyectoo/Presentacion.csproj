@@ -191,6 +191,18 @@
     <Compile Include="Recepcion\RecepcionEquiposRetiro.Designer.cs">
       <DependentUpon>RecepcionEquiposRetiro.cs</DependentUpon>
     </Compile>
+    <Compile Include="Tecnico\TecnicoAceptar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tecnico\TecnicoAceptar.Designer.cs">
+      <DependentUpon>TecnicoAceptar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Tecnico\TecnicoMenu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tecnico\TecnicoMenu.Designer.cs">
+      <DependentUpon>TecnicoMenu.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Administrador\AdministradorMenu.resx">
       <DependentUpon>AdministradorMenu.cs</DependentUpon>
     </EmbeddedResource>
@@ -269,6 +281,12 @@
     </Compile>
     <EmbeddedResource Include="Recepcion\RecepcionEquiposRetiro.resx">
       <DependentUpon>RecepcionEquiposRetiro.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tecnico\TecnicoAceptar.resx">
+      <DependentUpon>TecnicoAceptar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tecnico\TecnicoMenu.resx">
+      <DependentUpon>TecnicoMenu.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

@@ -182,7 +182,7 @@ namespace Datos
             {
                 var sql =
                     from c in db.Ingreso
-                    where c.ing_estado == "reparado"
+                    where c.ing_estado == "reparado" && (bool)c.ing_garantía
                     select c;
                 foreach (var c in sql)
                 {
@@ -213,8 +213,27 @@ namespace Datos
             return retorno;
         }
 
+        public static List<Entidades.Ingreso> listaIngresados()
+        {
+            List<Entidades.Ingreso> lista = new List<Entidades.Ingreso>();
+            try
+            {
+                var sql =
+                    from c in db.Ingreso
+                    where c.ing_estado == "ingresado"
+                    select c;
+                foreach (var c in sql)
+                {
+                    lista.Add(datoAEntidad(c));
+                }
+            }
+            catch (Exception e)
+            {
+            }
+            return lista;
+        }
 
-      
+
 
     }
 }

@@ -19,6 +19,7 @@ namespace Entidades
         string ced_recepcionista;
         string serie_equipo;
         bool garantia;
+        //ingresado-aceptado-reparado-entregado-pagado
         string estado;
         int n_factura;
         double costo;

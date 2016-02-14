@@ -45,6 +45,8 @@ namespace AppWinProyectoo
             txtDiagnostico.Text = ingreso.Diagnostico;
             llenarTrabajos( LogicaNegocios.LogicaIngreso.trabajos(codigo));
             txtCosto.Text = ingreso.Costo.ToString();
+            if (ingreso.Garantia)
+                txtCosto.Text = "0";
         }
 
         private void llenarTrabajos(List<string> trabajos)

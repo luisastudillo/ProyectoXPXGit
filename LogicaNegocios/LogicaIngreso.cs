@@ -116,5 +116,17 @@ namespace LogicaNegocios
             return Datos.CRUDIngreso.listaIngresos();
         }
 
+        public static List<Entidades.Ingreso> listaIngresados()
+        {
+            return Datos.CRUDIngreso.listaIngresados();
+        }
+
+        public static bool aceptar(int codigo)
+        {
+            Entidades.Ingreso ingreso = Datos.CRUDIngreso.buscar(codigo);
+            ingreso.Estado = "aceptado";
+            return Datos.CRUDIngreso.editar(ingreso);
+        }
+
     }
 }

@@ -208,7 +208,7 @@
             this.Controls.Add(this.cmbCodigos);
             this.Controls.Add(this.label1);
             this.Name = "RecepcionEquiposRetiro";
-            this.Text = "RetiroEquipos";
+            this.Text = "Retiro de Equipos";
             this.Load += new System.EventHandler(this.RetiroEquipos_Load);
             this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);

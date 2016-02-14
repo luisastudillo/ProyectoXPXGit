@@ -26,7 +26,8 @@ namespace AppWinProyectoo
             //Application.Run(new AdministradorRecepcion());
             //Application.Run(new AdministradorPiezas());
             //Application.Run(new AdministradorTrabajo());
-            Application.Run(new Administrador.AdministradorProducto());
+            //Application.Run(new Administrador.AdministradorProducto());
+            Application.Run(new Tecnico.TecnicoAceptar());
         }
     }
 }
