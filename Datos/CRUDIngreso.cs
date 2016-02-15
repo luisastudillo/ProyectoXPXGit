@@ -233,6 +233,25 @@ namespace Datos
             return lista;
         }
 
+        public static List<Entidades.Ingreso> listaAceptados()
+        {
+            List<Entidades.Ingreso> lista = new List<Entidades.Ingreso>();
+            try
+            {
+                var sql =
+                    from c in db.Ingreso
+                    where c.ing_estado == "aceptado"
+                    select c;
+                foreach (var c in sql)
+                {
+                    lista.Add(datoAEntidad(c));
+                }
+            }
+            catch (Exception e)
+            {
+            }
+            return lista;
+        }
 
 
     }

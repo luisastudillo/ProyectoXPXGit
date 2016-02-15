@@ -61,8 +61,10 @@ namespace AppWinProyectoo
                         MessageBox.Show("Bienvenido al menu de recepcion");
                         menu = new RecepcionMenu(this);
                         break;
-                    case "tecnico":
-                        MessageBox.Show("Aun no soportado");
+                    case "tecnico        ":
+                        MessageBox.Show("Bienvenido al menu de Tecnico");
+                        menu = new Tecnico.TecnicoMenu();
+                        //menu = new  Menu(this)
                         break;
                     case "administrador  ":
                         MessageBox.Show("Bienvenido al menu de administracion");

@@ -128,5 +128,31 @@ namespace LogicaNegocios
             return Datos.CRUDIngreso.editar(ingreso);
         }
 
+        public static bool entregar(int codigo)
+        {
+            Entidades.Ingreso ingreso = Datos.CRUDIngreso.buscar(codigo);
+            ingreso.Estado = "reparado";
+            return Datos.CRUDIngreso.editar(ingreso);
+        }
+
+        public static List<Entidades.Ingreso> listaAceptados()
+        {
+            return Datos.CRUDIngreso.listaAceptados();
+        }
+
+        public static double calcularCosto(int codigo)
+        {
+            double costo = 0;
+            List<Entidades.Pieza> listapiezas = LogicaPiezaUsada.piezasPorIngreso(codigo);
+            List<Entidades.Trabajo> lista_trabajos = LogicaTrabajoRealizado.trabajosPorIngreso(codigo);
+            foreach(Entidades.Pieza p in listapiezas)
+            {
+                costo += p.Costo;
+            }
+            foreach (Entidades.Trabajo t in lista_trabajos)
+                costo +=Convert.ToDouble(t.Costo);
+            return costo;
+        }
+        
     }
 }

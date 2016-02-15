@@ -10,41 +10,33 @@ using System.Windows.Forms;
 
 namespace AppWinProyectoo.Tecnico
 {
-    public partial class TecnicoAceptar : Form
+    public partial class TecnicoEntregar : Form
     {
         TecnicoMenu anterior;
 
-        public TecnicoAceptar()
+        public TecnicoEntregar()
         {
             InitializeComponent();
-            LogicaNegocios.LogicaTrabajoRealizado.eliminar(1, 1);
         }
 
-        public TecnicoAceptar(TecnicoMenu anterior)
+        public TecnicoEntregar(TecnicoMenu anterior)
         {
             InitializeComponent();
             this.anterior = anterior;
         }
 
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void TecnicoAceptar_Load(object sender, EventArgs e)
+        private void TecnicoEntregar_Load(object sender, EventArgs e)
         {
             llenarCombo();
-            //cmbCodigos.SelectedIndex = 0;
         }
-
         private void llenarCombo()
         {
-            List<Entidades.Ingreso> ingresados = LogicaNegocios.LogicaIngreso.listaIngresados();
+            List<Entidades.Ingreso> ingresados = LogicaNegocios.LogicaIngreso.listaAceptados();
             foreach (Entidades.Ingreso i in ingresados)
                 cmbCodigos.Items.Add(i.Codigo);
         }
 
-        private void llenar()
+        private void cmbCodigos_SelectedIndexChanged(object sender, EventArgs e)
         {
             int codigo = (int)cmbCodigos.SelectedItem;
             Entidades.Ingreso ingreso = LogicaNegocios.LogicaIngreso.buscar(codigo);
@@ -52,41 +44,35 @@ namespace AppWinProyectoo.Tecnico
             txtEquipo.Text = equipo.Tipo;
             txtModelo.Text = equipo.Modelo;
             txtSerie.Text = equipo.Serie;
-            txtProblema.Text = ingreso.Problema;
-            txtObservacion.Text = ingreso.Observaciones;            
         }
 
-        private void cmbCodigos_SelectedIndexChanged(object sender, EventArgs e)
+        private void btnRegresar_Click(object sender, EventArgs e)
         {
-            llenar();
+            regresar();
         }
-
-        private void btnAceptar_Click(object sender, EventArgs e)
-        {
-            if(cmbCodigos.Text == "")
-            {
-                MessageBox.Show("Seleccione un equipo");
-                return;
-            }
-            int codigo = (int)cmbCodigos.SelectedItem;
-            bool resultado = LogicaNegocios.LogicaIngreso.aceptar(codigo);
-            if (resultado)
-            {
-                MessageBox.Show("Equipo aceptado");
-                regresar();
-            }else
-                MessageBox.Show("Error aceptando equipo");
-        }
-
         private void regresar()
         {
             anterior.Visible = true;
             this.Close();
         }
 
-        private void btnRegresar_Click(object sender, EventArgs e)
+        private void btnAceptar_Click(object sender, EventArgs e)
         {
-            regresar();
+            if (cmbCodigos.Text == "")
+            {
+                MessageBox.Show("Seleccione un equipo");
+                return;
+            }
+            int codigo = (int)cmbCodigos.SelectedItem;
+            bool resultado = LogicaNegocios.LogicaIngreso.entregar(codigo);
+            if (resultado)
+            {
+                MessageBox.Show("Equipo entregado");
+                regresar();
+            }
+            else
+                MessageBox.Show("Error entregando equipo");
+
         }
     }
 }

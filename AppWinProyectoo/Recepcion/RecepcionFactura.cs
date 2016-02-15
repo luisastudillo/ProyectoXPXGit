@@ -318,19 +318,20 @@ namespace AppWinProyectoo
 
         public void eliminarDetalle(int codigo)
         {
-            Entidades.DetalleProducto detalleQuitar;
+            Entidades.DetalleProducto detalleQuitar = null;
             foreach(Entidades.DetalleProducto d in listadetalles)
             {
                 if (d.Cod_producto == codigo)
                     detalleQuitar = d;
             }
 
-            Entidades.Producto productoQuitar;
+            Entidades.Producto productoQuitar = null;
             foreach(Entidades.Producto p in lista_productos)
             {
                 productoQuitar = p;
             }
-            //listadetalles.Remove(detalleQuitar);
+            listadetalles.Remove(detalleQuitar);
+            lista_productos.Remove(productoQuitar);
             actualizarFactura();
         }
 

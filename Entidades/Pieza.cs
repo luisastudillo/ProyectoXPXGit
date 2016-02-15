@@ -31,6 +31,11 @@ namespace Entidades
             this.baja = baja;
         }
 
+        public string descripcion()
+        {
+            return tipo + " " + modelo;
+        }
+
         public int Codigo
         {
             get

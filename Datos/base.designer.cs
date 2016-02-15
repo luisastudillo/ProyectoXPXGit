@@ -60,6 +60,12 @@ namespace Datos
     partial void InsertTrabajo(Trabajo instance);
     partial void UpdateTrabajo(Trabajo instance);
     partial void DeleteTrabajo(Trabajo instance);
+    partial void InsertTrabajo_realizado(Trabajo_realizado instance);
+    partial void UpdateTrabajo_realizado(Trabajo_realizado instance);
+    partial void DeleteTrabajo_realizado(Trabajo_realizado instance);
+    partial void InsertPieza_usada(Pieza_usada instance);
+    partial void UpdatePieza_usada(Pieza_usada instance);
+    partial void DeletePieza_usada(Pieza_usada instance);
     #endregion
 		
 		public baseDataContext() : 
@@ -132,27 +138,11 @@ namespace Datos
 			}
 		}
 		
-		public System.Data.Linq.Table<Pieza_usada> Pieza_usada
-		{
-			get
-			{
-				return this.GetTable<Pieza_usada>();
-			}
-		}
-		
 		public System.Data.Linq.Table<Producto> Producto
 		{
 			get
 			{
 				return this.GetTable<Producto>();
-			}
-		}
-		
-		public System.Data.Linq.Table<Trabajo_realizado> Trabajo_realizado
-		{
-			get
-			{
-				return this.GetTable<Trabajo_realizado>();
 			}
 		}
 		
@@ -185,6 +175,22 @@ namespace Datos
 			get
 			{
 				return this.GetTable<Trabajo>();
+			}
+		}
+		
+		public System.Data.Linq.Table<Trabajo_realizado> Trabajo_realizado
+		{
+			get
+			{
+				return this.GetTable<Trabajo_realizado>();
+			}
+		}
+		
+		public System.Data.Linq.Table<Pieza_usada> Pieza_usada
+		{
+			get
+			{
+				return this.GetTable<Pieza_usada>();
 			}
 		}
 	}
@@ -1178,6 +1184,8 @@ namespace Datos
 		
 		private System.Nullable<bool> _pie_baja;
 		
+		private EntitySet<Pieza_usada> _Pieza_usada;
+		
     #region Definiciones de métodos de extensibilidad
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -1198,6 +1206,7 @@ namespace Datos
 		
 		public Pieza()
 		{
+			this._Pieza_usada = new EntitySet<Pieza_usada>(new Action<Pieza_usada>(this.attach_Pieza_usada), new Action<Pieza_usada>(this.detach_Pieza_usada));
 			OnCreated();
 		}
 		
@@ -1321,6 +1330,19 @@ namespace Datos
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Pieza_Pieza_usada", Storage="_Pieza_usada", ThisKey="pie_codigo", OtherKey="codigo_pieza")]
+		public EntitySet<Pieza_usada> Pieza_usada
+		{
+			get
+			{
+				return this._Pieza_usada;
+			}
+			set
+			{
+				this._Pieza_usada.Assign(value);
+			}
+		}
+		
 		public event PropertyChangingEventHandler PropertyChanging;
 		
 		public event PropertyChangedEventHandler PropertyChanged;
@@ -1340,68 +1362,17 @@ namespace Datos
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
 		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Pieza_usada")]
-	public partial class Pieza_usada
-	{
 		
-		private System.Nullable<int> _codigo_pieza;
-		
-		private System.Nullable<int> _codigo_ingreso;
-		
-		private string _serie;
-		
-		public Pieza_usada()
+		private void attach_Pieza_usada(Pieza_usada entity)
 		{
+			this.SendPropertyChanging();
+			entity.Pieza = this;
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_codigo_pieza", DbType="Int")]
-		public System.Nullable<int> codigo_pieza
+		private void detach_Pieza_usada(Pieza_usada entity)
 		{
-			get
-			{
-				return this._codigo_pieza;
-			}
-			set
-			{
-				if ((this._codigo_pieza != value))
-				{
-					this._codigo_pieza = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_codigo_ingreso", DbType="Int")]
-		public System.Nullable<int> codigo_ingreso
-		{
-			get
-			{
-				return this._codigo_ingreso;
-			}
-			set
-			{
-				if ((this._codigo_ingreso != value))
-				{
-					this._codigo_ingreso = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_serie", DbType="VarChar(20)")]
-		public string serie
-		{
-			get
-			{
-				return this._serie;
-			}
-			set
-			{
-				if ((this._serie != value))
-				{
-					this._serie = value;
-				}
-			}
+			this.SendPropertyChanging();
+			entity.Pieza = null;
 		}
 	}
 	
@@ -1612,51 +1583,6 @@ namespace Datos
 		{
 			this.SendPropertyChanging();
 			entity.Producto = null;
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Trabajo_realizado")]
-	public partial class Trabajo_realizado
-	{
-		
-		private System.Nullable<int> _codigo_trabajo;
-		
-		private System.Nullable<int> _codigo_ingreso;
-		
-		public Trabajo_realizado()
-		{
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_codigo_trabajo", DbType="Int")]
-		public System.Nullable<int> codigo_trabajo
-		{
-			get
-			{
-				return this._codigo_trabajo;
-			}
-			set
-			{
-				if ((this._codigo_trabajo != value))
-				{
-					this._codigo_trabajo = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_codigo_ingreso", DbType="Int")]
-		public System.Nullable<int> codigo_ingreso
-		{
-			get
-			{
-				return this._codigo_ingreso;
-			}
-			set
-			{
-				if ((this._codigo_ingreso != value))
-				{
-					this._codigo_ingreso = value;
-				}
-			}
 		}
 	}
 	
@@ -2008,6 +1934,10 @@ namespace Datos
 		
 		private string _ing_diagnostico;
 		
+		private EntitySet<Trabajo_realizado> _Trabajo_realizado;
+		
+		private EntitySet<Pieza_usada> _Pieza_usada;
+		
 		private EntityRef<Cliente> _Cliente;
 		
 		private EntityRef<Equipo> _Equipo;
@@ -2054,6 +1984,8 @@ namespace Datos
 		
 		public Ingreso()
 		{
+			this._Trabajo_realizado = new EntitySet<Trabajo_realizado>(new Action<Trabajo_realizado>(this.attach_Trabajo_realizado), new Action<Trabajo_realizado>(this.detach_Trabajo_realizado));
+			this._Pieza_usada = new EntitySet<Pieza_usada>(new Action<Pieza_usada>(this.attach_Pieza_usada), new Action<Pieza_usada>(this.detach_Pieza_usada));
 			this._Cliente = default(EntityRef<Cliente>);
 			this._Equipo = default(EntityRef<Equipo>);
 			this._Factura = default(EntityRef<Factura>);
@@ -2362,6 +2294,32 @@ namespace Datos
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Ingreso_Trabajo_realizado", Storage="_Trabajo_realizado", ThisKey="ing_codigo", OtherKey="codigo_ingreso")]
+		public EntitySet<Trabajo_realizado> Trabajo_realizado
+		{
+			get
+			{
+				return this._Trabajo_realizado;
+			}
+			set
+			{
+				this._Trabajo_realizado.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Ingreso_Pieza_usada", Storage="_Pieza_usada", ThisKey="ing_codigo", OtherKey="codigo_ingreso")]
+		public EntitySet<Pieza_usada> Pieza_usada
+		{
+			get
+			{
+				return this._Pieza_usada;
+			}
+			set
+			{
+				this._Pieza_usada.Assign(value);
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Cliente_Ingreso", Storage="_Cliente", ThisKey="ing_ced_cliente", OtherKey="cli_cedula", IsForeignKey=true)]
 		public Cliente Cliente
 		{
@@ -2550,6 +2508,30 @@ namespace Datos
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
+		}
+		
+		private void attach_Trabajo_realizado(Trabajo_realizado entity)
+		{
+			this.SendPropertyChanging();
+			entity.Ingreso = this;
+		}
+		
+		private void detach_Trabajo_realizado(Trabajo_realizado entity)
+		{
+			this.SendPropertyChanging();
+			entity.Ingreso = null;
+		}
+		
+		private void attach_Pieza_usada(Pieza_usada entity)
+		{
+			this.SendPropertyChanging();
+			entity.Ingreso = this;
+		}
+		
+		private void detach_Pieza_usada(Pieza_usada entity)
+		{
+			this.SendPropertyChanging();
+			entity.Ingreso = null;
 		}
 	}
 	
@@ -2807,6 +2789,8 @@ namespace Datos
 		
 		private System.Nullable<bool> _pie_baja;
 		
+		private EntitySet<Trabajo_realizado> _Trabajo_realizado;
+		
     #region Definiciones de métodos de extensibilidad
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -2823,6 +2807,7 @@ namespace Datos
 		
 		public Trabajo()
 		{
+			this._Trabajo_realizado = new EntitySet<Trabajo_realizado>(new Action<Trabajo_realizado>(this.attach_Trabajo_realizado), new Action<Trabajo_realizado>(this.detach_Trabajo_realizado));
 			OnCreated();
 		}
 		
@@ -2902,6 +2887,367 @@ namespace Datos
 					this._pie_baja = value;
 					this.SendPropertyChanged("pie_baja");
 					this.Onpie_bajaChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Trabajo_Trabajo_realizado", Storage="_Trabajo_realizado", ThisKey="tra_codigo", OtherKey="codigo_trabajo")]
+		public EntitySet<Trabajo_realizado> Trabajo_realizado
+		{
+			get
+			{
+				return this._Trabajo_realizado;
+			}
+			set
+			{
+				this._Trabajo_realizado.Assign(value);
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_Trabajo_realizado(Trabajo_realizado entity)
+		{
+			this.SendPropertyChanging();
+			entity.Trabajo = this;
+		}
+		
+		private void detach_Trabajo_realizado(Trabajo_realizado entity)
+		{
+			this.SendPropertyChanging();
+			entity.Trabajo = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Trabajo_realizado")]
+	public partial class Trabajo_realizado : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _codigo_trabajo;
+		
+		private int _codigo_ingreso;
+		
+		private EntityRef<Ingreso> _Ingreso;
+		
+		private EntityRef<Trabajo> _Trabajo;
+		
+    #region Definiciones de métodos de extensibilidad
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void Oncodigo_trabajoChanging(int value);
+    partial void Oncodigo_trabajoChanged();
+    partial void Oncodigo_ingresoChanging(int value);
+    partial void Oncodigo_ingresoChanged();
+    #endregion
+		
+		public Trabajo_realizado()
+		{
+			this._Ingreso = default(EntityRef<Ingreso>);
+			this._Trabajo = default(EntityRef<Trabajo>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_codigo_trabajo", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		public int codigo_trabajo
+		{
+			get
+			{
+				return this._codigo_trabajo;
+			}
+			set
+			{
+				if ((this._codigo_trabajo != value))
+				{
+					if (this._Trabajo.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.Oncodigo_trabajoChanging(value);
+					this.SendPropertyChanging();
+					this._codigo_trabajo = value;
+					this.SendPropertyChanged("codigo_trabajo");
+					this.Oncodigo_trabajoChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_codigo_ingreso", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		public int codigo_ingreso
+		{
+			get
+			{
+				return this._codigo_ingreso;
+			}
+			set
+			{
+				if ((this._codigo_ingreso != value))
+				{
+					if (this._Ingreso.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.Oncodigo_ingresoChanging(value);
+					this.SendPropertyChanging();
+					this._codigo_ingreso = value;
+					this.SendPropertyChanged("codigo_ingreso");
+					this.Oncodigo_ingresoChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Ingreso_Trabajo_realizado", Storage="_Ingreso", ThisKey="codigo_ingreso", OtherKey="ing_codigo", IsForeignKey=true)]
+		public Ingreso Ingreso
+		{
+			get
+			{
+				return this._Ingreso.Entity;
+			}
+			set
+			{
+				Ingreso previousValue = this._Ingreso.Entity;
+				if (((previousValue != value) 
+							|| (this._Ingreso.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Ingreso.Entity = null;
+						previousValue.Trabajo_realizado.Remove(this);
+					}
+					this._Ingreso.Entity = value;
+					if ((value != null))
+					{
+						value.Trabajo_realizado.Add(this);
+						this._codigo_ingreso = value.ing_codigo;
+					}
+					else
+					{
+						this._codigo_ingreso = default(int);
+					}
+					this.SendPropertyChanged("Ingreso");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Trabajo_Trabajo_realizado", Storage="_Trabajo", ThisKey="codigo_trabajo", OtherKey="tra_codigo", IsForeignKey=true)]
+		public Trabajo Trabajo
+		{
+			get
+			{
+				return this._Trabajo.Entity;
+			}
+			set
+			{
+				Trabajo previousValue = this._Trabajo.Entity;
+				if (((previousValue != value) 
+							|| (this._Trabajo.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Trabajo.Entity = null;
+						previousValue.Trabajo_realizado.Remove(this);
+					}
+					this._Trabajo.Entity = value;
+					if ((value != null))
+					{
+						value.Trabajo_realizado.Add(this);
+						this._codigo_trabajo = value.tra_codigo;
+					}
+					else
+					{
+						this._codigo_trabajo = default(int);
+					}
+					this.SendPropertyChanged("Trabajo");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Pieza_usada")]
+	public partial class Pieza_usada : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _codigo_pieza;
+		
+		private int _codigo_ingreso;
+		
+		private EntityRef<Ingreso> _Ingreso;
+		
+		private EntityRef<Pieza> _Pieza;
+		
+    #region Definiciones de métodos de extensibilidad
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void Oncodigo_piezaChanging(int value);
+    partial void Oncodigo_piezaChanged();
+    partial void Oncodigo_ingresoChanging(int value);
+    partial void Oncodigo_ingresoChanged();
+    #endregion
+		
+		public Pieza_usada()
+		{
+			this._Ingreso = default(EntityRef<Ingreso>);
+			this._Pieza = default(EntityRef<Pieza>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_codigo_pieza", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		public int codigo_pieza
+		{
+			get
+			{
+				return this._codigo_pieza;
+			}
+			set
+			{
+				if ((this._codigo_pieza != value))
+				{
+					if (this._Pieza.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.Oncodigo_piezaChanging(value);
+					this.SendPropertyChanging();
+					this._codigo_pieza = value;
+					this.SendPropertyChanged("codigo_pieza");
+					this.Oncodigo_piezaChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_codigo_ingreso", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		public int codigo_ingreso
+		{
+			get
+			{
+				return this._codigo_ingreso;
+			}
+			set
+			{
+				if ((this._codigo_ingreso != value))
+				{
+					if (this._Ingreso.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.Oncodigo_ingresoChanging(value);
+					this.SendPropertyChanging();
+					this._codigo_ingreso = value;
+					this.SendPropertyChanged("codigo_ingreso");
+					this.Oncodigo_ingresoChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Ingreso_Pieza_usada", Storage="_Ingreso", ThisKey="codigo_ingreso", OtherKey="ing_codigo", IsForeignKey=true)]
+		public Ingreso Ingreso
+		{
+			get
+			{
+				return this._Ingreso.Entity;
+			}
+			set
+			{
+				Ingreso previousValue = this._Ingreso.Entity;
+				if (((previousValue != value) 
+							|| (this._Ingreso.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Ingreso.Entity = null;
+						previousValue.Pieza_usada.Remove(this);
+					}
+					this._Ingreso.Entity = value;
+					if ((value != null))
+					{
+						value.Pieza_usada.Add(this);
+						this._codigo_ingreso = value.ing_codigo;
+					}
+					else
+					{
+						this._codigo_ingreso = default(int);
+					}
+					this.SendPropertyChanged("Ingreso");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Pieza_Pieza_usada", Storage="_Pieza", ThisKey="codigo_pieza", OtherKey="pie_codigo", IsForeignKey=true)]
+		public Pieza Pieza
+		{
+			get
+			{
+				return this._Pieza.Entity;
+			}
+			set
+			{
+				Pieza previousValue = this._Pieza.Entity;
+				if (((previousValue != value) 
+							|| (this._Pieza.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Pieza.Entity = null;
+						previousValue.Pieza_usada.Remove(this);
+					}
+					this._Pieza.Entity = value;
+					if ((value != null))
+					{
+						value.Pieza_usada.Add(this);
+						this._codigo_pieza = value.pie_codigo;
+					}
+					else
+					{
+						this._codigo_pieza = default(int);
+					}
+					this.SendPropertyChanged("Pieza");
 				}
 			}
 		}

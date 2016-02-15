@@ -58,15 +58,6 @@
       <Association Name="Pieza_Pieza_usada" Member="Pieza_usada" ThisKey="pie_codigo" OtherKey="codigo_pieza" Type="Pieza_usada" />
     </Type>
   </Table>
-  <Table Name="dbo.Pieza_usada" Member="Pieza_usada">
-    <Type Name="Pieza_usada">
-      <Column Name="codigo_pieza" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="codigo_ingreso" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="serie" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
-      <Association Name="Pieza_Pieza_usada" Member="Pieza" ThisKey="codigo_pieza" OtherKey="pie_codigo" Type="Pieza" IsForeignKey="true" />
-      <Association Name="Ingreso_Pieza_usada" Member="Ingreso" ThisKey="codigo_ingreso" OtherKey="ing_codigo" Type="Ingreso" IsForeignKey="true" />
-    </Type>
-  </Table>
   <Table Name="dbo.Producto" Member="Producto">
     <Type Name="Producto">
       <Column Name="pro_codigo" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
@@ -76,14 +67,6 @@
       <Column Name="pro_cantidad" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="pro_baja" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
       <Association Name="Producto_Detalle_producto" Member="Detalle_producto" ThisKey="pro_codigo" OtherKey="pro_codigo" Type="Detalle_producto" />
-    </Type>
-  </Table>
-  <Table Name="dbo.Trabajo_realizado" Member="Trabajo_realizado">
-    <Type Name="Trabajo_realizado">
-      <Column Name="codigo_trabajo" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="codigo_ingreso" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Association Name="Ingreso_Trabajo_realizado" Member="Ingreso" ThisKey="codigo_ingreso" OtherKey="ing_codigo" Type="Ingreso" IsForeignKey="true" />
-      <Association Name="Trabajo_Trabajo_realizado" Member="Trabajo" ThisKey="codigo_trabajo" OtherKey="tra_codigo" Type="Trabajo" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.Usuario" Member="Usuario">
@@ -117,8 +100,8 @@
       <Column Name="ing_n_factura" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="ing_costo" Type="System.Decimal" DbType="Decimal(7,2)" CanBeNull="true" />
       <Column Name="ing_diagnostico" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Association Name="Ingreso_Pieza_usada" Member="Pieza_usada" ThisKey="ing_codigo" OtherKey="codigo_ingreso" Type="Pieza_usada" />
       <Association Name="Ingreso_Trabajo_realizado" Member="Trabajo_realizado" ThisKey="ing_codigo" OtherKey="codigo_ingreso" Type="Trabajo_realizado" />
+      <Association Name="Ingreso_Pieza_usada" Member="Pieza_usada" ThisKey="ing_codigo" OtherKey="codigo_ingreso" Type="Pieza_usada" />
       <Association Name="Cliente_Ingreso" Member="Cliente" ThisKey="ing_ced_cliente" OtherKey="cli_cedula" Type="Cliente" IsForeignKey="true" />
       <Association Name="Equipo_Ingreso" Member="Equipo" ThisKey="ing_serie_equipo" OtherKey="equ_serie" Type="Equipo" IsForeignKey="true" />
       <Association Name="Factura_Ingreso" Member="Factura" ThisKey="ing_n_factura" OtherKey="fac_n_factura" Type="Factura" IsForeignKey="true" />
@@ -144,6 +127,22 @@
       <Column Name="tra_costo" Type="System.Decimal" DbType="Decimal(7,2)" CanBeNull="true" />
       <Column Name="pie_baja" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
       <Association Name="Trabajo_Trabajo_realizado" Member="Trabajo_realizado" ThisKey="tra_codigo" OtherKey="codigo_trabajo" Type="Trabajo_realizado" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Trabajo_realizado" Member="Trabajo_realizado">
+    <Type Name="Trabajo_realizado">
+      <Column Name="codigo_trabajo" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="codigo_ingreso" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Association Name="Ingreso_Trabajo_realizado" Member="Ingreso" ThisKey="codigo_ingreso" OtherKey="ing_codigo" Type="Ingreso" IsForeignKey="true" />
+      <Association Name="Trabajo_Trabajo_realizado" Member="Trabajo" ThisKey="codigo_trabajo" OtherKey="tra_codigo" Type="Trabajo" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Pieza_usada" Member="Pieza_usada">
+    <Type Name="Pieza_usada">
+      <Column Name="codigo_pieza" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="codigo_ingreso" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Association Name="Ingreso_Pieza_usada" Member="Ingreso" ThisKey="codigo_ingreso" OtherKey="ing_codigo" Type="Ingreso" IsForeignKey="true" />
+      <Association Name="Pieza_Pieza_usada" Member="Pieza" ThisKey="codigo_pieza" OtherKey="pie_codigo" Type="Pieza" IsForeignKey="true" />
     </Type>
   </Table>
 </Database>

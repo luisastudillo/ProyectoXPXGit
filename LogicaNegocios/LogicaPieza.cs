@@ -45,5 +45,11 @@ namespace LogicaNegocios
             return Datos.CRUDPieza.siguienteCodigo();
         }
 
+        public static string descripcion(int codigo)
+        {
+            Entidades.Pieza pieza = buscar(codigo);
+            return pieza.Tipo + " " + pieza.Modelo;
+        }
+
     }
 }

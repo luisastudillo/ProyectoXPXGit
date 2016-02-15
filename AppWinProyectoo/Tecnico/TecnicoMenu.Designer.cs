@@ -28,46 +28,49 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.btnIngreso = new System.Windows.Forms.Button();
-            this.btnRetiro = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnAceptar = new System.Windows.Forms.Button();
+            this.btrEntregar = new System.Windows.Forms.Button();
+            this.btnModificar = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // btnIngreso
+            // btnAceptar
             // 
-            this.btnIngreso.Font = new System.Drawing.Font("Cambria", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnIngreso.Image = global::AppWinProyectoo.Properties.Resources.ingreso1;
-            this.btnIngreso.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnIngreso.Location = new System.Drawing.Point(30, 39);
-            this.btnIngreso.Name = "btnIngreso";
-            this.btnIngreso.Size = new System.Drawing.Size(234, 38);
-            this.btnIngreso.TabIndex = 7;
-            this.btnIngreso.Text = "Aceptar Equipo";
-            this.btnIngreso.UseVisualStyleBackColor = true;
+            this.btnAceptar.Font = new System.Drawing.Font("Cambria", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAceptar.Image = global::AppWinProyectoo.Properties.Resources.ingreso1;
+            this.btnAceptar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnAceptar.Location = new System.Drawing.Point(30, 39);
+            this.btnAceptar.Name = "btnAceptar";
+            this.btnAceptar.Size = new System.Drawing.Size(234, 38);
+            this.btnAceptar.TabIndex = 7;
+            this.btnAceptar.Text = "Aceptar Equipo";
+            this.btnAceptar.UseVisualStyleBackColor = true;
+            this.btnAceptar.Click += new System.EventHandler(this.btnIngreso_Click);
             // 
-            // btnRetiro
+            // btrEntregar
             // 
-            this.btnRetiro.Font = new System.Drawing.Font("Cambria", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRetiro.Image = global::AppWinProyectoo.Properties.Resources.retiro;
-            this.btnRetiro.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnRetiro.Location = new System.Drawing.Point(30, 109);
-            this.btnRetiro.Name = "btnRetiro";
-            this.btnRetiro.Size = new System.Drawing.Size(234, 44);
-            this.btnRetiro.TabIndex = 8;
-            this.btnRetiro.Text = "Entregar Equipo";
-            this.btnRetiro.UseVisualStyleBackColor = true;
+            this.btrEntregar.Font = new System.Drawing.Font("Cambria", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btrEntregar.Image = global::AppWinProyectoo.Properties.Resources.retiro;
+            this.btrEntregar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btrEntregar.Location = new System.Drawing.Point(30, 109);
+            this.btrEntregar.Name = "btrEntregar";
+            this.btrEntregar.Size = new System.Drawing.Size(234, 44);
+            this.btrEntregar.TabIndex = 8;
+            this.btrEntregar.Text = "Entregar Equipo";
+            this.btrEntregar.UseVisualStyleBackColor = true;
+            this.btrEntregar.Click += new System.EventHandler(this.btrEntregar_Click);
             // 
-            // button1
+            // btnModificar
             // 
-            this.button1.Font = new System.Drawing.Font("Cambria", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Image = global::AppWinProyectoo.Properties.Resources.trabajo;
-            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button1.Location = new System.Drawing.Point(30, 187);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(234, 48);
-            this.button1.TabIndex = 13;
-            this.button1.Text = "Modificar Diagnóstico";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnModificar.Font = new System.Drawing.Font("Cambria", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnModificar.Image = global::AppWinProyectoo.Properties.Resources.trabajo;
+            this.btnModificar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnModificar.Location = new System.Drawing.Point(30, 187);
+            this.btnModificar.Name = "btnModificar";
+            this.btnModificar.Size = new System.Drawing.Size(234, 48);
+            this.btnModificar.TabIndex = 13;
+            this.btnModificar.Text = "Modificar Diagnóstico";
+            this.btnModificar.UseVisualStyleBackColor = true;
+            this.btnModificar.Click += new System.EventHandler(this.btnModificar_Click);
             // 
             // TecnicoMenu
             // 
@@ -75,9 +78,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightSkyBlue;
             this.ClientSize = new System.Drawing.Size(301, 276);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.btnRetiro);
-            this.Controls.Add(this.btnIngreso);
+            this.Controls.Add(this.btnModificar);
+            this.Controls.Add(this.btrEntregar);
+            this.Controls.Add(this.btnAceptar);
             this.Name = "TecnicoMenu";
             this.Text = "TecnicoMenu";
             this.ResumeLayout(false);
@@ -86,8 +89,8 @@
 
         #endregion
 
-        private System.Windows.Forms.Button btnIngreso;
-        private System.Windows.Forms.Button btnRetiro;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnAceptar;
+        private System.Windows.Forms.Button btrEntregar;
+        private System.Windows.Forms.Button btnModificar;
     }
 }

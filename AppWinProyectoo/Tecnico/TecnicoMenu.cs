@@ -16,5 +16,26 @@ namespace AppWinProyectoo.Tecnico
         {
             InitializeComponent();
         }
+
+        private void btnIngreso_Click(object sender, EventArgs e)
+        {
+            TecnicoAceptar nuevo = new TecnicoAceptar(this);
+            nuevo.Visible = true;
+            this.Visible = false;
+        }
+
+        private void btrEntregar_Click(object sender, EventArgs e)
+        {
+            TecnicoEntregar nuevo = new TecnicoEntregar(this);
+            nuevo.Visible = true;
+            this.Visible = false;
+        }
+
+        private void btnModificar_Click(object sender, EventArgs e)
+        {
+            TecnicoModificar nuevo = new TecnicoModificar(this);
+            nuevo.Visible = true;
+            this.Visible = false;
+        }
     }
 }

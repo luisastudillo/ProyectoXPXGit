@@ -197,11 +197,35 @@
     <Compile Include="Tecnico\TecnicoAceptar.Designer.cs">
       <DependentUpon>TecnicoAceptar.cs</DependentUpon>
     </Compile>
+    <Compile Include="Tecnico\TecnicoAgregarPieza.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tecnico\TecnicoAgregarPieza.Designer.cs">
+      <DependentUpon>TecnicoAgregarPieza.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Tecnico\TecnicoAgregarTrabajo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tecnico\TecnicoAgregarTrabajo.Designer.cs">
+      <DependentUpon>TecnicoAgregarTrabajo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Tecnico\TecnicoEntregar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tecnico\TecnicoEntregar.Designer.cs">
+      <DependentUpon>TecnicoEntregar.cs</DependentUpon>
+    </Compile>
     <Compile Include="Tecnico\TecnicoMenu.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Tecnico\TecnicoMenu.Designer.cs">
       <DependentUpon>TecnicoMenu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Tecnico\TecnicoModificar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tecnico\TecnicoModificar.Designer.cs">
+      <DependentUpon>TecnicoModificar.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Administrador\AdministradorMenu.resx">
       <DependentUpon>AdministradorMenu.cs</DependentUpon>
@@ -285,8 +309,20 @@
     <EmbeddedResource Include="Tecnico\TecnicoAceptar.resx">
       <DependentUpon>TecnicoAceptar.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Tecnico\TecnicoAgregarPieza.resx">
+      <DependentUpon>TecnicoAgregarPieza.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tecnico\TecnicoAgregarTrabajo.resx">
+      <DependentUpon>TecnicoAgregarTrabajo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tecnico\TecnicoEntregar.resx">
+      <DependentUpon>TecnicoEntregar.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Tecnico\TecnicoMenu.resx">
       <DependentUpon>TecnicoMenu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tecnico\TecnicoModificar.resx">
+      <DependentUpon>TecnicoModificar.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

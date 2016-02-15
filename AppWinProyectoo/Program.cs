@@ -21,13 +21,14 @@ namespace AppWinProyectoo
             //Application.Run(new RecepcionMenu(new Login()));
             //Application.Run(new RecepcionFactura());
             //Application.Run(new RecepcionEquiposIngreso());
-            //Application.Run(new Login());
+            Application.Run(new Login());
             //Application.Run(new AdministradorUsuarioListar());
             //Application.Run(new AdministradorRecepcion());
             //Application.Run(new AdministradorPiezas());
             //Application.Run(new AdministradorTrabajo());
             //Application.Run(new Administrador.AdministradorProducto());
-            Application.Run(new Tecnico.TecnicoAceptar());
+            //Application.Run(new Tecnico.TecnicoAceptar());
+            //Application.Run(new Tecnico.TecnicoModificar());
         }
     }
 }

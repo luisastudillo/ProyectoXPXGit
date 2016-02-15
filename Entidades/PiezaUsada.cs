@@ -10,7 +10,7 @@ namespace Entidades
     {
         int codigo_pieza;
         int codigo_ingreso;
-        string serie;
+        
 
 
         public PiezaUsada()
@@ -18,11 +18,10 @@ namespace Entidades
 
         }
 
-        public PiezaUsada(int codigo_pieza, int codigo_ingreso, string serie)
+        public PiezaUsada(int codigo_pieza, int codigo_ingreso)
         {
             this.codigo_pieza = codigo_pieza;
             this.codigo_ingreso = codigo_ingreso;
-            this.serie = serie;
         }
 
         public int Codigo_pieza
@@ -49,19 +48,6 @@ namespace Entidades
             {
                 codigo_ingreso = value;
             }
-        }
-
-        public string Serie
-        {
-            get
-            {
-                return serie;
-            }
-
-            set
-            {
-                serie = value;
-            }
-        }
+        }        
     }
 }
