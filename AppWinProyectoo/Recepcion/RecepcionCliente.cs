@@ -12,13 +12,18 @@ namespace AppWinProyectoo
 {
     public partial class RecepcionCliente : Form
     {
-        RecepcionMenu menu;
+        RecepcionMenu anterior;
         bool editando = false;
 
         public RecepcionCliente()
         {
             InitializeComponent();
-            this.menu = menu;
+        }
+
+        public RecepcionCliente(RecepcionMenu anterior)
+        {
+            InitializeComponent();
+            this.anterior = anterior;
         }
 
         private void IngresoCliente_Load(object sender, EventArgs e)
@@ -52,6 +57,12 @@ namespace AppWinProyectoo
 
                 string cedula, nombres, apellidos, direccion, telefono, celular;
                 cedula = txtCedula.Text;
+                bool valida = LogicaNegocios.Validador.validarCedula(cedula);
+                if (!valida)
+                {
+                    MessageBox.Show("Cédula no válida");
+                    return;
+                }
                 nombres = txtNombre.Text;
                 apellidos = txtApellido.Text;
                 direccion = txtDireccion.Text;
@@ -124,15 +135,25 @@ namespace AppWinProyectoo
         {
             try
             {
-                if (txtCedula.Text == "")
-                {
-                    MessageBox.Show("No se puede dejar cedula en blanco");
-                    return;
-                }
+                
 
-                string cedula = txtCedula.Text;
+                
                 if (btnBuscar.Text == "Buscar")
                 {
+                    if (txtCedula.Text == "")
+                    {
+                        MessageBox.Show("No se puede dejar cedula en blanco");
+                        return;
+                    }
+                    string cedula = txtCedula.Text;
+
+                    bool valida = LogicaNegocios.Validador.validarCedula(cedula);
+                    if (!valida)
+                    {
+                        MessageBox.Show("Cédula no válida");
+                        return;
+                    }
+
                     Entidades.Cliente encontrado = LogicaNegocios.LogicaCliente.buscar(cedula);
                     if (encontrado != null)
                     {

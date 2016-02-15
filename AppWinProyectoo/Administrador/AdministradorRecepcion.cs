@@ -47,6 +47,12 @@ namespace AppWinProyectoo
                 }
                 string cedula, nombres, apellidos, direccion, telefono, contrasenia, tipo;
                 cedula = txtCedula.Text;
+                bool valida = LogicaNegocios.Validador.validarCedula(cedula);
+                if (!valida)
+                {
+                    MessageBox.Show("Cédula no válida");
+                    return;
+                }
                 nombres = txtNombre.Text;
                 apellidos = txtApellido.Text;
                 direccion = txtDireccion.Text;
@@ -203,6 +209,12 @@ namespace AppWinProyectoo
                         return;
                     }
                     string cedula = txtCedula.Text;
+                    bool valida = LogicaNegocios.Validador.validarCedula(cedula);
+                    if (!valida)
+                    {
+                        MessageBox.Show("Cédula no válida");
+                        return;
+                    }
                     Entidades.Usuario encontrado = LogicaNegocios.LogicaUsuario.buscar(cedula);
                     if (encontrado != null)
                     {

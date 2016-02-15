@@ -221,13 +221,16 @@ namespace AppWinProyectoo
         {            
             if (btnBuscar.Text == "Buscar")
             {
-                try
-                {
+
+               
                     if (txtCodigo.Text == "")
                     {
                         MessageBox.Show("Ingrese un código");
                         return;
                     }
+
+                try
+                {
                     int codigo = Convert.ToInt32(txtCodigo.Text);
                     Entidades.Pieza encontrado = LogicaNegocios.LogicaPieza.buscar(codigo);
                     if (encontrado != null)
@@ -243,6 +246,13 @@ namespace AppWinProyectoo
                     else
                         MessageBox.Show("Pieza no encontrada");
                 }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Ingrese datos válidos \n" + ex.Message);
+                }
+
+                
+                }
             else
             {
                     borrarCasillas();
@@ -254,11 +264,7 @@ namespace AppWinProyectoo
                     btnCancelar.Enabled = true;
                     btnBuscar.Text = "Buscar";
                 }
-            }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Ingrese datos válidos \n" + ex.Message);
-                }
+            
         }
 
         private void mostrarPieza(Entidades.Pieza p)

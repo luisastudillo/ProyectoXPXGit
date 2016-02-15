@@ -13,6 +13,7 @@ namespace AppWinProyectoo
 {
     public partial class RecepcionFactura : Form
     {
+        RecepcionMenu anterior;
 
         private DataTable dt;
         private SqlDataAdapter da;
@@ -27,6 +28,14 @@ namespace AppWinProyectoo
             InitializeComponent();
             numFactura();
         }
+
+        public RecepcionFactura(RecepcionMenu menu)
+        {
+            InitializeComponent();
+            this.anterior = menu;
+            numFactura();
+        }
+
 
         public void numFactura()
         {
@@ -209,6 +218,12 @@ namespace AppWinProyectoo
 
         private void button2_Click(object sender, EventArgs e)
         {
+            if (enBlanco())
+            {
+                MessageBox.Show("No se puede dejar casillas en blanco");
+                return;
+            }
+
             Entidades.Factura f = new Entidades.Factura();
             f.Numero = Convert.ToInt32( txtNfactura.Text);
             f.Fecha = dtpFecha.Value;
@@ -222,6 +237,18 @@ namespace AppWinProyectoo
             guardarDetalles();
             guardarIngresos();
             
+        }
+
+        private bool enBlanco()
+        {
+            bool retorno = false;
+            foreach (Control control in this.Controls)
+            {
+                if (control is TextBox)
+                    if (((TextBox)control).Text == "")
+                        retorno = true;
+            }
+            return retorno;
         }
 
         public void guardarIngresos()
@@ -337,7 +364,11 @@ namespace AppWinProyectoo
 
         private void btnNuevo_Click(object sender, EventArgs e)
         {
-
+            listadetalles = new List<Entidades.DetalleProducto>();
+            lista_ingresos = new List<Entidades.Ingreso>();
+            lista_productos = new List<Entidades.Producto>();
+            actualizarFactura();
+            txtCedCliente.Text = txtDireccion.Text = txtNomCliente.Text = txtTelefono.Text = "";
         }
 
         private void label6_Click(object sender, EventArgs e)
@@ -461,5 +492,10 @@ namespace AppWinProyectoo
             }
         }
 
+        private void button2_Click_1(object sender, EventArgs e)
+        {
+            anterior.Visible = true;
+            this.Close();
+        }
     }
 }

@@ -163,7 +163,39 @@ namespace AppWinProyectoo.Administrador
         {
             try
             {
-
+                if (btnBuscar.Text == "Buscar")
+                {
+                    if (txtCodigo.Text == "")
+                    {
+                        MessageBox.Show("Ingrese un código");
+                        return;
+                    }
+                    int codigo = Convert.ToInt32(txtCodigo.Text);
+                    Entidades.Producto encontrado = LogicaNegocios.LogicaProducto.buscar(codigo);
+                    if (encontrado != null)
+                    {
+                        mostrarProducto(encontrado);
+                        btnBuscar.Text = "Busqueda";
+                        activarBotones();
+                        desactivarCasillas();
+                        btnCancelar.Enabled = false;
+                        btnGuardar.Enabled = false;
+                        btnBaja.Enabled = true;
+                    }
+                    else
+                        MessageBox.Show("Pieza no encontrada");
+                }
+                else
+                {
+                    borrarCasillas();
+                    desactivarCasillas();
+                    txtCodigo.ReadOnly = false;
+                    txtCodigo.ReadOnly = false;
+                    desactivarBotones();
+                    btnBuscar.Enabled = true;
+                    btnCancelar.Enabled = true;
+                    btnBuscar.Text = "Buscar";
+                }
             }
             catch (Exception ex)
             {
@@ -231,47 +263,14 @@ namespace AppWinProyectoo.Administrador
         {
             try
             {
-                if (btnBuscar.Text == "Buscar")
-                {
-                    if (txtCodigo.Text == "")
-                    {
-                        MessageBox.Show("Ingrese un código");
-                        return;
-                    }
-                    int codigo = Convert.ToInt32(txtCodigo.Text);
-                    Entidades.Producto encontrado = LogicaNegocios.LogicaProducto.buscar(codigo);
-                    if (encontrado != null)
-                    {
-                        mostrarProducto(encontrado);
-                        btnBuscar.Text = "Busqueda";
-                        activarBotones();
-                        desactivarCasillas();
-                        btnCancelar.Enabled = false;
-                        btnGuardar.Enabled = false;
-                        btnBaja.Enabled = true;
-                    }
-                    else
-                        MessageBox.Show("Pieza no encontrada");
-                }
-                else
-                {
-                    borrarCasillas();
-                    desactivarCasillas();
-                    txtCodigo.ReadOnly = false;
-                    txtCodigo.ReadOnly = false;
-                    desactivarBotones();
-                    btnBuscar.Enabled = true;
-                    btnCancelar.Enabled = true;
-                    btnBuscar.Text = "Buscar";
-                }
+
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Ingrese datos válidos \n" + ex.Message);
             }
         }
-
-
+        
         private void nuevo(int codigo, string modelo, string tipo, double costo, int cantidad)
         {
             string agregado = LogicaNegocios.LogicaProducto.nuevo(codigo, modelo, tipo, costo, cantidad);

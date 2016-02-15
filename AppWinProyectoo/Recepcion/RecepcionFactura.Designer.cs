@@ -57,16 +57,18 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.txtTotal = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
             this.button8 = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
             this.btnBuscar = new System.Windows.Forms.Button();
-            this.btnEliminar = new System.Windows.Forms.Button();
             this.btnGuardar = new System.Windows.Forms.Button();
             this.btnNuevo = new System.Windows.Forms.Button();
+            this.btnEliminar = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.btnProducto = new System.Windows.Forms.Button();
             this.btnPequenio = new System.Windows.Forms.Button();
             this.btnGrande = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvFactura)).BeginInit();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -113,14 +115,14 @@
             // 
             // txtIva
             // 
-            this.txtIva.Location = new System.Drawing.Point(417, 465);
+            this.txtIva.Location = new System.Drawing.Point(430, 465);
             this.txtIva.Name = "txtIva";
             this.txtIva.Size = new System.Drawing.Size(130, 20);
             this.txtIva.TabIndex = 45;
             // 
             // txtSubtotal
             // 
-            this.txtSubtotal.Location = new System.Drawing.Point(417, 432);
+            this.txtSubtotal.Location = new System.Drawing.Point(430, 432);
             this.txtSubtotal.Name = "txtSubtotal";
             this.txtSubtotal.Size = new System.Drawing.Size(130, 20);
             this.txtSubtotal.TabIndex = 44;
@@ -129,7 +131,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Cambria", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(377, 468);
+            this.label4.Location = new System.Drawing.Point(390, 468);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(34, 17);
             this.label4.TabIndex = 43;
@@ -139,7 +141,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Cambria", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(348, 432);
+            this.label3.Location = new System.Drawing.Point(361, 432);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(64, 17);
             this.label3.TabIndex = 42;
@@ -150,7 +152,7 @@
             this.btnAgregarIngreso.Font = new System.Drawing.Font("Cambria", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAgregarIngreso.Location = new System.Drawing.Point(6, 421);
             this.btnAgregarIngreso.Name = "btnAgregarIngreso";
-            this.btnAgregarIngreso.Size = new System.Drawing.Size(133, 28);
+            this.btnAgregarIngreso.Size = new System.Drawing.Size(124, 28);
             this.btnAgregarIngreso.TabIndex = 41;
             this.btnAgregarIngreso.Text = "Agregar Ingreso";
             this.btnAgregarIngreso.UseVisualStyleBackColor = true;
@@ -321,7 +323,7 @@
             // 
             // txtTotal
             // 
-            this.txtTotal.Location = new System.Drawing.Point(417, 496);
+            this.txtTotal.Location = new System.Drawing.Point(430, 496);
             this.txtTotal.Name = "txtTotal";
             this.txtTotal.Size = new System.Drawing.Size(130, 20);
             this.txtTotal.TabIndex = 51;
@@ -329,10 +331,10 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.SkyBlue;
+            this.panel1.Controls.Add(this.button1);
             this.panel1.Controls.Add(this.button8);
             this.panel1.Controls.Add(this.button6);
             this.panel1.Controls.Add(this.btnBuscar);
-            this.panel1.Controls.Add(this.btnEliminar);
             this.panel1.Controls.Add(this.btnGuardar);
             this.panel1.Controls.Add(this.btnNuevo);
             this.panel1.Location = new System.Drawing.Point(5, 465);
@@ -340,14 +342,27 @@
             this.panel1.Size = new System.Drawing.Size(336, 88);
             this.panel1.TabIndex = 50;
             // 
+            // button1
+            // 
+            this.button1.Font = new System.Drawing.Font("Cambria", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Image = global::AppWinProyectoo.Properties.Resources.cerrar;
+            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button1.Location = new System.Drawing.Point(3, 47);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(100, 37);
+            this.button1.TabIndex = 68;
+            this.button1.Text = "Cancelar";
+            this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.button1.UseVisualStyleBackColor = true;
+            // 
             // button8
             // 
             this.button8.Font = new System.Drawing.Font("Cambria", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button8.Image = global::AppWinProyectoo.Properties.Resources.imprimir;
             this.button8.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button8.Location = new System.Drawing.Point(216, 47);
+            this.button8.Location = new System.Drawing.Point(225, 48);
             this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(110, 38);
+            this.button8.Size = new System.Drawing.Size(101, 38);
             this.button8.TabIndex = 18;
             this.button8.Text = "Imprimir";
             this.button8.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -358,7 +373,7 @@
             this.button6.Font = new System.Drawing.Font("Cambria", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button6.Image = global::AppWinProyectoo.Properties.Resources.cancelar;
             this.button6.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button6.Location = new System.Drawing.Point(7, 48);
+            this.button6.Location = new System.Drawing.Point(230, 4);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(96, 38);
             this.button6.TabIndex = 16;
@@ -372,7 +387,7 @@
             this.btnBuscar.Font = new System.Drawing.Font("Cambria", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnBuscar.Image = global::AppWinProyectoo.Properties.Resources.buscar;
             this.btnBuscar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnBuscar.Location = new System.Drawing.Point(216, 3);
+            this.btnBuscar.Location = new System.Drawing.Point(109, 50);
             this.btnBuscar.Name = "btnBuscar";
             this.btnBuscar.Size = new System.Drawing.Size(110, 38);
             this.btnBuscar.TabIndex = 14;
@@ -381,28 +396,14 @@
             this.btnBuscar.UseVisualStyleBackColor = true;
             this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
             // 
-            // btnEliminar
-            // 
-            this.btnEliminar.Font = new System.Drawing.Font("Cambria", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEliminar.Image = global::AppWinProyectoo.Properties.Resources.cerrar;
-            this.btnEliminar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnEliminar.Location = new System.Drawing.Point(109, 48);
-            this.btnEliminar.Name = "btnEliminar";
-            this.btnEliminar.Size = new System.Drawing.Size(101, 38);
-            this.btnEliminar.TabIndex = 13;
-            this.btnEliminar.Text = "Quitar";
-            this.btnEliminar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnEliminar.UseVisualStyleBackColor = true;
-            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
-            // 
             // btnGuardar
             // 
             this.btnGuardar.Font = new System.Drawing.Font("Cambria", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnGuardar.Image = global::AppWinProyectoo.Properties.Resources.guardar;
             this.btnGuardar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnGuardar.Location = new System.Drawing.Point(109, 3);
+            this.btnGuardar.Location = new System.Drawing.Point(114, 6);
             this.btnGuardar.Name = "btnGuardar";
-            this.btnGuardar.Size = new System.Drawing.Size(101, 38);
+            this.btnGuardar.Size = new System.Drawing.Size(110, 38);
             this.btnGuardar.TabIndex = 12;
             this.btnGuardar.Text = "Guardar";
             this.btnGuardar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -423,11 +424,25 @@
             this.btnNuevo.UseVisualStyleBackColor = true;
             this.btnNuevo.Click += new System.EventHandler(this.btnNuevo_Click);
             // 
+            // btnEliminar
+            // 
+            this.btnEliminar.Font = new System.Drawing.Font("Cambria", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEliminar.Image = global::AppWinProyectoo.Properties.Resources.cerrar;
+            this.btnEliminar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnEliminar.Location = new System.Drawing.Point(277, 422);
+            this.btnEliminar.Name = "btnEliminar";
+            this.btnEliminar.Size = new System.Drawing.Size(82, 27);
+            this.btnEliminar.TabIndex = 13;
+            this.btnEliminar.Text = "Quitar";
+            this.btnEliminar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnEliminar.UseVisualStyleBackColor = true;
+            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
+            // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Cambria", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(367, 499);
+            this.label5.Location = new System.Drawing.Point(380, 499);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(44, 17);
             this.label5.TabIndex = 52;
@@ -436,7 +451,7 @@
             // btnProducto
             // 
             this.btnProducto.Font = new System.Drawing.Font("Cambria", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnProducto.Location = new System.Drawing.Point(169, 421);
+            this.btnProducto.Location = new System.Drawing.Point(136, 421);
             this.btnProducto.Name = "btnProducto";
             this.btnProducto.Size = new System.Drawing.Size(133, 28);
             this.btnProducto.TabIndex = 53;
@@ -467,15 +482,30 @@
             this.btnGrande.UseVisualStyleBackColor = true;
             this.btnGrande.Click += new System.EventHandler(this.btnGrande_Click);
             // 
+            // button2
+            // 
+            this.button2.Font = new System.Drawing.Font("Cambria", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.Image = global::AppWinProyectoo.Properties.Resources.regresar;
+            this.button2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button2.Location = new System.Drawing.Point(426, 522);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(127, 40);
+            this.button2.TabIndex = 68;
+            this.button2.Text = "Regresar";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click_1);
+            // 
             // RecepcionFactura
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightSkyBlue;
-            this.ClientSize = new System.Drawing.Size(568, 563);
+            this.ClientSize = new System.Drawing.Size(568, 568);
+            this.Controls.Add(this.button2);
             this.Controls.Add(this.btnPequenio);
             this.Controls.Add(this.btnGrande);
             this.Controls.Add(this.btnProducto);
+            this.Controls.Add(this.btnEliminar);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.txtTotal);
             this.Controls.Add(this.panel1);
@@ -546,5 +576,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Subtotal;
         private System.Windows.Forms.Button btnPequenio;
         private System.Windows.Forms.Button btnGrande;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button2;
     }
 }
