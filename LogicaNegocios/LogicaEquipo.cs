@@ -13,6 +13,12 @@ namespace LogicaNegocios
             return Datos.CRUDEquipo.buscar(serie);
         }
 
+        public static bool nuevo(string serie, string modelo, string tipo, int n_factura)
+        {
+            Entidades.Equipo equipo = new Entidades.Equipo(serie, modelo, tipo, 1, n_factura);
+            return Datos.CRUDEquipo.nuevo(equipo);
+        }
+
 
     }
 }

@@ -117,6 +117,18 @@
     <Compile Include="Recepcion\RecepcionAgregarCliente.Designer.cs">
       <DependentUpon>RecepcionAgregarCliente.cs</DependentUpon>
     </Compile>
+    <Compile Include="Recepcion\RecepcionAgregarEquipo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Recepcion\RecepcionAgregarEquipo.Designer.cs">
+      <DependentUpon>RecepcionAgregarEquipo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Recepcion\RecepcionAgregarFactura.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Recepcion\RecepcionAgregarFactura.Designer.cs">
+      <DependentUpon>RecepcionAgregarFactura.cs</DependentUpon>
+    </Compile>
     <Compile Include="Recepcion\RecepcionAgregarIngreso.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -259,6 +271,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Recepcion\RecepcionAgregarCliente.resx">
       <DependentUpon>RecepcionAgregarCliente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Recepcion\RecepcionAgregarEquipo.resx">
+      <DependentUpon>RecepcionAgregarEquipo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Recepcion\RecepcionAgregarFactura.resx">
+      <DependentUpon>RecepcionAgregarFactura.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Recepcion\RecepcionAgregarIngreso.resx">
       <DependentUpon>RecepcionAgregarIngreso.cs</DependentUpon>

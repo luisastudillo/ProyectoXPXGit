@@ -13,9 +13,7 @@ namespace AppWinProyectoo
     public partial class RecepcionEquiposIngreso : Form
     {
         bool editando = false;
-        bool facturaIngresada = false;
-        bool clienteIngresado = false;
-        bool equipoIngresado = false;
+        
         RecepcionEquipos anterior;
 
         public RecepcionEquiposIngreso()
@@ -94,10 +92,15 @@ namespace AppWinProyectoo
 
 
         }
-
-        
+                
         private void btnGuardar_Click(object sender, EventArgs e)
         {
+            if (enBlanco())
+            {
+                MessageBox.Show("No se puede dejar casillas en blanco");
+                return;
+            }
+
             bool resultado;
 
             int codigo = Convert.ToInt32(txtCodigo.Text);
@@ -106,7 +109,7 @@ namespace AppWinProyectoo
             string observaciones = txtObservacion.Text;
             string accesorios = txtAccesorios.Text;
             string ced_cliente = txtCedCliente.Text;
-            string ced_tecnico = "0701945178";
+            string ced_tecnico = "abc";
             string ced_recepcionista = "0702019415";
             string serie_equipo = txtSerie.Text;
             bool garantia = chbGarantia.Checked;
@@ -115,8 +118,7 @@ namespace AppWinProyectoo
 
             if (editando)
             {
-                resultado = LogicaNegocios.LogicaRecepcionEquiposIngreso.editar(codigo, fecha, problema, observaciones,
-                    accesorios, ced_cliente, ced_tecnico, ced_recepcionista, serie_equipo, garantia, estado, n_factura);
+                resultado = LogicaNegocios.LogicaRecepcionEquiposIngreso.editar(codigo, fecha, problema, observaciones,accesorios, ced_cliente, ced_tecnico, ced_recepcionista, serie_equipo, garantia, estado, n_factura);
                 if (resultado)
                 {
                     MessageBox.Show("El ingreso fue editado exitosamente");
@@ -127,8 +129,7 @@ namespace AppWinProyectoo
                 }
             }
             else {
-                resultado = LogicaNegocios.LogicaRecepcionEquiposIngreso.nuevo(codigo, fecha, problema, observaciones,
-                    accesorios, ced_cliente, ced_tecnico, ced_recepcionista, serie_equipo, garantia, estado, n_factura);
+                resultado = LogicaNegocios.LogicaRecepcionEquiposIngreso.nuevo(codigo, fecha, problema, observaciones, accesorios, ced_cliente, ced_tecnico, ced_recepcionista, serie_equipo, garantia, estado, n_factura);
                 if (resultado)
                 {
                     MessageBox.Show("El ingreso fue creado exitosamente");
@@ -251,58 +252,64 @@ namespace AppWinProyectoo
         {
             dtpFechaFactura.Enabled = false;
             txtCedFactura.ReadOnly = true;
-            btnAgregarFactura.Text = "Agregar";
             borrarFactura();
         }
                 
         private void btnAgregarEquipo_Click(object sender, EventArgs e)
         {
-            string serie = txtSerie.Text;
-            if(btnAgregarEquipo.Text == "Agregar")
+            if (txtSerie.Text == "")
             {
-                Entidades.Equipo encontrado = LogicaNegocios.LogicaRecepcionEquiposIngreso.buscarEquipo(serie);
+                MessageBox.Show("No se puede dejar la serie en blanco");
+                return;
+            }
+            string serie = txtSerie.Text;
+            Entidades.Equipo encontrado = LogicaNegocios.LogicaRecepcionEquiposIngreso.buscarEquipo(serie);
                 if (encontrado != null)
                 {
-                    txtSerie.Text = encontrado.Serie;
-                    txtModelo.Text = encontrado.Modelo;
-                    txtNVeces.Text = encontrado.N_ingresos.ToString();
-                    txtEquipo.Text = encontrado.Tipo;
-                    agregarFactura(encontrado.N_factura);
+                agregarEquipo(encontrado.Serie);
                 }
-                else
-                {
-                    btnAgregarEquipo.Text = "Guardar";
-                    activarEquipo();
-                    borrarEquipo();
-                    txtSerie.Text = serie;
-                }
-            }
             else
             {
-                string modelo = txtModelo.Text;
-                string equipo = txtEquipo.Text;
-                int factura = Convert.ToInt32(txtNFactura.Text);
-                short ingresos = 1;
-
-                bool agregado = LogicaNegocios.LogicaRecepcionEquiposIngreso.nuevoEquipo(serie, modelo, equipo, ingresos, factura);
-                if (agregado)
-                {
-                    desactivarEquipo();
-                    MessageBox.Show("Se agregó el equipo");
-                    btnAgregarEquipo.Text = "Agregar";
-                    btnAgregarEquipo.Enabled = false;
-                }else
-                    MessageBox.Show("No se agregó el equipo");
+                Recepcion.RecepcionAgregarEquipo ventana = new Recepcion.RecepcionAgregarEquipo(this, serie);
+                this.Visible = false;
+                ventana.Visible = true;
             }
+            
+        }
+
+        public void agregarFactura(int nFactura)
+        {
+            Entidades.FacturaCompra f = LogicaNegocios.LogicaFacturaCompra.buscar(nFactura);
+            txtCedFactura.Text = f.Cedula;
+            txtNFactura.Text = f.Numero.ToString();
+            dtpFechaFactura.Value = f.Fecha;
+            txtNFactura.Enabled = false;
+        }
+
+        public void agregarEquipo(string serie)
+        {
+            Entidades.Equipo e = LogicaNegocios.LogicaEquipo.buscar(serie);
+            txtEquipo.Text = e.Tipo;
+            txtSerie.Text = e.Serie;
+            txtModelo.Text = e.Modelo;
+            txtNVeces.Text = e.N_ingresos.ToString();
+            txtSerie.Enabled = false;
+            agregarFactura(e.N_factura);
         }
 
         private void btAgregarCliente_Click(object sender, EventArgs e)
         {
+            if (txtCedCliente.Text == "")
+            {
+                MessageBox.Show("No se puede dejar la cedula en blanco");
+                return;
+            }
             string cedula = txtCedCliente.Text;
             Entidades.Cliente cliente = LogicaNegocios.LogicaCliente.buscarCliente(cedula);
             if(cliente != null)
             {
                 txtNomCliente.Text = cliente.Nombre + "" + cliente.Apellido;
+                txtCedCliente.Enabled = false;
             }
             else
             {
@@ -321,8 +328,6 @@ namespace AppWinProyectoo
 
         private void desactivarBotonesPartes()
         {
-            btnCancelarFactura.Enabled = false;
-            btnAgregarFactura.Enabled = false;
             btnCancelarCliente.Enabled = false;
             btAgregarCliente.Enabled = false;
             btnCancelarEquipo.Enabled = false;
@@ -331,53 +336,51 @@ namespace AppWinProyectoo
 
         private void activarBotonesPartes()
         {
-            btnCancelarFactura.Enabled = true;
-            btnAgregarFactura.Enabled = true;
             btnCancelarCliente.Enabled = true;
             btAgregarCliente.Enabled = true;
             btnCancelarEquipo.Enabled = true;
             btnAgregarEquipo.Enabled = true;
         }
 
-        private void agregarFactura(int numero)
-        {
-            if (btnAgregarFactura.Text.Equals("Agregar"))
-            {
+        //private void agregarFactura(int numero)
+        //{
+        //    if (btnAgregarFactura.Text.Equals("Agregar"))
+        //    {
 
-                Entidades.FacturaCompra factura = LogicaNegocios.LogicaRecepcionEquiposIngreso.buscarFactura(numero);
-                if (factura != null)
-                {
-                    txtNFactura.Text = factura.Numero.ToString();
-                    dtpFechaFactura.Value = factura.Fecha;
-                    txtCedFactura.Text = factura.Cedula;
-                }
-                else
-                {
-                    dtpFechaFactura.Enabled = true;
-                    dtpFechaFactura.Text = "";
-                    txtCedFactura.ReadOnly = false;
-                    txtCedFactura.Text = "";
-                    btnAgregarFactura.Text = "Guardar";
-                    btnCancelarFactura.Enabled = true;
-                }
-            }
-            else
-            {
-                DateTime fecha = dtpFechaFactura.Value;
-                string cedula = txtCedFactura.Text;
-                bool agredado = LogicaNegocios.LogicaRecepcionEquiposIngreso.nuevaFactura(numero, fecha, cedula);
-                if (agredado)
-                {
-                    MessageBox.Show("Se agregó la factura");
-                    txtCedFactura.ReadOnly = true;
-                    dtpFechaFactura.Enabled = false;
-                    btnAgregarFactura.Text = "Agregar";
-                    btnCancelarFactura.Enabled = false;
-                }
-                else
-                    MessageBox.Show("No se agregó la factura");
-            }
-        }
+        //        Entidades.FacturaCompra factura = LogicaNegocios.LogicaRecepcionEquiposIngreso.buscarFactura(numero);
+        //        if (factura != null)
+        //        {
+        //            txtNFactura.Text = factura.Numero.ToString();
+        //            dtpFechaFactura.Value = factura.Fecha;
+        //            txtCedFactura.Text = factura.Cedula;
+        //        }
+        //        else
+        //        {
+        //            dtpFechaFactura.Enabled = true;
+        //            dtpFechaFactura.Text = "";
+        //            txtCedFactura.ReadOnly = false;
+        //            txtCedFactura.Text = "";
+        //            btnAgregarFactura.Text = "Guardar";
+        //            btnCancelarFactura.Enabled = true;
+        //        }
+        //    }
+        //    else
+        //    {
+        //        DateTime fecha = dtpFechaFactura.Value;
+        //        string cedula = txtCedFactura.Text;
+        //        bool agredado = LogicaNegocios.LogicaRecepcionEquiposIngreso.nuevaFactura(numero, fecha, cedula);
+        //        if (agredado)
+        //        {
+        //            MessageBox.Show("Se agregó la factura");
+        //            txtCedFactura.ReadOnly = true;
+        //            dtpFechaFactura.Enabled = false;
+        //            btnAgregarFactura.Text = "Agregar";
+        //            btnCancelarFactura.Enabled = false;
+        //        }
+        //        else
+        //            MessageBox.Show("No se agregó la factura");
+        //    }
+        //}
 
         private void borrarFactura()
         {
@@ -412,14 +415,52 @@ namespace AppWinProyectoo
 
         private void btnCancelarEquipo_Click(object sender, EventArgs e)
         {
-            activarEquipo();
             borrarEquipo();
+            borrarFactura();
+            txtSerie.Enabled = true;
         }
 
         private void btnCerrar_Click(object sender, EventArgs e)
         {
             anterior.Visible = true;
             this.Close();
+        }
+
+        private void btnCancelarCliente_Click(object sender, EventArgs e)
+        {
+            
+        }
+        private void borrarCliente()
+        {
+            txtCedCliente.Text = "";
+            txtNomCliente.Text = "";
+            txtCedCliente.Enabled = true;
+        }
+
+        private bool enBlanco()
+        {
+            bool retorno = false;
+            foreach (Control control in this.Controls)
+            {
+                if (control is TextBox)
+                    if (((TextBox)control).Text == "")
+                        retorno = true;
+                if (control is Panel)
+                {
+                    foreach (Control control2 in control.Controls)
+                    {
+                        if (control is TextBox)
+                            if (((TextBox)control).Text == "")
+                                retorno = true;
+                    }
+                }                   
+            }
+            return retorno;
+        }
+
+        private void panel3_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

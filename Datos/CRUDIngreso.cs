@@ -26,15 +26,15 @@ namespace Datos
             nuevo.ing_problema = ingreso.Problema;
             nuevo.ing_serie_equipo = ingreso.Serie_equipo;
 
-            try
-            {
+            //try
+            //{
                 db.Ingreso.InsertOnSubmit(nuevo);
                 db.SubmitChanges();
-            }
-            catch (Exception e)
-            {
-                retorno = false;
-            }
+            //}
+            //catch (Exception e)
+            //{
+            //    retorno = false;
+            //}
 
 
             return retorno;
