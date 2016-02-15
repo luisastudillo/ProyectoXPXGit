@@ -18,10 +18,10 @@ namespace AppWinProyectoo
             Application.SetCompatibleTextRenderingDefault(false);
             //Application.Run(new RecepcionFactura());
             //Application.Run(new RecepcionAgregarIngreso());
-            //Application.Run(new RecepcionMenu(new Login()));
+            Application.Run(new RecepcionMenu());
             //Application.Run(new RecepcionFactura());
-            Application.Run(new RecepcionEquiposIngreso());
-            //Application.Run(new Login());
+            //Application.Run(new RecepcionEquiposIngreso());
+            Application.Run(new Login());
             //Application.Run(new AdministradorUsuarioListar());
             //Application.Run(new AdministradorRecepcion());
             //Application.Run(new AdministradorPiezas());

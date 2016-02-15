@@ -45,6 +45,8 @@
             this.Domicilio = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Telefono = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Tipo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnPequenio = new System.Windows.Forms.Button();
+            this.btnGrande = new System.Windows.Forms.Button();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPiezas)).BeginInit();
@@ -57,7 +59,7 @@
             this.panel2.Controls.Add(this.label1);
             this.panel2.Controls.Add(this.rbtTipo);
             this.panel2.Controls.Add(this.rbtModelo);
-            this.panel2.Location = new System.Drawing.Point(360, 362);
+            this.panel2.Location = new System.Drawing.Point(360, 377);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(310, 122);
             this.panel2.TabIndex = 25;
@@ -121,7 +123,7 @@
             this.panel1.Controls.Add(this.btnImprimir);
             this.panel1.Controls.Add(this.btnListar);
             this.panel1.Controls.Add(this.btnRegresar);
-            this.panel1.Location = new System.Drawing.Point(32, 362);
+            this.panel1.Location = new System.Drawing.Point(32, 377);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(290, 122);
             this.panel1.TabIndex = 24;
@@ -174,7 +176,7 @@
             this.Domicilio,
             this.Telefono,
             this.Tipo});
-            this.dgvPiezas.Location = new System.Drawing.Point(10, 25);
+            this.dgvPiezas.Location = new System.Drawing.Point(10, 40);
             this.dgvPiezas.Name = "dgvPiezas";
             this.dgvPiezas.Size = new System.Drawing.Size(676, 314);
             this.dgvPiezas.TabIndex = 23;
@@ -230,12 +232,37 @@
             this.Tipo.Name = "Tipo";
             this.Tipo.ReadOnly = true;
             // 
+            // btnPequenio
+            // 
+            this.btnPequenio.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPequenio.Location = new System.Drawing.Point(613, 11);
+            this.btnPequenio.Name = "btnPequenio";
+            this.btnPequenio.Size = new System.Drawing.Size(76, 23);
+            this.btnPequenio.TabIndex = 67;
+            this.btnPequenio.Text = "-";
+            this.btnPequenio.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnPequenio.UseVisualStyleBackColor = true;
+            this.btnPequenio.Click += new System.EventHandler(this.btnPequenio_Click);
+            // 
+            // btnGrande
+            // 
+            this.btnGrande.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGrande.Location = new System.Drawing.Point(531, 11);
+            this.btnGrande.Name = "btnGrande";
+            this.btnGrande.Size = new System.Drawing.Size(76, 23);
+            this.btnGrande.TabIndex = 66;
+            this.btnGrande.Text = "+";
+            this.btnGrande.UseVisualStyleBackColor = true;
+            this.btnGrande.Click += new System.EventHandler(this.btnGrande_Click);
+            // 
             // AdministradorPiezasListar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightSkyBlue;
             this.ClientSize = new System.Drawing.Size(701, 508);
+            this.Controls.Add(this.btnPequenio);
+            this.Controls.Add(this.btnGrande);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.dgvPiezas);
@@ -269,5 +296,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Domicilio;
         private System.Windows.Forms.DataGridViewTextBoxColumn Telefono;
         private System.Windows.Forms.DataGridViewTextBoxColumn Tipo;
+        private System.Windows.Forms.Button btnPequenio;
+        private System.Windows.Forms.Button btnGrande;
     }
 }

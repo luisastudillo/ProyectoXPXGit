@@ -29,12 +29,14 @@
         private void InitializeComponent()
         {
             this.dgvTrabajos = new System.Windows.Forms.DataGridView();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.btnImprimir = new System.Windows.Forms.Button();
-            this.btnRegresar = new System.Windows.Forms.Button();
             this.Cedula = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Nombres = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Domicilio = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.btnImprimir = new System.Windows.Forms.Button();
+            this.btnRegresar = new System.Windows.Forms.Button();
+            this.btnPequenio = new System.Windows.Forms.Button();
+            this.btnGrande = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTrabajos)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -50,6 +52,34 @@
             this.dgvTrabajos.Name = "dgvTrabajos";
             this.dgvTrabajos.Size = new System.Drawing.Size(426, 314);
             this.dgvTrabajos.TabIndex = 24;
+            // 
+            // Cedula
+            // 
+            this.Cedula.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.Cedula.Frozen = true;
+            this.Cedula.HeaderText = "Codigo";
+            this.Cedula.Name = "Cedula";
+            this.Cedula.ReadOnly = true;
+            this.Cedula.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Cedula.Width = 80;
+            // 
+            // Nombres
+            // 
+            this.Nombres.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.Nombres.Frozen = true;
+            this.Nombres.HeaderText = "Descripcion";
+            this.Nombres.Name = "Nombres";
+            this.Nombres.ReadOnly = true;
+            this.Nombres.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Nombres.Width = 200;
+            // 
+            // Domicilio
+            // 
+            this.Domicilio.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.Domicilio.Frozen = true;
+            this.Domicilio.HeaderText = "Costo";
+            this.Domicilio.Name = "Domicilio";
+            this.Domicilio.ReadOnly = true;
             // 
             // panel1
             // 
@@ -86,40 +116,37 @@
             this.btnRegresar.UseVisualStyleBackColor = true;
             this.btnRegresar.Click += new System.EventHandler(this.btnRegresar_Click);
             // 
-            // Cedula
+            // btnPequenio
             // 
-            this.Cedula.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.Cedula.Frozen = true;
-            this.Cedula.HeaderText = "Codigo";
-            this.Cedula.Name = "Cedula";
-            this.Cedula.ReadOnly = true;
-            this.Cedula.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Cedula.Width = 80;
+            this.btnPequenio.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPequenio.Location = new System.Drawing.Point(526, 12);
+            this.btnPequenio.Name = "btnPequenio";
+            this.btnPequenio.Size = new System.Drawing.Size(76, 23);
+            this.btnPequenio.TabIndex = 67;
+            this.btnPequenio.Text = "-";
+            this.btnPequenio.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnPequenio.UseVisualStyleBackColor = true;
+            this.btnPequenio.Click += new System.EventHandler(this.btnPequenio_Click);
             // 
-            // Nombres
+            // btnGrande
             // 
-            this.Nombres.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.Nombres.Frozen = true;
-            this.Nombres.HeaderText = "Descripcion";
-            this.Nombres.Name = "Nombres";
-            this.Nombres.ReadOnly = true;
-            this.Nombres.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Nombres.Width = 200;
-            // 
-            // Domicilio
-            // 
-            this.Domicilio.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.Domicilio.Frozen = true;
-            this.Domicilio.HeaderText = "Costo";
-            this.Domicilio.Name = "Domicilio";
-            this.Domicilio.ReadOnly = true;
+            this.btnGrande.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGrande.Location = new System.Drawing.Point(444, 12);
+            this.btnGrande.Name = "btnGrande";
+            this.btnGrande.Size = new System.Drawing.Size(76, 23);
+            this.btnGrande.TabIndex = 66;
+            this.btnGrande.Text = "+";
+            this.btnGrande.UseVisualStyleBackColor = true;
+            this.btnGrande.Click += new System.EventHandler(this.btnGrande_Click);
             // 
             // AdministradorTrabajosListar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightSkyBlue;
-            this.ClientSize = new System.Drawing.Size(602, 339);
+            this.ClientSize = new System.Drawing.Size(607, 339);
+            this.Controls.Add(this.btnPequenio);
+            this.Controls.Add(this.btnGrande);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.dgvTrabajos);
             this.Name = "AdministradorTrabajosListar";
@@ -140,5 +167,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Cedula;
         private System.Windows.Forms.DataGridViewTextBoxColumn Nombres;
         private System.Windows.Forms.DataGridViewTextBoxColumn Domicilio;
+        private System.Windows.Forms.Button btnPequenio;
+        private System.Windows.Forms.Button btnGrande;
     }
 }

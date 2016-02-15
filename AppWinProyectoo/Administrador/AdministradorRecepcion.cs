@@ -38,28 +38,35 @@ namespace AppWinProyectoo
 
         private void button2_Click(object sender, EventArgs e)
         {
-            if (enBlanco())
+            try
             {
-                MessageBox.Show("No se puede dejar casillas en blanco");
-                return;
+                if (enBlanco())
+                {
+                    MessageBox.Show("No se puede dejar casillas en blanco");
+                    return;
+                }
+                string cedula, nombres, apellidos, direccion, telefono, contrasenia, tipo;
+                cedula = txtCedula.Text;
+                nombres = txtNombre.Text;
+                apellidos = txtApellido.Text;
+                direccion = txtDireccion.Text;
+                telefono = txtTelefono.Text;
+                contrasenia = txtContrasenia.Text;
+                tipo = (string)cmbTipo.SelectedItem;
+                bool baja = chbBaja.Checked;
+                if (editando)
+                {
+                    editar(cedula, nombres, apellidos, direccion, telefono, contrasenia, tipo, baja);
+                }
+                else
+                {
+                    nuevo(cedula, nombres, apellidos, direccion, telefono, contrasenia, tipo);
+                }
             }
-            string cedula, nombres, apellidos, direccion, telefono, contrasenia, tipo;
-            cedula = txtCedula.Text;
-            nombres = txtNombre.Text;
-            apellidos = txtApellido.Text;
-            direccion = txtDireccion.Text;
-            telefono = txtTelefono.Text;
-            contrasenia = txtContrasenia.Text;
-            tipo = (string)cmbTipo.SelectedItem;
-            bool baja = chbBaja.Checked;
-            if (editando)
+            catch (Exception ex)
             {
-                editar(cedula, nombres, apellidos, direccion, telefono, contrasenia, tipo, baja);
-            }
-            else
-            {
-                nuevo(cedula, nombres, apellidos, direccion, telefono, contrasenia, tipo);
-            }
+                MessageBox.Show("Ingrese datos válidos \n" + ex.Message);
+            }            
         }
 
         private void nuevo(string cedula, string nombre, string apellido, string domicilio, string telefono, string contrasenia, string tipo)
@@ -184,37 +191,44 @@ namespace AppWinProyectoo
         }
 
         private void btnBuscar_Click(object sender, EventArgs e)
-        {           
-            
-            if (btnBuscar.Text == "Buscar")
+        {
+
+            try
             {
-                if (txtCedula.Text == "")
+                if (btnBuscar.Text == "Buscar")
                 {
-                    MessageBox.Show("Ingrese una cedula");
-                    return;
-                }
-                string cedula = txtCedula.Text;
-                Entidades.Usuario encontrado = LogicaNegocios.LogicaUsuario.buscar(cedula);
-                if (encontrado != null)
-                {
-                    mostrarUsuario(encontrado);
-                    btnBuscar.Text = "Busqueda";
-                    activarBotones();
-                    btnCancelar.Enabled = false;
-                    btnGuardar.Enabled = false;
+                    if (txtCedula.Text == "")
+                    {
+                        MessageBox.Show("Ingrese una cedula");
+                        return;
+                    }
+                    string cedula = txtCedula.Text;
+                    Entidades.Usuario encontrado = LogicaNegocios.LogicaUsuario.buscar(cedula);
+                    if (encontrado != null)
+                    {
+                        mostrarUsuario(encontrado);
+                        btnBuscar.Text = "Busqueda";
+                        activarBotones();
+                        btnCancelar.Enabled = false;
+                        btnGuardar.Enabled = false;
+                    }
+                    else
+                        MessageBox.Show("Cliente no encontrado");
                 }
                 else
-                    MessageBox.Show("Cliente no encontrado");
+                {
+                    borrarCasillas();
+                    desactivarCasillas();
+                    txtCedula.ReadOnly = false;
+                    desactivarBotones();
+                    btnBuscar.Enabled = true;
+                    btnCancelar.Enabled = true;
+                    btnBuscar.Text = "Buscar";
+                }
             }
-            else
+            catch (Exception ex)
             {
-                borrarCasillas();
-                desactivarCasillas();
-                txtCedula.ReadOnly = false;
-                desactivarBotones();
-                btnBuscar.Enabled = true;
-                btnCancelar.Enabled = true;
-                btnBuscar.Text = "Buscar";
+                MessageBox.Show("Ingrese datos válidos \n" + ex.Message);
             }
         }
 

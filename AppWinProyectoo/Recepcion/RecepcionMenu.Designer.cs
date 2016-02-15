@@ -33,6 +33,8 @@
             this.btnClientes = new System.Windows.Forms.Button();
             this.btnEquipos = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
+            this.btnPequenio = new System.Windows.Forms.Button();
+            this.btnGrande = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -97,12 +99,37 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // btnPequenio
+            // 
+            this.btnPequenio.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPequenio.Location = new System.Drawing.Point(356, 4);
+            this.btnPequenio.Name = "btnPequenio";
+            this.btnPequenio.Size = new System.Drawing.Size(61, 23);
+            this.btnPequenio.TabIndex = 67;
+            this.btnPequenio.Text = "-";
+            this.btnPequenio.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnPequenio.UseVisualStyleBackColor = true;
+            this.btnPequenio.Click += new System.EventHandler(this.btnPequenio_Click);
+            // 
+            // btnGrande
+            // 
+            this.btnGrande.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGrande.Location = new System.Drawing.Point(289, 4);
+            this.btnGrande.Name = "btnGrande";
+            this.btnGrande.Size = new System.Drawing.Size(61, 23);
+            this.btnGrande.TabIndex = 66;
+            this.btnGrande.Text = "+";
+            this.btnGrande.UseVisualStyleBackColor = true;
+            this.btnGrande.Click += new System.EventHandler(this.btnGrande_Click);
+            // 
             // RecepcionMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightSkyBlue;
             this.ClientSize = new System.Drawing.Size(418, 305);
+            this.Controls.Add(this.btnPequenio);
+            this.Controls.Add(this.btnGrande);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.btnClientes);
@@ -123,5 +150,7 @@
         private System.Windows.Forms.Button btnEquipos;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnPequenio;
+        private System.Windows.Forms.Button btnGrande;
     }
 }

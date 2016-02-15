@@ -55,29 +55,45 @@ namespace AppWinProyectoo
 
         private void button4_Click(object sender, EventArgs e)
         {
+            
             string texto = btnBuscar.Text;
             if (texto.Equals("Buscar"))
             {
-                int codigo = Convert.ToInt32(txtCodigo.Text);
-                Entidades.Ingreso encontrado = LogicaNegocios.LogicaRecepcionEquiposIngreso.buscar(codigo);
-                if (encontrado != null)
+                if (txtCodigo.Text == "")
                 {
-                    txtCodigo.Text = encontrado.Codigo.ToString();
-                    txtAccesorios.Text = encontrado.Accesorios;
-                    txtCedCliente.Text = encontrado.Ced_cliente;
-                    dtpFecha.Value = encontrado.Fecha;
-                    chbGarantia.Checked = encontrado.Garantia;
-                    txtNFactura.Text = encontrado.N_factura.ToString();
-                    txtObservacion.Text = encontrado.Observaciones;
-                    txtProblema.Text = encontrado.Problema;
-                    txtSerie.Text = encontrado.Serie_equipo;
-                    activarBotones();
-                    btnEditar.Enabled = true;
-                    desactivarCasillas();
-                    btnBuscar.Text = "Busqueda";
+                    MessageBox.Show("No se puede dejar casillas en blanco");
+                    return;
                 }
-                else
-                    MessageBox.Show("No se encontró el ingreso");
+
+                try
+                {
+                    int codigo = Convert.ToInt32(txtCodigo.Text);
+                    Entidades.Ingreso encontrado = LogicaNegocios.LogicaRecepcionEquiposIngreso.buscar(codigo);
+                    if (encontrado != null)
+                    {
+                        txtCodigo.Text = encontrado.Codigo.ToString();
+                        txtAccesorios.Text = encontrado.Accesorios;
+                        txtCedCliente.Text = encontrado.Ced_cliente;
+                        dtpFecha.Value = encontrado.Fecha;
+                        chbGarantia.Checked = encontrado.Garantia;
+                        txtNFactura.Text = encontrado.N_factura.ToString();
+                        txtObservacion.Text = encontrado.Observaciones;
+                        txtProblema.Text = encontrado.Problema;
+                        txtSerie.Text = encontrado.Serie_equipo;
+                        activarBotones();
+                        btnEditar.Enabled = true;
+                        desactivarCasillas();
+                        btnBuscar.Text = "Busqueda";
+                    }
+                    else
+                        MessageBox.Show("No se encontró el ingreso");
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Ingrese datos válidos \n" + ex.Message);
+                }
+
+                
             }
             else
             {
@@ -101,51 +117,60 @@ namespace AppWinProyectoo
                 return;
             }
 
-            bool resultado;
-
-            int codigo = Convert.ToInt32(txtCodigo.Text);
-            DateTime fecha = dtpFecha.Value;
-            string problema = txtProblema.Text;
-            string observaciones = txtObservacion.Text;
-            string accesorios = txtAccesorios.Text;
-            string ced_cliente = txtCedCliente.Text;
-            string ced_tecnico = "abc";
-            string ced_recepcionista = "0702019415";
-            string serie_equipo = txtSerie.Text;
-            bool garantia = chbGarantia.Checked;
-            string estado = "ingresado";
-            int n_factura = Convert.ToInt32(txtNFactura.Text);
-
-            if (editando)
+            try
             {
-                resultado = LogicaNegocios.LogicaRecepcionEquiposIngreso.editar(codigo, fecha, problema, observaciones,accesorios, ced_cliente, ced_tecnico, ced_recepcionista, serie_equipo, garantia, estado, n_factura);
+                bool resultado;
+
+                int codigo = Convert.ToInt32(txtCodigo.Text);
+                DateTime fecha = dtpFecha.Value;
+                string problema = txtProblema.Text;
+                string observaciones = txtObservacion.Text;
+                string accesorios = txtAccesorios.Text;
+                string ced_cliente = txtCedCliente.Text;
+                string ced_tecnico = "abc";
+                string ced_recepcionista = "0702019415";
+                string serie_equipo = txtSerie.Text;
+                bool garantia = chbGarantia.Checked;
+                string estado = "ingresado";
+                int n_factura = Convert.ToInt32(txtNFactura.Text);
+
+                if (editando)
+                {
+                    resultado = LogicaNegocios.LogicaRecepcionEquiposIngreso.editar(codigo, fecha, problema, observaciones, accesorios, ced_cliente, ced_tecnico, ced_recepcionista, serie_equipo, garantia, estado, n_factura);
+                    if (resultado)
+                    {
+                        MessageBox.Show("El ingreso fue editado exitosamente");
+                    }
+                    else
+                    {
+                        MessageBox.Show("El ingreso no se pudo actualizar");
+                    }
+                }
+                else {
+                    resultado = LogicaNegocios.LogicaRecepcionEquiposIngreso.nuevo(codigo, fecha, problema, observaciones, accesorios, ced_cliente, ced_tecnico, ced_recepcionista, serie_equipo, garantia, estado, n_factura);
+                    if (resultado)
+                    {
+                        MessageBox.Show("El ingreso fue creado exitosamente");
+                    }
+                    else
+                    {
+                        MessageBox.Show("El ingreso no se pudo crear");
+                    }
+                }
                 if (resultado)
                 {
-                    MessageBox.Show("El ingreso fue editado exitosamente");
-                }
-                else
-                {
-                    MessageBox.Show("El ingreso no se pudo actualizar");
-                }
-            }
-            else {
-                resultado = LogicaNegocios.LogicaRecepcionEquiposIngreso.nuevo(codigo, fecha, problema, observaciones, accesorios, ced_cliente, ced_tecnico, ced_recepcionista, serie_equipo, garantia, estado, n_factura);
-                if (resultado)
-                {
-                    MessageBox.Show("El ingreso fue creado exitosamente");
-                }
-                else
-                {
-                    MessageBox.Show("El ingreso no se pudo crear");
+                    borrarCasillas();
+                    activarBotones();
+                    desactivarCasillas();
+
                 }
             }
-            if (resultado)
+            catch (Exception ex)
             {
-                borrarCasillas();
-                activarBotones();
-                desactivarCasillas();
-                
+                MessageBox.Show("Ingrese datos válidos \n" + ex.Message);
             }
+
+            
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -462,5 +487,46 @@ namespace AppWinProyectoo
         {
 
         }
+
+        private void btnPequenio_Click(object sender, EventArgs e)
+        {
+            pequenio();
+        }
+
+        private void btnGrande_Click(object sender, EventArgs e)
+        {
+            grande();
+        }
+
+        private void grande()
+        {
+            foreach (Control control in this.Controls)
+            {
+                control.Font = new Font(control.Font.Name, control.Font.Size + 1, control.Font.Style, control.Font.Unit);
+                if (control is Panel)
+                {
+                    foreach (Control control2 in control.Controls)
+                    {
+                        control2.Font = new Font(control.Font.Name, control.Font.Size + 1, control.Font.Style, control.Font.Unit);
+                    }
+                }
+            }
+        }
+
+        private void pequenio()
+        {
+            foreach (Control control in this.Controls)
+            {
+                control.Font = new Font(control.Font.Name, control.Font.Size - 1, control.Font.Style, control.Font.Unit);
+                if (control is Panel)
+                {
+                    foreach (Control control2 in control.Controls)
+                    {
+                        control2.Font = new Font(control.Font.Name, control.Font.Size - 1, control.Font.Style, control.Font.Unit);
+                    }
+                }
+            }
+        }
+
     }
 }

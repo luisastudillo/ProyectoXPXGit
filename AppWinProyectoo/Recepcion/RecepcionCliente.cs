@@ -42,22 +42,47 @@ namespace AppWinProyectoo
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            string cedula, nombres, apellidos, direccion, telefono, celular;
-            cedula = txtCedula.Text;
-            nombres = txtNombre.Text;
-            apellidos = txtApellido.Text;
-            direccion = txtDireccion.Text;
-            telefono = txtTelefono.Text;
-            celular = txtCelular.Text;
+            try
+            {
+                if (enBlanco())
+                {
+                    MessageBox.Show("No se puede dejar casillas en blanco");
+                    return;
+                }
 
-            if (editando)
-            {
-                editar(cedula, nombres, apellidos, direccion, telefono, celular);
+                string cedula, nombres, apellidos, direccion, telefono, celular;
+                cedula = txtCedula.Text;
+                nombres = txtNombre.Text;
+                apellidos = txtApellido.Text;
+                direccion = txtDireccion.Text;
+                telefono = txtTelefono.Text;
+                celular = txtCelular.Text;
+
+                if (editando)
+                {
+                    editar(cedula, nombres, apellidos, direccion, telefono, celular);
+                }
+                else
+                {
+                    nuevo(cedula, nombres, apellidos, direccion, telefono, celular);
+                }
             }
-            else
+            catch (Exception ex)
             {
-                nuevo(cedula, nombres, apellidos, direccion, telefono, celular);                
-            }            
+                MessageBox.Show("Ingrese datos válidos \n" + ex.Message);
+            }
+        }
+
+        private bool enBlanco()
+        {
+            bool retorno = false;
+            foreach (Control control in this.Controls)
+            {
+                if (control is TextBox)
+                    if (((TextBox)control).Text == "")
+                        retorno = true;
+            }
+            return retorno;
         }
 
         private void nuevo(string cedula, string nombres, string apellidos, string direccion, string telefono, string celular)
@@ -97,30 +122,46 @@ namespace AppWinProyectoo
 
         private void btnBuscar_Click(object sender, EventArgs e)
         {
-            string cedula = txtCedula.Text;
-            if(btnBuscar.Text == "Buscar")
+            try
             {
-                Entidades.Cliente encontrado = LogicaNegocios.LogicaCliente.buscar(cedula);
-                if (encontrado != null) { 
-                    mostrarCliente(encontrado);
-                    btnBuscar.Text = "Busqueda";
-                    activarBotones();
-                    btnCancelar.Enabled = false;
-                    btnGuardar.Enabled = false;
+                if (txtCedula.Text == "")
+                {
+                    MessageBox.Show("No se puede dejar cedula en blanco");
+                    return;
+                }
+
+                string cedula = txtCedula.Text;
+                if (btnBuscar.Text == "Buscar")
+                {
+                    Entidades.Cliente encontrado = LogicaNegocios.LogicaCliente.buscar(cedula);
+                    if (encontrado != null)
+                    {
+                        mostrarCliente(encontrado);
+                        btnBuscar.Text = "Busqueda";
+                        activarBotones();
+                        btnCancelar.Enabled = false;
+                        btnGuardar.Enabled = false;
+                    }
+                    else
+                        MessageBox.Show("Cliente no encontrado");
                 }
                 else
-                    MessageBox.Show("Cliente no encontrado");
+                {
+                    borrarCasillas();
+                    desactivarCasillas();
+                    txtCedula.ReadOnly = false;
+                    desactivarBotones();
+                    btnBuscar.Enabled = true;
+                    btnCancelar.Enabled = true;
+                    btnBuscar.Text = "Buscar";
+                }
             }
-            else
+            catch (Exception ex)
             {
-                borrarCasillas();
-                desactivarCasillas();
-                txtCedula.ReadOnly = false;
-                desactivarBotones();
-                btnBuscar.Enabled = true;
-                btnCancelar.Enabled = true;
-                btnBuscar.Text = "Buscar";
-            }     
+                MessageBox.Show("Ingrese datos válidos \n" + ex.Message);
+            }
+
+            
         }
 
         public void mostrarCliente(Entidades.Cliente cliente)
@@ -211,5 +252,46 @@ namespace AppWinProyectoo
         {
 
         }
+
+        private void btnGrande_Click(object sender, EventArgs e)
+        {
+            grande();
+        }
+
+        private void btnPequenio_Click(object sender, EventArgs e)
+        {
+            pequenio();
+        }
+
+        private void grande()
+        {
+            foreach (Control control in this.Controls)
+            {
+                control.Font = new Font(control.Font.Name, control.Font.Size + 1, control.Font.Style, control.Font.Unit);
+                if (control is Panel)
+                {
+                    foreach (Control control2 in control.Controls)
+                    {
+                        control2.Font = new Font(control.Font.Name, control.Font.Size + 1, control.Font.Style, control.Font.Unit);
+                    }
+                }
+            }
+        }
+
+        private void pequenio()
+        {
+            foreach (Control control in this.Controls)
+            {
+                control.Font = new Font(control.Font.Name, control.Font.Size - 1, control.Font.Style, control.Font.Unit);
+                if (control is Panel)
+                {
+                    foreach (Control control2 in control.Controls)
+                    {
+                        control2.Font = new Font(control.Font.Name, control.Font.Size - 1, control.Font.Style, control.Font.Unit);
+                    }
+                }
+            }
+        }
+
     }
 }

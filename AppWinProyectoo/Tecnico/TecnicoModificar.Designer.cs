@@ -39,6 +39,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnAceptar = new System.Windows.Forms.Button();
             this.btnRegresar = new System.Windows.Forms.Button();
             this.cmbCodigos = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -52,7 +53,8 @@
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnAgregarPieza = new System.Windows.Forms.Button();
             this.btnQuitarPieza = new System.Windows.Forms.Button();
-            this.btnAceptar = new System.Windows.Forms.Button();
+            this.btnPequenio = new System.Windows.Forms.Button();
+            this.btnGrande = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTrabajos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPiezas)).BeginInit();
@@ -154,10 +156,23 @@
             this.panel1.BackColor = System.Drawing.Color.SkyBlue;
             this.panel1.Controls.Add(this.btnAceptar);
             this.panel1.Controls.Add(this.btnRegresar);
-            this.panel1.Location = new System.Drawing.Point(17, 471);
+            this.panel1.Location = new System.Drawing.Point(17, 490);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(550, 51);
+            this.panel1.Size = new System.Drawing.Size(550, 52);
             this.panel1.TabIndex = 41;
+            // 
+            // btnAceptar
+            // 
+            this.btnAceptar.Font = new System.Drawing.Font("Cambria", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAceptar.Image = global::AppWinProyectoo.Properties.Resources.aceptar;
+            this.btnAceptar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnAceptar.Location = new System.Drawing.Point(92, 3);
+            this.btnAceptar.Name = "btnAceptar";
+            this.btnAceptar.Size = new System.Drawing.Size(130, 38);
+            this.btnAceptar.TabIndex = 12;
+            this.btnAceptar.Text = "Aceptar";
+            this.btnAceptar.UseVisualStyleBackColor = true;
+            this.btnAceptar.Click += new System.EventHandler(this.btnAceptar_Click);
             // 
             // btnRegresar
             // 
@@ -226,7 +241,7 @@
             this.btnAgregarIngreso.Font = new System.Drawing.Font("Cambria", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAgregarIngreso.Location = new System.Drawing.Point(28, 429);
             this.btnAgregarIngreso.Name = "btnAgregarIngreso";
-            this.btnAgregarIngreso.Size = new System.Drawing.Size(80, 28);
+            this.btnAgregarIngreso.Size = new System.Drawing.Size(80, 36);
             this.btnAgregarIngreso.TabIndex = 53;
             this.btnAgregarIngreso.Text = "Agregar";
             this.btnAgregarIngreso.UseVisualStyleBackColor = true;
@@ -239,7 +254,7 @@
             this.btnQuitarTrabajo.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnQuitarTrabajo.Location = new System.Drawing.Point(140, 429);
             this.btnQuitarTrabajo.Name = "btnQuitarTrabajo";
-            this.btnQuitarTrabajo.Size = new System.Drawing.Size(101, 28);
+            this.btnQuitarTrabajo.Size = new System.Drawing.Size(101, 36);
             this.btnQuitarTrabajo.TabIndex = 55;
             this.btnQuitarTrabajo.Text = "Quitar";
             this.btnQuitarTrabajo.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -280,7 +295,7 @@
             this.btnAgregarPieza.Font = new System.Drawing.Font("Cambria", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAgregarPieza.Location = new System.Drawing.Point(357, 429);
             this.btnAgregarPieza.Name = "btnAgregarPieza";
-            this.btnAgregarPieza.Size = new System.Drawing.Size(80, 28);
+            this.btnAgregarPieza.Size = new System.Drawing.Size(80, 36);
             this.btnAgregarPieza.TabIndex = 57;
             this.btnAgregarPieza.Text = "Agregar";
             this.btnAgregarPieza.UseVisualStyleBackColor = true;
@@ -293,31 +308,43 @@
             this.btnQuitarPieza.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnQuitarPieza.Location = new System.Drawing.Point(466, 429);
             this.btnQuitarPieza.Name = "btnQuitarPieza";
-            this.btnQuitarPieza.Size = new System.Drawing.Size(101, 28);
+            this.btnQuitarPieza.Size = new System.Drawing.Size(101, 36);
             this.btnQuitarPieza.TabIndex = 58;
             this.btnQuitarPieza.Text = "Quitar";
             this.btnQuitarPieza.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnQuitarPieza.UseVisualStyleBackColor = true;
             // 
-            // btnAceptar
+            // btnPequenio
             // 
-            this.btnAceptar.Font = new System.Drawing.Font("Cambria", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAceptar.Image = global::AppWinProyectoo.Properties.Resources.aceptar;
-            this.btnAceptar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAceptar.Location = new System.Drawing.Point(92, 3);
-            this.btnAceptar.Name = "btnAceptar";
-            this.btnAceptar.Size = new System.Drawing.Size(130, 38);
-            this.btnAceptar.TabIndex = 12;
-            this.btnAceptar.Text = "Aceptar";
-            this.btnAceptar.UseVisualStyleBackColor = true;
-            this.btnAceptar.Click += new System.EventHandler(this.btnAceptar_Click);
+            this.btnPequenio.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPequenio.Location = new System.Drawing.Point(521, 12);
+            this.btnPequenio.Name = "btnPequenio";
+            this.btnPequenio.Size = new System.Drawing.Size(76, 23);
+            this.btnPequenio.TabIndex = 67;
+            this.btnPequenio.Text = "-";
+            this.btnPequenio.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnPequenio.UseVisualStyleBackColor = true;
+            this.btnPequenio.Click += new System.EventHandler(this.btnPequenio_Click);
+            // 
+            // btnGrande
+            // 
+            this.btnGrande.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGrande.Location = new System.Drawing.Point(439, 12);
+            this.btnGrande.Name = "btnGrande";
+            this.btnGrande.Size = new System.Drawing.Size(76, 23);
+            this.btnGrande.TabIndex = 66;
+            this.btnGrande.Text = "+";
+            this.btnGrande.UseVisualStyleBackColor = true;
+            this.btnGrande.Click += new System.EventHandler(this.btnGrande_Click);
             // 
             // TecnicoModificar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightSkyBlue;
-            this.ClientSize = new System.Drawing.Size(609, 527);
+            this.ClientSize = new System.Drawing.Size(609, 543);
+            this.Controls.Add(this.btnPequenio);
+            this.Controls.Add(this.btnGrande);
             this.Controls.Add(this.btnQuitarPieza);
             this.Controls.Add(this.btnAgregarPieza);
             this.Controls.Add(this.dgvPiezas);
@@ -375,5 +402,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.Button btnAceptar;
+        private System.Windows.Forms.Button btnPequenio;
+        private System.Windows.Forms.Button btnGrande;
     }
 }

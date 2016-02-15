@@ -19,6 +19,11 @@ namespace AppWinProyectoo
             this.login = login;
         }
 
+        public RecepcionMenu()
+        {
+            InitializeComponent();            
+        }
+
         private void btnEquipos_Click(object sender, EventArgs e)
         {
             RecepcionEquipos nuevo = new RecepcionEquipos(this);
@@ -49,5 +54,46 @@ namespace AppWinProyectoo
             login.Visible = true;
             this.Dispose();
         }
+
+        private void btnPequenio_Click(object sender, EventArgs e)
+        {
+            pequenio();
+        }
+
+        private void btnGrande_Click(object sender, EventArgs e)
+        {
+            grande();
+        }
+
+        private void grande()
+        {
+            foreach (Control control in this.Controls)
+            {
+                control.Font = new Font(control.Font.Name, control.Font.Size + 1, control.Font.Style, control.Font.Unit);
+                if (control is Panel)
+                {
+                    foreach (Control control2 in control.Controls)
+                    {
+                        control2.Font = new Font(control.Font.Name, control.Font.Size + 1, control.Font.Style, control.Font.Unit);
+                    }
+                }
+            }
+        }
+
+        private void pequenio()
+        {
+            foreach (Control control in this.Controls)
+            {
+                control.Font = new Font(control.Font.Name, control.Font.Size - 1, control.Font.Style, control.Font.Unit);
+                if (control is Panel)
+                {
+                    foreach (Control control2 in control.Controls)
+                    {
+                        control2.Font = new Font(control.Font.Name, control.Font.Size - 1, control.Font.Style, control.Font.Unit);
+                    }
+                }
+            }
+        }
+
     }
 }

@@ -78,6 +78,8 @@
             this.label17 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.chbGarantia = new System.Windows.Forms.CheckBox();
+            this.btnPequenio = new System.Windows.Forms.Button();
+            this.btnGrande = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -138,6 +140,7 @@
             // 
             // btnEditar
             // 
+            this.btnEditar.Enabled = false;
             this.btnEditar.Font = new System.Drawing.Font("Cambria", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEditar.Image = global::AppWinProyectoo.Properties.Resources.editar;
             this.btnEditar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -206,7 +209,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Cambria", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(275, 18);
+            this.label2.Location = new System.Drawing.Point(217, 21);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(55, 17);
             this.label2.TabIndex = 14;
@@ -214,7 +217,7 @@
             // 
             // txtCodigo
             // 
-            this.txtCodigo.Location = new System.Drawing.Point(336, 21);
+            this.txtCodigo.Location = new System.Drawing.Point(278, 18);
             this.txtCodigo.Name = "txtCodigo";
             this.txtCodigo.Size = new System.Drawing.Size(100, 20);
             this.txtCodigo.TabIndex = 15;
@@ -604,12 +607,37 @@
             this.chbGarantia.TabIndex = 24;
             this.chbGarantia.UseVisualStyleBackColor = true;
             // 
+            // btnPequenio
+            // 
+            this.btnPequenio.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPequenio.Location = new System.Drawing.Point(481, 12);
+            this.btnPequenio.Name = "btnPequenio";
+            this.btnPequenio.Size = new System.Drawing.Size(76, 23);
+            this.btnPequenio.TabIndex = 67;
+            this.btnPequenio.Text = "-";
+            this.btnPequenio.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnPequenio.UseVisualStyleBackColor = true;
+            this.btnPequenio.Click += new System.EventHandler(this.btnPequenio_Click);
+            // 
+            // btnGrande
+            // 
+            this.btnGrande.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGrande.Location = new System.Drawing.Point(399, 12);
+            this.btnGrande.Name = "btnGrande";
+            this.btnGrande.Size = new System.Drawing.Size(76, 23);
+            this.btnGrande.TabIndex = 66;
+            this.btnGrande.Text = "+";
+            this.btnGrande.UseVisualStyleBackColor = true;
+            this.btnGrande.Click += new System.EventHandler(this.btnGrande_Click);
+            // 
             // RecepcionEquiposIngreso
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightSkyBlue;
             this.ClientSize = new System.Drawing.Size(562, 630);
+            this.Controls.Add(this.btnPequenio);
+            this.Controls.Add(this.btnGrande);
             this.Controls.Add(this.chbGarantia);
             this.Controls.Add(this.panel5);
             this.Controls.Add(this.panel4);
@@ -692,5 +720,7 @@
         private System.Windows.Forms.Button btnImprimir;
         private System.Windows.Forms.Button btnCancelarCliente;
         private System.Windows.Forms.Button btnCancelarEquipo;
+        private System.Windows.Forms.Button btnPequenio;
+        private System.Windows.Forms.Button btnGrande;
     }
 }

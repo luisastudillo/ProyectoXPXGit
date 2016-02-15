@@ -136,27 +136,34 @@ namespace AppWinProyectoo
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            if (enBlanco())
+            try
             {
-                MessageBox.Show("No se puede dejar casillas en blanco");
-                return;
-            }
+                if (enBlanco())
+                {
+                    MessageBox.Show("No se puede dejar casillas en blanco");
+                    return;
+                }
 
-            string descripcion;
-            decimal costo;
-            int codigo;
-            bool baja;
-            codigo = Convert.ToInt32(txtCodigo.Text);            
-            costo = Convert.ToDecimal(txtCosto.Text);
-            baja = chbBaja.Checked;
-            descripcion = txtDescripcion.Text;
-            if (editando)
-            {
-                editar(codigo, descripcion, costo, baja);
+                string descripcion;
+                decimal costo;
+                int codigo;
+                bool baja;
+                codigo = Convert.ToInt32(txtCodigo.Text);
+                costo = Convert.ToDecimal(txtCosto.Text);
+                baja = chbBaja.Checked;
+                descripcion = txtDescripcion.Text;
+                if (editando)
+                {
+                    editar(codigo, descripcion, costo, baja);
+                }
+                else
+                {
+                    nuevo(codigo, descripcion, costo, baja);
+                }
             }
-            else
+            catch (Exception ex)
             {
-                nuevo(codigo, descripcion, costo, baja);
+                MessageBox.Show("Ingrese datos válidos \n" + ex.Message);
             }
         }
 
@@ -190,37 +197,45 @@ namespace AppWinProyectoo
 
         private void btnBuscar_Click(object sender, EventArgs e)
         {
-            if (btnBuscar.Text == "Buscar")
+            try
             {
-                if (txtCodigo.Text == "") { 
-                    MessageBox.Show("Ingrese un código");
-                    return;
-                }
-                int codigo = Convert.ToInt32(txtCodigo.Text);
-                Entidades.Trabajo encontrado = LogicaNegocios.LogicaTrabajo.buscar(codigo);
-                if (encontrado != null)
+                if (btnBuscar.Text == "Buscar")
                 {
-                    mostrarTrabajo(encontrado);
-                    btnBuscar.Text = "Busqueda";
-                    activarBotones();
-                    desactivarCasillas();
-                    btnCancelar.Enabled = false;
-                    btnGuardar.Enabled = false;
-                    btnBaja.Enabled = true;
+                    if (txtCodigo.Text == "")
+                    {
+                        MessageBox.Show("Ingrese un código");
+                        return;
+                    }
+                    int codigo = Convert.ToInt32(txtCodigo.Text);
+                    Entidades.Trabajo encontrado = LogicaNegocios.LogicaTrabajo.buscar(codigo);
+                    if (encontrado != null)
+                    {
+                        mostrarTrabajo(encontrado);
+                        btnBuscar.Text = "Busqueda";
+                        activarBotones();
+                        desactivarCasillas();
+                        btnCancelar.Enabled = false;
+                        btnGuardar.Enabled = false;
+                        btnBaja.Enabled = true;
+                    }
+                    else
+                        MessageBox.Show("Pieza no encontrada");
                 }
                 else
-                    MessageBox.Show("Pieza no encontrada");
+                {
+                    borrarCasillas();
+                    desactivarCasillas();
+                    txtCodigo.ReadOnly = false;
+                    txtCodigo.ReadOnly = false;
+                    desactivarBotones();
+                    btnBuscar.Enabled = true;
+                    btnCancelar.Enabled = true;
+                    btnBuscar.Text = "Buscar";
+                }
             }
-            else
+            catch (Exception ex)
             {
-                borrarCasillas();
-                desactivarCasillas();
-                txtCodigo.ReadOnly = false;
-                txtCodigo.ReadOnly = false;
-                desactivarBotones();
-                btnBuscar.Enabled = true;
-                btnCancelar.Enabled = true;
-                btnBuscar.Text = "Buscar";
+                MessageBox.Show("Ingrese datos válidos \n" + ex.Message);
             }
         }
 

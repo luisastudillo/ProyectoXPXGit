@@ -43,12 +43,14 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnGuardar = new System.Windows.Forms.Button();
+            this.btnPequenio = new System.Windows.Forms.Button();
+            this.btnGrande = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // txtCelular
             // 
-            this.txtCelular.Location = new System.Drawing.Point(88, 234);
+            this.txtCelular.Location = new System.Drawing.Point(107, 234);
             this.txtCelular.Name = "txtCelular";
             this.txtCelular.Size = new System.Drawing.Size(193, 20);
             this.txtCelular.TabIndex = 36;
@@ -65,7 +67,7 @@
             // 
             // txtApellido
             // 
-            this.txtApellido.Location = new System.Drawing.Point(88, 119);
+            this.txtApellido.Location = new System.Drawing.Point(107, 119);
             this.txtApellido.Name = "txtApellido";
             this.txtApellido.Size = new System.Drawing.Size(193, 20);
             this.txtApellido.TabIndex = 33;
@@ -82,28 +84,28 @@
             // 
             // txtCedula
             // 
-            this.txtCedula.Location = new System.Drawing.Point(88, 29);
+            this.txtCedula.Location = new System.Drawing.Point(107, 29);
             this.txtCedula.Name = "txtCedula";
             this.txtCedula.Size = new System.Drawing.Size(193, 20);
             this.txtCedula.TabIndex = 31;
             // 
             // txtNombre
             // 
-            this.txtNombre.Location = new System.Drawing.Point(88, 71);
+            this.txtNombre.Location = new System.Drawing.Point(107, 71);
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(193, 20);
             this.txtNombre.TabIndex = 32;
             // 
             // txtTelefono
             // 
-            this.txtTelefono.Location = new System.Drawing.Point(88, 197);
+            this.txtTelefono.Location = new System.Drawing.Point(107, 197);
             this.txtTelefono.Name = "txtTelefono";
             this.txtTelefono.Size = new System.Drawing.Size(193, 20);
             this.txtTelefono.TabIndex = 35;
             // 
             // txtDireccion
             // 
-            this.txtDireccion.Location = new System.Drawing.Point(88, 159);
+            this.txtDireccion.Location = new System.Drawing.Point(107, 159);
             this.txtDireccion.Name = "txtDireccion";
             this.txtDireccion.Size = new System.Drawing.Size(193, 20);
             this.txtDireccion.TabIndex = 34;
@@ -151,7 +153,7 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = global::AppWinProyectoo.Properties.Resources.usua;
-            this.pictureBox1.Location = new System.Drawing.Point(322, 74);
+            this.pictureBox1.Location = new System.Drawing.Point(332, 74);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(128, 128);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -184,12 +186,37 @@
             this.btnGuardar.UseVisualStyleBackColor = true;
             this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
             // 
+            // btnPequenio
+            // 
+            this.btnPequenio.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPequenio.Location = new System.Drawing.Point(402, 12);
+            this.btnPequenio.Name = "btnPequenio";
+            this.btnPequenio.Size = new System.Drawing.Size(76, 23);
+            this.btnPequenio.TabIndex = 67;
+            this.btnPequenio.Text = "-";
+            this.btnPequenio.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnPequenio.UseVisualStyleBackColor = true;
+            this.btnPequenio.Click += new System.EventHandler(this.btnPequenio_Click);
+            // 
+            // btnGrande
+            // 
+            this.btnGrande.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGrande.Location = new System.Drawing.Point(320, 12);
+            this.btnGrande.Name = "btnGrande";
+            this.btnGrande.Size = new System.Drawing.Size(76, 23);
+            this.btnGrande.TabIndex = 66;
+            this.btnGrande.Text = "+";
+            this.btnGrande.UseVisualStyleBackColor = true;
+            this.btnGrande.Click += new System.EventHandler(this.btnGrande_Click);
+            // 
             // RecepcionAgregarCliente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightSkyBlue;
             this.ClientSize = new System.Drawing.Size(490, 332);
+            this.Controls.Add(this.btnPequenio);
+            this.Controls.Add(this.btnGrande);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnGuardar);
             this.Controls.Add(this.txtCelular);
@@ -230,5 +257,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.Button btnGuardar;
+        private System.Windows.Forms.Button btnPequenio;
+        private System.Windows.Forms.Button btnGrande;
     }
 }

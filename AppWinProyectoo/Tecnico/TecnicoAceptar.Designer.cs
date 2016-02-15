@@ -37,12 +37,14 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.cmbCodigos = new System.Windows.Forms.ComboBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.btnAceptar = new System.Windows.Forms.Button();
             this.btnRegresar = new System.Windows.Forms.Button();
+            this.cmbCodigos = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.txtModelo = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
+            this.btnPequenio = new System.Windows.Forms.Button();
+            this.btnGrande = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -127,25 +129,6 @@
             this.panel1.Size = new System.Drawing.Size(550, 51);
             this.panel1.TabIndex = 26;
             // 
-            // cmbCodigos
-            // 
-            this.cmbCodigos.FormattingEnabled = true;
-            this.cmbCodigos.Location = new System.Drawing.Point(247, 13);
-            this.cmbCodigos.Name = "cmbCodigos";
-            this.cmbCodigos.Size = new System.Drawing.Size(121, 21);
-            this.cmbCodigos.TabIndex = 25;
-            this.cmbCodigos.SelectedIndexChanged += new System.EventHandler(this.cmbCodigos_SelectedIndexChanged);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Cambria", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(186, 17);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(55, 17);
-            this.label1.TabIndex = 24;
-            this.label1.Text = "Código:";
-            // 
             // btnAceptar
             // 
             this.btnAceptar.Font = new System.Drawing.Font("Cambria", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -172,6 +155,25 @@
             this.btnRegresar.UseVisualStyleBackColor = true;
             this.btnRegresar.Click += new System.EventHandler(this.btnRegresar_Click);
             // 
+            // cmbCodigos
+            // 
+            this.cmbCodigos.FormattingEnabled = true;
+            this.cmbCodigos.Location = new System.Drawing.Point(247, 13);
+            this.cmbCodigos.Name = "cmbCodigos";
+            this.cmbCodigos.Size = new System.Drawing.Size(121, 21);
+            this.cmbCodigos.TabIndex = 25;
+            this.cmbCodigos.SelectedIndexChanged += new System.EventHandler(this.cmbCodigos_SelectedIndexChanged);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Cambria", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(186, 17);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(55, 17);
+            this.label1.TabIndex = 24;
+            this.label1.Text = "Código:";
+            // 
             // txtModelo
             // 
             this.txtModelo.Location = new System.Drawing.Point(419, 78);
@@ -189,12 +191,37 @@
             this.label7.TabIndex = 37;
             this.label7.Text = "Modelo:";
             // 
+            // btnPequenio
+            // 
+            this.btnPequenio.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPequenio.Location = new System.Drawing.Point(485, 10);
+            this.btnPequenio.Name = "btnPequenio";
+            this.btnPequenio.Size = new System.Drawing.Size(76, 23);
+            this.btnPequenio.TabIndex = 67;
+            this.btnPequenio.Text = "-";
+            this.btnPequenio.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnPequenio.UseVisualStyleBackColor = true;
+            this.btnPequenio.Click += new System.EventHandler(this.btnPequenio_Click);
+            // 
+            // btnGrande
+            // 
+            this.btnGrande.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGrande.Location = new System.Drawing.Point(403, 10);
+            this.btnGrande.Name = "btnGrande";
+            this.btnGrande.Size = new System.Drawing.Size(76, 23);
+            this.btnGrande.TabIndex = 66;
+            this.btnGrande.Text = "+";
+            this.btnGrande.UseVisualStyleBackColor = true;
+            this.btnGrande.Click += new System.EventHandler(this.btnGrande_Click);
+            // 
             // TecnicoAceptar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightSkyBlue;
             this.ClientSize = new System.Drawing.Size(564, 408);
+            this.Controls.Add(this.btnPequenio);
+            this.Controls.Add(this.btnGrande);
             this.Controls.Add(this.txtModelo);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.txtObservacion);
@@ -233,5 +260,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtModelo;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Button btnPequenio;
+        private System.Windows.Forms.Button btnGrande;
     }
 }

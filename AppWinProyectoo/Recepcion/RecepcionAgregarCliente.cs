@@ -27,28 +27,35 @@ namespace AppWinProyectoo
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            string cedula, nombres, apellidos, direccion, telefono, celular;
-            cedula = txtCedula.Text;
-            nombres = txtNombre.Text;
-            apellidos = txtApellido.Text;
-            direccion = txtDireccion.Text;
-            telefono = txtTelefono.Text;
-            celular = txtCelular.Text;
-            string agregado = LogicaNegocios.LogicaCliente.nuevo(cedula, nombres, apellidos, direccion, telefono, celular);
-            if (agregado == "agregado")
+            try
             {
-                MessageBox.Show("Cliente agregado");
-                if (anterior is RecepcionEquiposIngreso)
+                string cedula, nombres, apellidos, direccion, telefono, celular;
+                cedula = txtCedula.Text;
+                nombres = txtNombre.Text;
+                apellidos = txtApellido.Text;
+                direccion = txtDireccion.Text;
+                telefono = txtTelefono.Text;
+                celular = txtCelular.Text;
+                string agregado = LogicaNegocios.LogicaCliente.nuevo(cedula, nombres, apellidos, direccion, telefono, celular);
+                if (agregado == "agregado")
                 {
-                    ((RecepcionEquiposIngreso)anterior).agregarCliente(LogicaNegocios.LogicaCliente.buscarCliente(cedula));
-                }
+                    MessageBox.Show("Cliente agregado");
+                    if (anterior is RecepcionEquiposIngreso)
+                    {
+                        ((RecepcionEquiposIngreso)anterior).agregarCliente(LogicaNegocios.LogicaCliente.buscarCliente(cedula));
+                    }
 
-                anterior.Visible = true;
-                this.Dispose();
+                    anterior.Visible = true;
+                    this.Dispose();
+                }
+                else
+                {
+                    MessageBox.Show("No se pudo agregar el cliente \n" + agregado);
+                }
             }
-            else
+            catch (Exception ex)
             {
-                MessageBox.Show("No se pudo agregar el cliente \n" + agregado);
+                MessageBox.Show("Ingrese datos válidos \n" + ex.Message);
             }
         }
 
@@ -56,6 +63,46 @@ namespace AppWinProyectoo
         {
             anterior.Visible = true;
             this.Dispose();
+        }
+
+        private void btnGrande_Click(object sender, EventArgs e)
+        {
+            grande();
+        }
+
+        private void btnPequenio_Click(object sender, EventArgs e)
+        {
+            pequenio();
+        }
+
+        private void grande()
+        {
+            foreach (Control control in this.Controls)
+            {
+                control.Font = new Font(control.Font.Name, control.Font.Size + 1, control.Font.Style, control.Font.Unit);
+                if (control is Panel)
+                {
+                    foreach (Control control2 in control.Controls)
+                    {
+                        control2.Font = new Font(control.Font.Name, control.Font.Size + 1, control.Font.Style, control.Font.Unit);
+                    }
+                }
+            }
+        }
+
+        private void pequenio()
+        {
+            foreach (Control control in this.Controls)
+            {
+                control.Font = new Font(control.Font.Name, control.Font.Size - 1, control.Font.Style, control.Font.Unit);
+                if (control is Panel)
+                {
+                    foreach (Control control2 in control.Controls)
+                    {
+                        control2.Font = new Font(control.Font.Name, control.Font.Size - 1, control.Font.Style, control.Font.Unit);
+                    }
+                }
+            }
         }
     }
 }

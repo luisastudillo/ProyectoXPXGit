@@ -149,30 +149,37 @@ namespace AppWinProyectoo
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            if (enBlanco())
+            try
             {
-                MessageBox.Show("No se puede dejar casillas en blanco");
-                return;
-            }
+                if (enBlanco())
+                {
+                    MessageBox.Show("No se puede dejar casillas en blanco");
+                    return;
+                }
 
-            string modelo, tipo;
-            double costo;
-            int codigo, cantidad;
-            bool baja;
-            codigo = Convert.ToInt32(txtCodigo.Text);
-            modelo = txtModelo.Text;
-            tipo = txtTipo.Text;
-            cantidad = Convert.ToInt32(txtCantidad.Text);
-            costo = Convert.ToDouble(txtCosto.Text);
-            baja = chbBaja.Checked;
-            if (editando)
-            {
-                editar(codigo, modelo, tipo, costo, cantidad, baja);
+                string modelo, tipo;
+                double costo;
+                int codigo, cantidad;
+                bool baja;
+                codigo = Convert.ToInt32(txtCodigo.Text);
+                modelo = txtModelo.Text;
+                tipo = txtTipo.Text;
+                cantidad = Convert.ToInt32(txtCantidad.Text);
+                costo = Convert.ToDouble(txtCosto.Text);
+                baja = chbBaja.Checked;
+                if (editando)
+                {
+                    editar(codigo, modelo, tipo, costo, cantidad, baja);
+                }
+                else
+                {
+                    nuevo(codigo, modelo, tipo, costo, cantidad);
+                }
             }
-            else
+            catch(Exception ex)
             {
-                nuevo(codigo, modelo, tipo, costo, cantidad);
-            }
+                MessageBox.Show("Ingrese datos válidos \n" + ex.Message);
+            }            
         }
 
         private void nuevo(int codigo, string modelo, string tipo, double costo, int cantidad)
@@ -214,37 +221,44 @@ namespace AppWinProyectoo
         {            
             if (btnBuscar.Text == "Buscar")
             {
-                if (txtCodigo.Text == "")
+                try
                 {
-                    MessageBox.Show("Ingrese un código");
-                    return;
+                    if (txtCodigo.Text == "")
+                    {
+                        MessageBox.Show("Ingrese un código");
+                        return;
+                    }
+                    int codigo = Convert.ToInt32(txtCodigo.Text);
+                    Entidades.Pieza encontrado = LogicaNegocios.LogicaPieza.buscar(codigo);
+                    if (encontrado != null)
+                    {
+                        mostrarPieza(encontrado);
+                        btnBuscar.Text = "Busqueda";
+                        activarBotones();
+                        desactivarCasillas();
+                        btnCancelar.Enabled = false;
+                        btnGuardar.Enabled = false;
+                        btnBaja.Enabled = true;
+                    }
+                    else
+                        MessageBox.Show("Pieza no encontrada");
                 }
-                int codigo = Convert.ToInt32(txtCodigo.Text);
-                Entidades.Pieza encontrado = LogicaNegocios.LogicaPieza.buscar(codigo);
-                if (encontrado != null)
-                {
-                    mostrarPieza(encontrado);
-                    btnBuscar.Text = "Busqueda";
-                    activarBotones();
-                    desactivarCasillas();
-                    btnCancelar.Enabled = false;
-                    btnGuardar.Enabled = false;
-                    btnBaja.Enabled = true;
-                }
-                else
-                    MessageBox.Show("Pieza no encontrada");
-            }
             else
             {
-                borrarCasillas();
-                desactivarCasillas();
-                txtCodigo.ReadOnly = false;
-                txtCodigo.ReadOnly = false;
-                desactivarBotones();
-                btnBuscar.Enabled = true;
-                btnCancelar.Enabled = true;
-                btnBuscar.Text = "Buscar";
+                    borrarCasillas();
+                    desactivarCasillas();
+                    txtCodigo.ReadOnly = false;
+                    txtCodigo.ReadOnly = false;
+                    desactivarBotones();
+                    btnBuscar.Enabled = true;
+                    btnCancelar.Enabled = true;
+                    btnBuscar.Text = "Buscar";
+                }
             }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Ingrese datos válidos \n" + ex.Message);
+                }
         }
 
         private void mostrarPieza(Entidades.Pieza p)
@@ -303,25 +317,41 @@ namespace AppWinProyectoo
 
         private void btnGrande_Click(object sender, EventArgs e)
         {
+            grande();
+        }        
+
+        private void btnPequenio_Click(object sender, EventArgs e)
+        {
+            pequenio();
+        }
+
+        private void grande()
+        {
             foreach (Control control in this.Controls)
             {
                 control.Font = new Font(control.Font.Name, control.Font.Size + 1, control.Font.Style, control.Font.Unit);
-            }
-            foreach (Control control in panel1.Controls)
-            {
-                control.Font = new Font(control.Font.Name, control.Font.Size + 1, control.Font.Style, control.Font.Unit);
+                if (control is Panel)
+                {
+                    foreach (Control control2 in control.Controls)
+                    {
+                        control2.Font = new Font(control.Font.Name, control.Font.Size + 1, control.Font.Style, control.Font.Unit);
+                    }
+                }
             }
         }
 
-        private void btnPequenio_Click(object sender, EventArgs e)
+        private void pequenio()
         {
             foreach (Control control in this.Controls)
             {
                 control.Font = new Font(control.Font.Name, control.Font.Size - 1, control.Font.Style, control.Font.Unit);
-            }
-            foreach (Control control in panel1.Controls)
-            {
-                control.Font = new Font(control.Font.Name, control.Font.Size - 1, control.Font.Style, control.Font.Unit);
+                if (control is Panel)
+                {
+                    foreach (Control control2 in control.Controls)
+                    {
+                        control2.Font = new Font(control.Font.Name, control.Font.Size - 1, control.Font.Style, control.Font.Unit);
+                    }
+                }
             }
         }
     }

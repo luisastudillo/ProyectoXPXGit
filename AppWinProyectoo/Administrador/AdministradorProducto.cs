@@ -161,39 +161,17 @@ namespace AppWinProyectoo.Administrador
 
         private void btnBuscar_Click(object sender, EventArgs e)
         {
-            if (btnBuscar.Text == "Buscar")
+            try
             {
-                if (txtCodigo.Text == "")
-                {
-                    MessageBox.Show("Ingrese un código");
-                    return;
-                }
-                int codigo = Convert.ToInt32(txtCodigo.Text);
-                Entidades.Producto encontrado = LogicaNegocios.LogicaProducto.buscar(codigo);
-                if (encontrado != null)
-                {
-                    mostrarProducto(encontrado);
-                    btnBuscar.Text = "Busqueda";
-                    activarBotones();
-                    desactivarCasillas();
-                    btnCancelar.Enabled = false;
-                    btnGuardar.Enabled = false;
-                    btnBaja.Enabled = true;
-                }
-                else
-                    MessageBox.Show("Pieza no encontrada");
+
             }
-            else
+            catch (Exception ex)
             {
-                borrarCasillas();
-                desactivarCasillas();
-                txtCodigo.ReadOnly = false;
-                txtCodigo.ReadOnly = false;
-                desactivarBotones();
-                btnBuscar.Enabled = true;
-                btnCancelar.Enabled = true;
-                btnBuscar.Text = "Buscar";
+                MessageBox.Show("Ingrese datos válidos \n" + ex.Message);
             }
+
+
+            
         }
 
         private void AdministradorProducto_Load(object sender, EventArgs e)
@@ -215,31 +193,84 @@ namespace AppWinProyectoo.Administrador
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            if (enBlanco())
+            try
             {
-                MessageBox.Show("No se puede dejar casillas en blanco");
-                return;
-            }
+                if (enBlanco())
+                {
+                    MessageBox.Show("No se puede dejar casillas en blanco");
+                    return;
+                }
 
-            string modelo, tipo;
-            double costo;
-            int codigo, cantidad;
-            bool baja;
-            codigo = Convert.ToInt32(txtCodigo.Text);
-            modelo = txtModelo.Text;
-            tipo = txtTipo.Text;
-            cantidad = Convert.ToInt32(txtCantidad.Text);
-            costo = Convert.ToDouble(txtCosto.Text);
-            baja = chbBaja.Checked;
-            if (editando)
-            {
-                editar(codigo, modelo, tipo, costo, cantidad, baja);
+                string modelo, tipo;
+                double costo;
+                int codigo, cantidad;
+                bool baja;
+                codigo = Convert.ToInt32(txtCodigo.Text);
+                modelo = txtModelo.Text;
+                tipo = txtTipo.Text;
+                cantidad = Convert.ToInt32(txtCantidad.Text);
+                costo = Convert.ToDouble(txtCosto.Text);
+                baja = chbBaja.Checked;
+                if (editando)
+                {
+                    editar(codigo, modelo, tipo, costo, cantidad, baja);
+                }
+                else
+                {
+                    nuevo(codigo, modelo, tipo, costo, cantidad);
+                }
+
             }
-            else
+            catch(Exception ex)
             {
-                nuevo(codigo, modelo, tipo, costo, cantidad);
+                MessageBox.Show("Ingrese datos válidos \n" + ex.Message);
             }
         }
+
+        private void valido()
+        {
+            try
+            {
+                if (btnBuscar.Text == "Buscar")
+                {
+                    if (txtCodigo.Text == "")
+                    {
+                        MessageBox.Show("Ingrese un código");
+                        return;
+                    }
+                    int codigo = Convert.ToInt32(txtCodigo.Text);
+                    Entidades.Producto encontrado = LogicaNegocios.LogicaProducto.buscar(codigo);
+                    if (encontrado != null)
+                    {
+                        mostrarProducto(encontrado);
+                        btnBuscar.Text = "Busqueda";
+                        activarBotones();
+                        desactivarCasillas();
+                        btnCancelar.Enabled = false;
+                        btnGuardar.Enabled = false;
+                        btnBaja.Enabled = true;
+                    }
+                    else
+                        MessageBox.Show("Pieza no encontrada");
+                }
+                else
+                {
+                    borrarCasillas();
+                    desactivarCasillas();
+                    txtCodigo.ReadOnly = false;
+                    txtCodigo.ReadOnly = false;
+                    desactivarBotones();
+                    btnBuscar.Enabled = true;
+                    btnCancelar.Enabled = true;
+                    btnBuscar.Text = "Buscar";
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ingrese datos válidos \n" + ex.Message);
+            }
+        }
+
 
         private void nuevo(int codigo, string modelo, string tipo, double costo, int cantidad)
         {

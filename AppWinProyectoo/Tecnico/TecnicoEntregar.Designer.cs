@@ -39,13 +39,15 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnAceptar = new System.Windows.Forms.Button();
             this.btnRegresar = new System.Windows.Forms.Button();
+            this.btnPequenio = new System.Windows.Forms.Button();
+            this.btnGrande = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // txtModelo
             // 
             this.txtModelo.Enabled = false;
-            this.txtModelo.Location = new System.Drawing.Point(378, 77);
+            this.txtModelo.Location = new System.Drawing.Point(378, 90);
             this.txtModelo.Name = "txtModelo";
             this.txtModelo.Size = new System.Drawing.Size(100, 20);
             this.txtModelo.TabIndex = 46;
@@ -54,7 +56,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Cambria", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(294, 80);
+            this.label7.Location = new System.Drawing.Point(294, 93);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(59, 17);
             this.label7.TabIndex = 45;
@@ -63,7 +65,7 @@
             // txtSerie
             // 
             this.txtSerie.Enabled = false;
-            this.txtSerie.Location = new System.Drawing.Point(229, 122);
+            this.txtSerie.Location = new System.Drawing.Point(229, 135);
             this.txtSerie.Name = "txtSerie";
             this.txtSerie.Size = new System.Drawing.Size(100, 20);
             this.txtSerie.TabIndex = 44;
@@ -71,7 +73,7 @@
             // txtEquipo
             // 
             this.txtEquipo.Enabled = false;
-            this.txtEquipo.Location = new System.Drawing.Point(107, 77);
+            this.txtEquipo.Location = new System.Drawing.Point(107, 90);
             this.txtEquipo.Name = "txtEquipo";
             this.txtEquipo.Size = new System.Drawing.Size(100, 20);
             this.txtEquipo.TabIndex = 43;
@@ -80,7 +82,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Cambria", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(154, 125);
+            this.label3.Location = new System.Drawing.Point(154, 138);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(43, 17);
             this.label3.TabIndex = 42;
@@ -90,7 +92,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Cambria", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(12, 77);
+            this.label2.Location = new System.Drawing.Point(12, 90);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(53, 17);
             this.label2.TabIndex = 41;
@@ -99,7 +101,7 @@
             // cmbCodigos
             // 
             this.cmbCodigos.FormattingEnabled = true;
-            this.cmbCodigos.Location = new System.Drawing.Point(218, 12);
+            this.cmbCodigos.Location = new System.Drawing.Point(218, 33);
             this.cmbCodigos.Name = "cmbCodigos";
             this.cmbCodigos.Size = new System.Drawing.Size(121, 21);
             this.cmbCodigos.TabIndex = 40;
@@ -109,7 +111,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Cambria", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(140, 16);
+            this.label1.Location = new System.Drawing.Point(140, 37);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(55, 17);
             this.label1.TabIndex = 39;
@@ -151,12 +153,37 @@
             this.btnRegresar.UseVisualStyleBackColor = true;
             this.btnRegresar.Click += new System.EventHandler(this.btnRegresar_Click);
             // 
+            // btnPequenio
+            // 
+            this.btnPequenio.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPequenio.Location = new System.Drawing.Point(412, 1);
+            this.btnPequenio.Name = "btnPequenio";
+            this.btnPequenio.Size = new System.Drawing.Size(76, 23);
+            this.btnPequenio.TabIndex = 67;
+            this.btnPequenio.Text = "-";
+            this.btnPequenio.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnPequenio.UseVisualStyleBackColor = true;
+            this.btnPequenio.Click += new System.EventHandler(this.btnPequenio_Click);
+            // 
+            // btnGrande
+            // 
+            this.btnGrande.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGrande.Location = new System.Drawing.Point(330, 1);
+            this.btnGrande.Name = "btnGrande";
+            this.btnGrande.Size = new System.Drawing.Size(76, 23);
+            this.btnGrande.TabIndex = 66;
+            this.btnGrande.Text = "+";
+            this.btnGrande.UseVisualStyleBackColor = true;
+            this.btnGrande.Click += new System.EventHandler(this.btnGrande_Click);
+            // 
             // TecnicoEntregar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightSkyBlue;
             this.ClientSize = new System.Drawing.Size(500, 260);
+            this.Controls.Add(this.btnPequenio);
+            this.Controls.Add(this.btnGrande);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.txtModelo);
             this.Controls.Add(this.label7);
@@ -188,5 +215,7 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button btnAceptar;
         private System.Windows.Forms.Button btnRegresar;
+        private System.Windows.Forms.Button btnPequenio;
+        private System.Windows.Forms.Button btnGrande;
     }
 }

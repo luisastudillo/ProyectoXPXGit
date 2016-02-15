@@ -78,5 +78,46 @@ namespace AppWinProyectoo.Administrador
                 lista = LogicaNegocios.LogicaProducto.listaPorTipo(txtBuscar.Text);
             llenarTabla(lista);
         }
+
+        private void btnGrande_Click(object sender, EventArgs e)
+        {
+            grande();
+        }
+
+        private void btnPequenio_Click(object sender, EventArgs e)
+        {
+            pequenio();
+        }
+
+        private void grande()
+        {
+            foreach (Control control in this.Controls)
+            {
+                control.Font = new Font(control.Font.Name, control.Font.Size + 1, control.Font.Style, control.Font.Unit);
+                if (control is Panel)
+                {
+                    foreach (Control control2 in control.Controls)
+                    {
+                        control2.Font = new Font(control.Font.Name, control.Font.Size + 1, control.Font.Style, control.Font.Unit);
+                    }
+                }
+            }
+        }
+
+        private void pequenio()
+        {
+            foreach (Control control in this.Controls)
+            {
+                control.Font = new Font(control.Font.Name, control.Font.Size - 1, control.Font.Style, control.Font.Unit);
+                if (control is Panel)
+                {
+                    foreach (Control control2 in control.Controls)
+                    {
+                        control2.Font = new Font(control.Font.Name, control.Font.Size - 1, control.Font.Style, control.Font.Unit);
+                    }
+                }
+            }
+        }
+
     }
 }

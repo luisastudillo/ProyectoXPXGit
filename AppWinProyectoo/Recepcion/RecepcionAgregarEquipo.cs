@@ -38,20 +38,27 @@ namespace AppWinProyectoo.Recepcion
 
         private void btnAgregarEquipo_Click(object sender, EventArgs e)
         {
-            if (enBlanco())
+            try
             {
-                MessageBox.Show("No se puede dejar casillas en blanco");
-                return;
+                if (enBlanco())
+                {
+                    MessageBox.Show("No se puede dejar casillas en blanco");
+                    return;
+                }
+                string equipo, serie, modelo;
+                int nfactura;
+                equipo = txtEquipo.Text;
+                modelo = txtModelo.Text;
+                serie = txtSerie.Text;
+                nfactura = Convert.ToInt32(txtNFactura.Text);
+                LogicaNegocios.LogicaEquipo.nuevo(serie, modelo, equipo, nfactura);
+                anterior.agregarEquipo(serie);
+                salir();
             }
-            string equipo, serie, modelo;
-            int nfactura;
-            equipo = txtEquipo.Text;
-            modelo = txtModelo.Text;
-            serie = txtSerie.Text;
-            nfactura = Convert.ToInt32( txtNFactura.Text);
-            LogicaNegocios.LogicaEquipo.nuevo(serie, modelo, equipo, nfactura);
-            anterior.agregarEquipo(serie);
-            salir();
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ingrese datos válidos \n" + ex.Message);
+            }
         }
 
         public void agregarFactura(int nFactura)
@@ -94,24 +101,31 @@ namespace AppWinProyectoo.Recepcion
 
         private void btnAgregarFactura_Click(object sender, EventArgs e)
         {
-            if (txtNFactura.Text == "")
+            try
             {
-                MessageBox.Show("No se puede dejar la cedula en blanco");
-                return;
+                if (txtNFactura.Text == "")
+                {
+                    MessageBox.Show("No se puede dejar la cedula en blanco");
+                    return;
+                }
+                int numero = Convert.ToInt32(txtNFactura.Text);
+                Entidades.FacturaCompra f = LogicaNegocios.LogicaFacturaCompra.buscar(numero);
+                if (f != null)
+                {
+                    agregarFactura(f.Numero);
+                    txtNFactura.Enabled = false;
+                }
+                else
+                {
+                    RecepcionAgregarFactura ventana = new RecepcionAgregarFactura();
+                    ventana.Visible = true;
+                    this.Visible = false;
+                }
             }
-            int numero = Convert.ToInt32(txtNFactura.Text);
-            Entidades.FacturaCompra f = LogicaNegocios.LogicaFacturaCompra.buscar(numero);
-            if(f!= null)
+            catch (Exception ex)
             {
-                agregarFactura(f.Numero);
-                txtNFactura.Enabled = false;
+                MessageBox.Show("Ingrese datos válidos \n" + ex.Message);
             }
-            else
-            {
-                RecepcionAgregarFactura ventana = new RecepcionAgregarFactura();
-                ventana.Visible = true;
-                this.Visible = false;
-            }            
         }
 
         private void btnCancelarFactura_Click(object sender, EventArgs e)
@@ -119,6 +133,51 @@ namespace AppWinProyectoo.Recepcion
             txtNFactura.Enabled = true;
             txtNFactura.Text = "";
             txtCedFactura.Text = "";
+        }
+
+        private void btnGrande_Click(object sender, EventArgs e)
+        {
+            grande();
+        }
+
+        private void btnPequenio_Click(object sender, EventArgs e)
+        {
+            pequenio();
+        }
+
+        private void grande()
+        {
+            foreach (Control control in this.Controls)
+            {
+                control.Font = new Font(control.Font.Name, control.Font.Size + 1, control.Font.Style, control.Font.Unit);
+                if (control is Panel)
+                {
+                    foreach (Control control2 in control.Controls)
+                    {
+                        control2.Font = new Font(control.Font.Name, control.Font.Size + 1, control.Font.Style, control.Font.Unit);
+                    }
+                }
+            }
+        }
+
+        private void pequenio()
+        {
+            foreach (Control control in this.Controls)
+            {
+                control.Font = new Font(control.Font.Name, control.Font.Size - 1, control.Font.Style, control.Font.Unit);
+                if (control is Panel)
+                {
+                    foreach (Control control2 in control.Controls)
+                    {
+                        control2.Font = new Font(control.Font.Name, control.Font.Size - 1, control.Font.Style, control.Font.Unit);
+                    }
+                }
+            }
+        }
+
+        private void txtNFactura_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

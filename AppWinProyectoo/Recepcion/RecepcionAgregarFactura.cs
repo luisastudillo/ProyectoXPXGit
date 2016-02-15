@@ -28,17 +28,24 @@ namespace AppWinProyectoo.Recepcion
 
         private void btnAgregarFactura_Click(object sender, EventArgs e)
         {
-            if (enBlanco())
+            try
             {
-                MessageBox.Show("No se puede dejar casillas en blanco");
-                return;
+                if (enBlanco())
+                {
+                    MessageBox.Show("No se puede dejar casillas en blanco");
+                    return;
+                }
+                int numero = Convert.ToInt32(txtNFactura.Text);
+                DateTime fecha = dtpFechaFactura.Value;
+                string cedula = txtCedFactura.Text;
+                LogicaNegocios.LogicaFacturaCompra.nuevo(numero, fecha, cedula);
+                anterior.agregarFactura(numero);
+                salir();
             }
-            int numero = Convert.ToInt32(txtNFactura.Text);
-            DateTime fecha = dtpFechaFactura.Value;
-            string cedula = txtCedFactura.Text;
-            LogicaNegocios.LogicaFacturaCompra.nuevo(numero, fecha, cedula);
-            anterior.agregarFactura(numero);
-            salir();
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ingrese datos válidos \n" + ex.Message);
+            }           
         }
 
         private bool enBlanco()
@@ -67,6 +74,46 @@ namespace AppWinProyectoo.Recepcion
         private void btnCancelarFactura_Click(object sender, EventArgs e)
         {
             salir();
+        }
+
+        private void btnGrande_Click(object sender, EventArgs e)
+        {
+            grande();
+        }
+
+        private void btnPequenio_Click(object sender, EventArgs e)
+        {
+            pequenio();
+        }
+
+        private void grande()
+        {
+            foreach (Control control in this.Controls)
+            {
+                control.Font = new Font(control.Font.Name, control.Font.Size + 1, control.Font.Style, control.Font.Unit);
+                if (control is Panel)
+                {
+                    foreach (Control control2 in control.Controls)
+                    {
+                        control2.Font = new Font(control.Font.Name, control.Font.Size + 1, control.Font.Style, control.Font.Unit);
+                    }
+                }
+            }
+        }
+
+        private void pequenio()
+        {
+            foreach (Control control in this.Controls)
+            {
+                control.Font = new Font(control.Font.Name, control.Font.Size - 1, control.Font.Style, control.Font.Unit);
+                if (control is Panel)
+                {
+                    foreach (Control control2 in control.Controls)
+                    {
+                        control2.Font = new Font(control.Font.Name, control.Font.Size - 1, control.Font.Style, control.Font.Unit);
+                    }
+                }
+            }
         }
     }
 }
